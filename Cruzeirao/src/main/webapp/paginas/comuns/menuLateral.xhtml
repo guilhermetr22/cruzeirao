@@ -5,24 +5,23 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form>
-		<p:panelMenu>
-		    <p:submenu label="#{msg['paginas.comuns.menuLateral.inicio']}" >
-			   <p:menuitem value="#{msg['paginas.inicio.menu']}" url="inicio.xhtml" />
-			</p:submenu>
-		
-			<p:submenu label="#{msg['pages.comuns.menuLateral.gerencial']}">
-				<p:menuitem value="#{msg['pages.cadastroAluno.menu']}" url="cadastroAluno.xhtml" />
-				<p:menuitem value="#{msg['pages.cadastroProfessor.menu']}" url="cadastroProfessor.xhtml" />
-				<p:menuitem value="#{msg['pages.tela2.menu']}" url="tela2.xhtml" />
-				<p:menuitem value="#{msg['pages.tela3.menu']}" url="tela3.xhtml" />
-	       </p:submenu>
-					
-			<p:submenu label="#{msg['pages.comuns.menuLateral.options']}">
-				<p:menuitem value="#{msg['pages.linguagem.menu']}" url="linguagem.xhtml" />
-	       </p:submenu>
-		
-		</p:panelMenu>
-	</h:form>
+		<p:tieredMenu style="width:200px;margin-left: 5px;">
+	          	<p:menuitem value="#{msg['paginas.inicio.menu']}" url="inicio.xhtml" />
+	        	
+	        	<p:separator />
+	        	
+	       		<p:submenu label="#{msg['paginas.cadUser.menuNome']}">
+	            	<p:menuitem value="#{msg['paginas.cadUser.menuNome']}" url="cadUser.xhtml" />
+	        	</p:submenu>
+	        	
+			    <p:separator />
+			    
+			    <p:submenu label="#{msg['paginas.cadCampenato.menuNome']}">
+	            	<p:menuitem value="#{msg['paginas.cadCampenato.menuNome']}" url="cadCampeonato.xhtml" />
+	        	</p:submenu>
+
+    	</p:tieredMenu>
+</h:form>
 
 
 </ui:composition>

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class User {
 
+	private int IDUser;
 	private String email;
 	private String nome;
 	private Calendar dataNascimento;
@@ -20,6 +21,9 @@ public class User {
 	private String cref;
 	private Enum sexo;
 	private String foto;
+	private String nomeusuario;
+	private String senha;
+	
 	public String getEmail() {
 		return email;
 	}
@@ -110,6 +114,25 @@ public class User {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	public String getNomeusuario() {
+		return nomeusuario;
+	}
+	public void setNomeusuario(String nomeusuario) {
+		this.nomeusuario = nomeusuario;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public int getIDUser() {
+		return IDUser;
+	}
+	public void setIDUser(int iDUser) {
+		IDUser = iDUser;
+	}
+	
 	
 	
 }

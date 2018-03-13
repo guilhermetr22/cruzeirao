@@ -13,6 +13,8 @@ public class Campeonato {
 	private Date dataInicioCampeonato;
 	private Date dataFimCampeonato;
 	private double valorTaxa;
+	private int minJogadores;
+	private int maxJogadores;
 	
 	
 	public String getNome() {
@@ -69,6 +71,16 @@ public class Campeonato {
 	public void setValorTaxa(double valorTaxa) {
 		this.valorTaxa = valorTaxa;
 	}
-	
-	
+	public int getMinJogadores() {
+		return minJogadores;
+	}
+	public void setMinJogadores(int minJogadores) {
+		this.minJogadores = minJogadores;
+	}
+	public int getMaxJogadores() {
+		return maxJogadores;
+	}
+	public void setMaxJogadores(int maxJogadores) {
+		this.maxJogadores = maxJogadores;
+	}
 }
