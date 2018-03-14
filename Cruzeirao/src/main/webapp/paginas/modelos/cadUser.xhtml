@@ -1,0 +1,60 @@
+<ui:composition template="layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+   <h:head>
+		<title>Cadastro Usuário</title>
+	</h:head>
+
+	<h:body>	
+	    <h:form style="float:center" id="formUsuario" prependId="false">
+		<div align="center">
+	    
+	    	<p:panel id="painel" header="Novo Usuario" style="border-color:black;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
+	        	<p:messages id="messages" />
+			        <h:panelGrid columns="2" cellpadding="5" id="panel" style="margin:1%; text-align: center">
+			        
+			        	<p:outputLabel size="30" value="#{msg['paginas.cadUser.email']}" />
+			            <p:inputText id="Email" required="false" value="#{UserMB.usuario.email}" label="Email" />
+			        
+			            <p:outputLabel size="30" value="#{msg['paginas.cadUser.nome']}" />
+			            <p:inputText id="Nome" required="true" value="#{UserMB.usuario.nome}" label="Nome" />
+			 
+			            <p:outputLabel size="30" value="#{msg['paginas.cadUser.nomeUser']}" />
+			            <p:inputText id="Login" required="true" value="#{UserMB.usuario.login}" label="Login"/>
+			           
+			            <p:outputLabel size="30" value="#{msg['paginas.cadUser.senha']}" />
+			         	<p:password id="Senha" value="#{UserMB.usuario.senha}" label="Senha" required="true"/>
+			         	
+			            <p:outputLabel size="30" value="#{msg['paginas.cadUser.cpf']}" />
+			            <p:inputText id="CPF" required="true" value="#{UserMB.usuario.cpf}" label="CPF"/> 
+			            
+			            <p:outputLabel size="30" value="#{msg['paginas.cadUser.rg']}" />
+			            <p:inputText id="RG" required="false" value="#{UserMB.usuario.rg}" label="RG"/>
+			            
+			            <p:outputLabel for="mask" value="#{msg['paginas.cadUser.dataNascimento']}" />
+			        	<p:calendar id="mask" required="true" value="#{UserMB.usuario.dataNascimento}" pattern="dd-MM-yyyy" mask="true" />
+			            
+			            <p:outputLabel size="30" value="#{msg['paginas.cadUser.endereco']}" />
+			            <p:inputText id="Endereco" required="true" value="#{UserMB.usuario.endereco}" label="Endereco"/>
+	           
+	           			<p:outputLabel size="30" value="#{msg['paginas.cadUser.telMovel']}" />
+			            <p:inputText id="TelMovel" required="true" value="#{UserMB.usuario.telefoneMovel}" label="TelMovel"/>
+	           
+	           			<p:outputLabel size="30" value="#{msg['paginas.cadUser.telFixo']}" />
+			            <p:inputText id="TelFixo" required="false" value="#{UserMB.usuario.telefoneFixo}" label="TelFixo"/>
+			            
+	        		</h:panelGrid>
+	       		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0" update="growl" 
+	        	action="#{UserMB.salvar}"/>
+	    	</p:panel>
+	    </div>
+	    
+	    </h:form>
+	</h:body>
+    
+</ui:composition>
