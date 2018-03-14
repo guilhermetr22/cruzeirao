@@ -5,52 +5,43 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	>
-	
-	<h:head>
 
-		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } </style>
-
-		<title>
-		   <ui:insert name="title">
-				<h:outputLabel value="#{msg['pages.templateMenu.titleMainMenu']}" />
-			</ui:insert>
-	    </title>
-	</h:head>
-
-
-	<h:body>
-		<p:layout id="globalLayout" fullPage="true">
-
-
-			<p:layoutUnit position="north" size="160" >
-				<ui:include src="comuns/cabecalho.xhtml" />
-			</p:layoutUnit>
-
-
-			<p:layoutUnit position="south" size="50">
-				<ui:include src="comuns/rodape.xhtml" />
-			</p:layoutUnit>
-
-
-			<!-- Menu lateral -->
-			<p:layoutUnit position="west"
-				header="#{msg['paginas.comuns.menuLateral.opcoes']}"
-				collapsible="true" size="220">
-				<ui:include src="comuns/menuLateral.xhtml" />
-			</p:layoutUnit>
-
-
-			<p:layoutUnit position="center">
-				<ui:insert name="principal" />
-			</p:layoutUnit>
-		</p:layout>
-
-	</h:body>
+		<h:head>
+			<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } </style>
+		
+        	<title>Cruzeirão 2017</title>
+   		</h:head>
+   
+		
+		<h:body>
+			<p:layout id="globalLayout" fullPage="true">
+					
+					
+					<!-- Cabeçalho -->
+					<p:layoutUnit position="north" size="160" >
+						<ui:include src="/paginas/comuns/cabecalho.xhtml" />
+					</p:layoutUnit>
+			
+			
+					<!-- Rodapé -->
+					<p:layoutUnit position="south" size="40">
+						<ui:include src="/paginas/comuns/rodape.xhtml" />
+					</p:layoutUnit>
+			
+			
+					<!-- Menu lateral -->
+					<p:layoutUnit position="west"
+						header="#{msg['paginas.comuns.menuLateral.opcoes']}"
+						size="300">
+						<ui:include src="/paginas/comuns/menuLateral.xhtml" />
+					</p:layoutUnit>
+			
+					<!-- Página que será trocada no template -->
+					<p:layoutUnit position="center">
+						<ui:insert name="principal" />
+					</p:layoutUnit>
+					
+			</p:layout>
+		
+		</h:body>
 </h:html>
-
-
-
-
-
-
-

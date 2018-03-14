@@ -14,7 +14,7 @@
 	    <h:form style="float:center" id="formUsuario" prependId="false">
 		<div align="center">
 	    
-	    	<p:panel id="painel" header="Novo Usuario" style="border-color:black;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
+	    	<p:panel id="painel" header="Cadastrar Novo Usuário" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
 	        	<p:messages id="messages" />
 			        <h:panelGrid columns="2" cellpadding="5" id="panel" style="margin:1%; text-align: center">
 			        
@@ -50,7 +50,8 @@
 			            
 	        		</h:panelGrid>
 	       		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
-	        	action="#{UserMB.salvar}"/>
+	        	action="#{UserMB.salvar}"
+	        	ajax="false"/>
 	    	</p:panel>
 	    </div>
 	    
