@@ -10,18 +10,22 @@
 	        	
 	        	<p:separator />
 	        	
-	       		<p:submenu label="#{msg['paginas.modelos.cadUser.menuNome']}">
+	       		<p:submenu label="#{msg['paginas.comuns.menuLateral.cadastros']}">
 	            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuNome']}" url="cadUser.xhtml" />
-	            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuTodos']}"/>
+	            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuNome']}" url="cadCampeonato.xhtml" />
+	            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuNome']}" url="cadLocal.xhtml" />
 	        	</p:submenu>
 	        	
 			    <p:separator />
 			    
-			    <p:submenu label="#{msg['paginas.modelos.cadCampeonato.menuNome']}">
-	            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuNome']}" url="cadCampeonato.xhtml" />
+			    <p:submenu label="#{msg['paginas.comuns.menuLateral.listagem']}">
+	            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuTodos']}"/>
 	            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuTodos']}"/>
+	            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuTodos']}"/>
 	        	</p:submenu>
-
+	        	
+	        	<p:separator />
+			    
     	</p:tieredMenu>
 </h:form>
 

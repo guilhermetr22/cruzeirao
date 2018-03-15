@@ -18,17 +18,17 @@
       			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCampeonato.nome']}" /> 
       			<p:inputText id="Nome" required="true" value="#{CampeonatoMB.campeonato.nome}"/>
  	             
-				<p:outputLabel for="mask0" value="#{msg['paginas.modelos.cadCampeonato.Dinicio']}" /> 
-				<p:calendar id="mask0" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataInicioInscricao}"/>
+				<p:outputLabel for="DataInicioIns" value="#{msg['paginas.modelos.cadCampeonato.Dinicio']}" /> 
+				<p:calendar id="DataInicioIns" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataInicioInscricao}"/>
 				  
-				<p:outputLabel for="mask1" value="#{msg['paginas.modelos.cadCampeoanto.Dfim']}" /> 
-				<p:calendar id="mask1" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimInscricao}"/>
+				<p:outputLabel for="DataFimIns" value="#{msg['paginas.modelos.cadCampeoanto.Dfim']}" /> 
+				<p:calendar id="DataFimIns" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimInscricao}"/>
 						
-				<p:outputLabel for="mask2" value="#{msg['paginas.modelos.cadCampeonato.DIinicio']}" /> 
-				<p:calendar id="mask2" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataInicioCampeonato}"/>
+				<p:outputLabel for="DataInicioCamp" value="#{msg['paginas.modelos.cadCampeonato.DIinicio']}" /> 
+				<p:calendar id="DataInicioCamp" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataInicioCampeonato}"/>
 				  			  
-				<p:outputLabel for="mask3" value="#{msg['paginas.modelos.cadCampeonato.DIfim']}" /> 
-				<p:calendar id="mask3" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimCampeonato}"/>
+				<p:outputLabel for="DataFimCamp" value="#{msg['paginas.modelos.cadCampeonato.DIfim']}" /> 
+				<p:calendar id="DataFimCamp" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimCampeonato}"/>
 				  
 				 <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.minJ']}" /> 
 			     <p:inputText id="MinJ" required="true" value="#{CampeonatoMB.campeonato.minJogadores}"/>
@@ -36,8 +36,15 @@
 			     <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.maxJ']}" /> 
 			     <p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.campeonato.maxJogadores}"/>
 				  
-				 <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.valor']}" />
-				 <p:spinner id="taxa" value="#{CampeonatoMB.campeonato.valorTaxa}" prefix="R$" min="0" required="true"/>
+				 <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.valor']}" />	
+					 <p:selectOneButton value="#{CampeonatoMB.campeonato.valorTaxa}">
+					 	<f:selectItem itemLabel="R$35" itemValue="R$35" />		
+	            		<f:selectItem itemLabel="R$40" itemValue="R$40" />
+	           			<f:selectItem itemLabel="R$45" itemValue="R$45" />
+	            		<f:selectItem itemLabel="R$50" itemValue="R$50" />
+	            		<f:selectItem itemLabel="R$55" itemValue="R$55" />
+	            		<f:selectItem itemLabel="R$60" itemValue="R$60" />
+	       			</p:selectOneButton>
                  
 	  		</h:panelGrid>
 	  

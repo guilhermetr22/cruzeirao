@@ -32,23 +32,31 @@
 				            <p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.senha']}" />
 				         	<p:password id="Senha" value="#{UserMB.usuario.senha}" label="Senha" required="true"/>
 				         	
-				            <p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.cpf']}" />
-				            <p:inputText id="CPF" required="true" value="#{UserMB.usuario.cpf}" label="CPF"/> 
+				            <p:outputLabel for="cpf" size="30" value="#{msg['paginas.modelos.cadUser.cpf']}" />
+					            <p:inputMask id="cpf" required="true" value="#{UserMB.usuario.cpf}" mask="999.999.999-99"> 
+					            	<p:keyFilter mask="num" />	
+					           	</p:inputMask>
+				           	
+				            <p:outputLabel for="RG" value="#{msg['paginas.modelos.cadUser.rg']}" />
+					            <p:inputMask id="RG" required="false" value="#{UserMB.usuario.rg}" label="RG">
+					            	<p:keyFilter mask="num" />	
+					           	</p:inputMask>
 				            
-				            <p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.rg']}" />
-				            <p:inputText id="RG" required="false" value="#{UserMB.usuario.rg}" label="RG"/>
-				            
-				            <p:outputLabel for="mask" value="#{msg['paginas.modelos.cadUser.dataNascimento']}" />
-				        	<p:calendar id="mask" required="true" value="#{UserMB.usuario.dataNascimento}" pattern="dd-MM-yyyy" mask="true" />
+				            <p:outputLabel for="nascimento" value="#{msg['paginas.modelos.cadUser.dataNascimento']}" />
+				        	<p:calendar id="nascimento" required="true" value="#{UserMB.usuario.dataNascimento}" pattern="dd-MM-yyyy" mask="true" />
 				            
 				            <p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.endereco']}" />
 				            <p:inputText id="Endereco" required="true" value="#{UserMB.usuario.endereco}" label="Endereco"/>
 		           
-		           			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.telMovel']}" />
-				            <p:inputText id="TelMovel" required="true" value="#{UserMB.usuario.telefoneMovel}" label="TelMovel"/>
+		           			<p:outputLabel for="TelMovel" size="30" value="#{msg['paginas.modelos.cadUser.telMovel']}" />
+					            <p:inputMask id="TelMovel" required="true" value="#{UserMB.usuario.telefoneMovel}" mask="(99) 99999-9999">
+					           		<p:keyFilter mask="num" />
+					            </p:inputMask>
 		           
-		           			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.telFixo']}" />
-				            <p:inputText id="TelFixo" required="false" value="#{UserMB.usuario.telefoneFixo}" label="TelFixo"/>
+		           			<p:outputLabel for="TelFixo" size="30" value="#{msg['paginas.modelos.cadUser.telFixo']}" />
+					            <p:inputMask id="TelFixo" required="false" value="#{UserMB.usuario.telefoneFixo}" mask="(99) 9999-9999">
+					            	<p:keyFilter mask="num" />
+					            </p:inputMask>
 				            
 		        		</h:panelGrid>
 		       		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"

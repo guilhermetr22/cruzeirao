@@ -21,7 +21,7 @@ public class User {
 	private String cref;
 	private Enum sexo;
 	private String foto;
-	private String nomeusuario;
+	private String login;
 	private String senha;
 	
 	public String getEmail() {
@@ -114,11 +114,11 @@ public class User {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public String getNomeusuario() {
-		return nomeusuario;
+	public String getLogin() {
+		return login;
 	}
-	public void setNomeusuario(String nomeusuario) {
-		this.nomeusuario = nomeusuario;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	public String getSenha() {
 		return senha;

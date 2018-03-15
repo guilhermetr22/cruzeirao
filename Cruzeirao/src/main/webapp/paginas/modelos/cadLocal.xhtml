@@ -1,0 +1,35 @@
+<ui:composition template="layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<ui:define name="titulo">
+		<h:outputText value="#{msg['paginas.modelos.cadLocal.titulo']}" />
+	</ui:define>
+	
+	
+	
+	<ui:define name="principal">	   	  
+		<p:panel id="painel" header="#{msg['paginas.modelos.cadLocal.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
+	  		<h:form id="formLocal">
+		  		<p:panelGrid columns="2">
+	      			<p:outputLabel value="#{msg['paginas.modelos.cadLocal.nome']}" />
+	      			<p:inputText value="#{LocalMB.local.nome}"/>
+	      
+		  			<p:outputLabel value="#{msg['paginas.modelos.cadLocal.endereco']}" />
+		 			<p:inputText value="#{LocalMB.local.endereco}"/>	  
+	 
+		 		 </p:panelGrid>
+		 		 
+		  		 <p:commandButton value="#{msg['paginas.modelos.cadLocal.btnSalvar']}"
+		                 update=":formLocal"
+		                 action="#{LocalMB.salvar}"
+		                 />
+	    	</h:form>
+		</p:panel>
+	   
+	</ui:define>
+</ui:composition>

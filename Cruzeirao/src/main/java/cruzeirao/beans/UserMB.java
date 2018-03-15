@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import cruzeirao.modelos.User;
 import cruzeirao.service.UserService;
 
-@ManagedBean
+@ManagedBean (name = "UserMB")
 @SessionScoped
 public class UserMB {
 	private User usuario = new User();
