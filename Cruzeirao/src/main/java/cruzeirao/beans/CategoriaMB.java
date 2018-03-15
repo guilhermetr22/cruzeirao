@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import cruzeirao.modelos.Categoria;
 import cruzeirao.service.CategoriaService;
 
-@ManagedBean
+@ManagedBean (name="CategoriaMB")
 @SessionScoped
 public class CategoriaMB {
 	private Categoria categoria = new Categoria();

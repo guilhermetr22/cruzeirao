@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import cruzeirao.modelos.Campeonato;
 import cruzeirao.service.CampService;
 
-@ManagedBean (name = "CampeonatoMB")
+@ManagedBean (name="CampeonatoMB")
 @SessionScoped
 public class CampeonatoMB {
 	private Campeonato campeonato = new	Campeonato();

@@ -3,8 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets">
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">
 		<h:outputText value="#{msg['paginas.modelos.cadCategoria.titulo']}" />
@@ -12,7 +11,7 @@
 	
 	<ui:define name="principal">	   	  
 		<p:panel id="painel" header="#{msg['paginas.modelos.cadCategoria.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
-	  		<h:form id="formCategoria">
+	  		<h:form style="float:center" id="formCategoria" prependId="false">
 	  			<h:panelGrid columns="2" id="panel" style="text-align: center"> 
 		  			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nome']}" /> 
 	      				<p:inputText id="Nome" required="true" value="#{CategoriaMB.categoria.nome}"/>
@@ -21,16 +20,19 @@
 	      				<p:inputText id="Nascidos" required="true" value="#{CategoriaMB.categoria.nascidosApartirDe}"/>
 	      				
 					<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.minJ']}" /> 
-	      				<p:inputText id="Mínimo" required="true" value="#{CategoriaMB.categoria.minJogadores}"/>
-	      				
+	      				<p:inputText id="MaxJ" required="true" value="#{CategoriaMB.categoria.maxJogadores}">
+				    		<p:keyFilter mask="num" />
+						</p:inputText>	
+						
 	      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.maxJ']}" /> 
-	      				<p:inputText id="Máximo" required="true" value="#{CategoriaMB.categoria.maxJogadores}"/>
-      				
+	      				<p:inputText id="MinJ" required="true" value="#{CategoriaMB.categoria.minJogadores}">
+				    		<p:keyFilter mask="num" />
+						</p:inputText>	
       			</h:panelGrid>
       			
       			 <p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
-	        		action="#{CategoriaMB.salvar}"
-	        		ajax="false"/>
+      			 	update=":formCategoria"
+	        		action="#{CategoriaMB.salvar}"/>
 	        </h:form>
 	     </p:panel>
 	</ui:define>	  	

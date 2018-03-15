@@ -13,8 +13,9 @@
 	
 	<ui:define name="principal">	   	  
 	  <p:panel id="painel" header="#{msg['paginas.modelos.cadCampeonato.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
-	  	<h:form id="formCampeonato">	
+	  	<h:form style="float:center" id="formCampeonato" prependId="false">   	
 	  		<h:panelGrid columns="2" id="panel" style="text-align: center">          
+	  		
       			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCampeonato.nome']}" /> 
       			<p:inputText id="Nome" required="true" value="#{CampeonatoMB.campeonato.nome}"/>
  	             
@@ -30,21 +31,20 @@
 				<p:outputLabel for="DataFimCamp" value="#{msg['paginas.modelos.cadCampeonato.DIfim']}" /> 
 				<p:calendar id="DataFimCamp" required="true" pattern="dd-MM-yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimCampeonato}"/>
 				  
-				 <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.minJ']}" /> 
-			     <p:inputText id="MinJ" required="true" value="#{CampeonatoMB.campeonato.minJogadores}"/>
+				<p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.minJ']}" /> 
+			    <p:inputText id="MinJ" required="true" value="#{CampeonatoMB.campeonato.minJogadores}">
+			    	<p:keyFilter mask="num" />
+				</p:inputText>
 			      
-			     <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.maxJ']}" /> 
-			     <p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.campeonato.maxJogadores}"/>
+			    <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.maxJ']}" /> 
+				    <p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.campeonato.maxJogadores}">
+				    	<p:keyFilter mask="num" />
+					</p:inputText>	
 				  
-				 <p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.valor']}" />	
-					 <p:selectOneButton value="#{CampeonatoMB.campeonato.valorTaxa}">
-					 	<f:selectItem itemLabel="R$35" itemValue="R$35" />		
-	            		<f:selectItem itemLabel="R$40" itemValue="R$40" />
-	           			<f:selectItem itemLabel="R$45" itemValue="R$45" />
-	            		<f:selectItem itemLabel="R$50" itemValue="R$50" />
-	            		<f:selectItem itemLabel="R$55" itemValue="R$55" />
-	            		<f:selectItem itemLabel="R$60" itemValue="R$60" />
-	       			</p:selectOneButton>
+				<p:outputLabel for="valor" value="#{msg['paginas.modelos.cadCampeonato.valor']}" />	
+  					<p:inputMask id="valor" required="true" value="#{CampeonatoMB.campeonato.valorTaxa}" mask="R$99">
+  						<p:keyFilter mask="num" />
+					</p:inputMask>
                  
 	  		</h:panelGrid>
 	  
@@ -54,8 +54,8 @@
 	                 ajax="false"/> -->
 	                 
 	  		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
-	        	action="#{CampeonatoMB.salvar}"
-	        	ajax="false"/>
+	  			update=":formCampeonato"		
+	        	action="#{CampeonatoMB.salvar}"/>
 	  		
 	   </h:form>
 	  </p:panel>  
