@@ -17,10 +17,10 @@
 	  		<h:form style="float:center" id="formLocal" prependId="false">
 		  		<p:panelGrid columns="2">
 	      			<p:outputLabel value="#{msg['paginas.modelos.cadLocal.nome']}" />
-	      			<p:inputText value="#{LocalMB.local.nome}"/>
+	      			<p:inputText required="true" value="#{LocalMB.local.nome}"/>
 	      
 		  			<p:outputLabel value="#{msg['paginas.modelos.cadLocal.endereco']}" />
-		 			<p:inputText value="#{LocalMB.local.endereco}"/>	  
+		 			<p:inputText required="true" value="#{LocalMB.local.endereco}"/>	  
 	 
 		 		 </p:panelGrid>
 		 		 

@@ -7,9 +7,14 @@
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 >
 
-	<ui:define name="titulo">
-		<h:outputText value="#{msg['paginas.modelos.cadCampeonato.titulo']}" />
-	</ui:define>
+	<h:head>
+		<ui:define name="titulo">
+			<h:outputText value="#{msg['paginas.modelos.cadUser.titulo']}" />
+		</ui:define>
+		
+		<link rel="stylesheet" type="text/css" href="/css/estilos.css" />
+
+	</h:head>
 
 	<ui:define name="principal">
 		<h:body>	
@@ -20,7 +25,7 @@
 		        	<p:messages id="messages" />
 				        <h:panelGrid columns="2" id="panel" style="text-align: center">
 				        
-				        	<p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.email']}" />
+				        	<p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.email']}" styleClass="edit"/>
 				            <p:inputText id="Email" required="false" value="#{UserMB.usuario.email}" label="Email" />
 				        
 				            <p:outputLabel size="30" value="#{msg['paginas.modelos.cadUser.nome']}" />
@@ -38,7 +43,7 @@
 					           	</p:inputMask>
 				           	
 				            <p:outputLabel for="RG" value="#{msg['paginas.modelos.cadUser.rg']}" />
-					            <p:inputMask id="RG" required="false" value="#{UserMB.usuario.rg}" label="RG">
+					            <p:inputMask id="RG" required="false" value="#{UserMB.usuario.rg}" mask="99.999.999-0">
 					            	<p:keyFilter mask="num" />	
 					           	</p:inputMask>
 				            
@@ -59,8 +64,8 @@
 					            </p:inputMask>
 				            
 		        		</h:panelGrid>
-		       		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
-		       		update=":formUser"
+		       		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" styleClass="botoes"
+		       		update=":formUsuario"
 		        	action="#{UserMB.salvar}"/>
 		    	</p:panel>
 		    </div>

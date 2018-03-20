@@ -6,42 +6,51 @@
 	xmlns:p="http://primefaces.org/ui"
 	>
 
-		<h:head>
-			<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } </style>
-		
+		<h:head>		
         	<title>Cruzeirão 2017</title>
+        	
+        	<h:outputStylesheet name="css/estilos.css"/>
+        	
    		</h:head>
    
 		
 		<h:body>
-			<p:layout id="globalLayout" fullPage="true">
-					
-					
-					<!-- Cabeçalho -->
-					<p:layoutUnit position="north" size="160" >
-						<ui:include src="/paginas/comuns/cabecalho.xhtml" />
-					</p:layoutUnit>
-			
-			
-					<!-- Rodapé -->
-					<p:layoutUnit position="south" size="40">
-						<ui:include src="/paginas/comuns/rodape.xhtml" />
-					</p:layoutUnit>
-			
-			
-					<!-- Menu lateral -->
-					<p:layoutUnit position="west"
-						header="#{msg['paginas.comuns.menuLateral.opcoes']}"
-						size="300">
-						<ui:include src="/paginas/comuns/menuLateral.xhtml" />
-					</p:layoutUnit>
-			
-					<!-- Página que será trocada no template -->
-					<p:layoutUnit position="center">
-						<ui:insert name="principal" />
-					</p:layoutUnit>
-					
-			</p:layout>
-		
+			<div id="global">
+				<p:layout id="layoutGlobal" fullPage="true" >
+				
+						
+						
+						<!-- Cabeçalho
+						<p:layoutUnit position="north" size="160" >
+							<ui:include src="/paginas/comuns/cabecalho.xhtml" />
+						</p:layoutUnit> -->
+						
+						<!-- Menu Superior
+						<p:layoutUnit position="north">
+							<ui:include src="/paginas/comuns/menuSuperior.xhtml" />
+						</p:layoutUnit> -->
+				
+						<!-- Rodapé -->
+						<p:layoutUnit position="south" size="40">
+							<ui:include src="/paginas/comuns/rodape.xhtml" />
+						</p:layoutUnit>
+				
+				
+						<!-- Menu lateral -->
+						<p:layoutUnit position="west"
+							header="#{msg['paginas.comuns.menuLateral.opcoes']}"
+							size="230">
+							<ui:include src="/paginas/comuns/menuLateral.xhtml" />
+						</p:layoutUnit>
+						
+						<!-- Página que será trocada no template -->
+						<p:layoutUnit position="center">
+							<ui:insert name="principal" />
+						</p:layoutUnit>
+						
+				</p:layout>
+			</div>
 		</h:body>
+		
 </h:html>
+
