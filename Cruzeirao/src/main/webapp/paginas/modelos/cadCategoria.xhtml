@@ -11,28 +11,38 @@
 	
 	<ui:define name="principal">	   	  
 		<p:panel id="painel" header="#{msg['paginas.modelos.cadCategoria.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
-	  		<h:form style="float:center" id="formCategoria" prependId="false">
+	  		<p:outputLabel value="Campeonato: "/>
+			<p:outputLabel value="#{CampeonatoMB.campeonato.nome}"/>
+	  		<h:form id="formCategoria">
 	  			<h:panelGrid columns="2" id="panel" style="text-align: center"> 
 		  			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nome']}" /> 
-	      				<p:inputText id="Nome" required="true" value="#{CategoriaMB.categoria.nome}"/>
+	      				<p:inputText id="Nome" required="true" value="#{CampeonatoMB.categoria.nome}"/>
 	      				
-					<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nascidos']}" /> 
-	      				<p:inputText id="Nascidos" required="true" value="#{CategoriaMB.categoria.nascidosApartirDe}"/>
-	      				
-					<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.minJ']}" /> 
-	      				<p:inputText id="MaxJ" required="true" value="#{CategoriaMB.categoria.maxJogadores}">
+					<p:outputLabel id="Nascidos" size="30" value="#{msg['paginas.modelos.cadCategoria.nascidos']}" /> 
+	      				<p:inputMask id="Nascidos" required="true" value="#{CamepeonatoMB.categoria.nascidosApartirDe}" mask="9999">
+  							<p:keyFilter mask="num" />
+						</p:inputMask>
+	      				 
+					<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.maxJ']}" /> 
+	      				<p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.categoria.maxJogadores}">
 				    		<p:keyFilter mask="num" />
 						</p:inputText>	
 						
-	      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.maxJ']}" /> 
-	      				<p:inputText id="MinJ" required="true" value="#{CategoriaMB.categoria.minJogadores}">
+					<p:outputLabel for="sexo" value="#{msg['paginas.modelos.cadCategoria.sexo']}" />
+					<p:selectOneRadio id="sexo" value="#{CampeonatoMB.categoria.sexo}">
+						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+					</p:selectOneRadio>
+						
+	      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.minJ']}" /> 
+	      				<p:inputText id="MinJ" required="true" value="#{CampeonatoMB.categoria.minJogadores}">
 				    		<p:keyFilter mask="num" />
 						</p:inputText>	
       			</h:panelGrid>
       			
       			 <p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
       			 	update=":formCategoria"
-	        		action="#{CategoriaMB.salvar}"/>
+	        		action="#{CampeonatoMB.salvar}"/>
 	        </h:form>
 	     </p:panel>
 	</ui:define>	  	

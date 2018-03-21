@@ -42,21 +42,16 @@
 					</p:inputText>	
 				  
 				<p:outputLabel for="valor" value="#{msg['paginas.modelos.cadCampeonato.valor']}" />	
-  					<p:inputMask id="valor" required="true" value="#{CampeonatoMB.campeonato.valorTaxa}" mask="R$99">
+  					<p:inputText id="valor"  value="#{CampeonatoMB.campeonato.valorTaxa}">
   						<p:keyFilter mask="num" />
-					</p:inputMask>
+					</p:inputText>
                  
 	  		</h:panelGrid>
 	  
-	  		<!-- <p:commandButton value="#{msg['paginas.modelos.cadCampeonato.btnSalvar']}"
+	  		<p:commandButton value="#{msg['paginas.modelos.cadCampeonato.btnSalvar']}"
 	                 update=":formCampeonato"
-	                 action="/pages/cadastroCategoria.xhtml"
-	                 ajax="false"/> -->
+	                 action="/paginas/modelos/cadCategoria.xhtml"/>
 	                 
-	  		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
-	  			update=":formCampeonato"		
-	        	action="#{CampeonatoMB.salvar}"/>
-	  		
 	   </h:form>
 	  </p:panel>  
 	   

@@ -6,15 +6,23 @@
 	xmlns:p="http://primefaces.org/ui"
 	>
 	
-	<ui:define name="title">
-		<h:outputText value="#{msg['paginas.inicio.titulo']}" />
-	</ui:define>
+	
+	<h:head>
+		<ui:define name="titulo">
+			<h:outputText value="#{msg['paginas.inicio.titulo']}" />
+		</ui:define>
+		
+		<link rel="stylesheet" type="text/css" href="/css/estilos.css" />
 
-	<ui:define name="principal">	
-			
-			<p:graphicImage url="/sistema.recursos/logo.png" /> 
+	</h:head>
 	
-			<p:outputLabel value="#{msg['paginas.inicio.bemvindo']}" />
-	</ui:define>
 	
+	<h:body>
+		<ui:define name="principal">	
+				
+				<p:graphicImage url="/sistema.recursos/logo.png" /> 
+		
+				<p:outputLabel value="#{msg['paginas.inicio.bemvindo']}" />
+		</ui:define>
+	</h:body>
 </ui:composition>

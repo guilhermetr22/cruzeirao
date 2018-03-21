@@ -7,17 +7,40 @@ import javax.faces.bean.SessionScoped;
 
 import cruzeirao.modelos.Campeonato;
 import cruzeirao.service.CampService;
+import cruzeirao.modelos.Categoria;
+import cruzeirao.service.CategoriaService;
 
 @ManagedBean (name="CampeonatoMB")
 @SessionScoped
 public class CampeonatoMB {
 	private Campeonato campeonato = new	Campeonato();
-	private CampService service = new CampService();
+	private CampService campService = new CampService();
+	private CategoriaService catService = new CategoriaService();
+	private Categoria categoria = new Categoria();
 	
-	public void salvar()
+	public String salvar()
 	{
-		service.salvar(campeonato);
+		catService.salvar(categoria);
+		campeonato.addCategorias(categoria);
+		campService.salvar(campeonato);
 		campeonato = new Campeonato();
+		categoria = new Categoria();
+		return "inicio";
+	}
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public String salvarNovaCategoria() {
+		catService.salvar(categoria);
+		campeonato.addCategorias(categoria);
+		categoria = new Categoria();
+		return "cadastroCategoria";
 	}
 	
 	public Campeonato getCampeonato() {
@@ -30,6 +53,6 @@ public class CampeonatoMB {
 	
 	public List<Campeonato> getCampeonatos()
 	{
-		return service.getCampeonatos();
+		return campService.getCampeonatos();
 	}
 }

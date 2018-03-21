@@ -3,20 +3,34 @@ package cruzeirao.modelos;
 import java.util.Date;
 import java.util.List;
 
+import cruzeirao.modelos.Categoria;
+
 public class Campeonato {
+	private int idCampeonato;
+	
 	private String nome;
+	
 	private List<Local> locais;
 	private List<Juiz> juizes;
 	private List<Categoria> categorias;
+	
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
 	private Date dataInicioCampeonato;
 	private Date dataFimCampeonato;
+	
 	private double valorTaxa;
 	private int minJogadores;
 	private int maxJogadores;
 	
 	
+	
+	public int getIdCampeonato() {
+		return idCampeonato;
+	}
+	public void setIdCampeonato(int idCampeonato) {
+		this.idCampeonato = idCampeonato;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -38,8 +52,8 @@ public class Campeonato {
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
+	public void addCategorias(Categoria categoria) {
+		this.categorias.add(categoria);
 	}
 	public Date getDataInicioInscricao() {
 		return dataInicioInscricao;
@@ -83,4 +97,11 @@ public class Campeonato {
 	public void setMaxJogadores(int maxJogadores) {
 		this.maxJogadores = maxJogadores;
 	}
+	
+	@Override
+	public String toString() {
+		return "Campeonato [nome=" + nome + "]";
+	}
+	
+	
 }
