@@ -1,20 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/paginas/modelos/layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<ui:define name="titulo">
+		<h:outputText value="#{msg['paginas.todos.mostraUsers.titulo']}" />
+	</ui:define>
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
+	<ui:define name="principal">
+	
+	  <p:dataTable id="tabelaUser" var="user" value="#{UserMB.usuarios}" 
+	  			   emptyMessage="#{msg['paginas.todos.mostraUsers.vazio']}"
+	  			   style="border: solid 2px black;">  
+        
+        <p:column headerText="#{msg['paginas.todos.mostraUsers.nome']}" >
+        	<p:outputLabel value="#{user.nome}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['paginas.todos.mostraUsers.username']}" >
+        	<p:outputLabel value="#{user.login}" />
+      	</p:column>                 
+                  
+        <p:column headerText="#{msg['paginas.todos.mostraUsers.cpf']}" >
+        	<p:outputLabel value="#{user.cpf}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['paginas.todos.mostraUsers.datanasc']}" >
+        	<p:outputLabel value="#{user.dataNascimento}" />
+      	</p:column>
+      	
+
+    </p:dataTable>
+	 
 	</ui:define>
 </ui:composition>
-</html>

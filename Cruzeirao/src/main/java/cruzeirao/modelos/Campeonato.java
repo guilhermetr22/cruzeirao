@@ -1,21 +1,37 @@
 package cruzeirao.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import cruzeirao.modelos.Categoria;
 
-public class Campeonato {
+@Entity
+@Table(name="campeonatos")
+public class Campeonato implements Serializable{
+	
+	private static final long serialVersionUID = 8784890467331743479L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idCampeonato;
 	
 	private String nome;
 	
-	private List<Local> locais;
-	private List<Juiz> juizes;
+/*	private List<Local> locais;
+	private List<Juiz> juizes;*/
+	
 	private List<Categoria> categorias;
 	
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
+	
 	private Date dataInicioCampeonato;
 	private Date dataFimCampeonato;
 	
@@ -31,13 +47,14 @@ public class Campeonato {
 	public void setIdCampeonato(int idCampeonato) {
 		this.idCampeonato = idCampeonato;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<Local> getLocais() {
+/*	public List<Local> getLocais() {
 		return locais;
 	}
 	public void setLocais(List<Local> locais) {
@@ -48,7 +65,7 @@ public class Campeonato {
 	}
 	public void setJuizes(List<Juiz> juizes) {
 		this.juizes = juizes;
-	}
+	}*/
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}

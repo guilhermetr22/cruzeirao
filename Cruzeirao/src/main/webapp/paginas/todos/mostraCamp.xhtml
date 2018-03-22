@@ -1,0 +1,53 @@
+<ui:composition template="/paginas/modelos/layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+
+	<ui:define name="titulo">
+		<h:outputText value="#{msg['paginas.todos.mostraCampeonato.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	
+	  <p:dataTable id="tabelaCamp" var="camp" value="#{CampeonatoMB.campeonatos}" 
+	  			   emptyMessage="#{msg['paginas.todos.mostraCampeonato.vazio']}"
+	  			   style="border: solid 2px black;">  
+        
+        <p:column headerText="#{msg['paginas.todos.mostraCampeonato.nome']}" >
+        	<p:outputLabel value="#{camp.nome}" />
+      	</p:column>
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.categorias']}" >
+        	<p:outputLabel value="#{camp.categorias}" />
+      	</p:column>
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.DInicio']}" >
+        	<p:outputLabel value="#{camp.dataInicioCampeonato}" />
+      	</p:column>
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.DFim']}" >
+        	<p:outputLabel value="#{camp.dataFimCampeonato}" />
+      	</p:column>
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.minJ']}" >
+        	<p:outputLabel value="#{camp.minJ}" />
+      	</p:column>
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.maxJ']}" >
+        	<p:outputLabel value="#{camp.maxJ}" />
+      	</p:column>
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.valor']}" >
+        	<p:outputLabel value="#{camp.valorTaxa}" />
+      	</p:column>
+      	
+      	
+
+    </p:dataTable>
+	 
+	</ui:define>
+</ui:composition>

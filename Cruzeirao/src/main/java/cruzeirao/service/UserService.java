@@ -1,6 +1,5 @@
 package cruzeirao.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,7 +33,7 @@ public class UserService {
 		List <User> usuarios;
 		
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Aluno a");
+		Query q = em.createQuery("Select a From User a");
 		usuarios = q.getResultList();
 		em.close();
 		

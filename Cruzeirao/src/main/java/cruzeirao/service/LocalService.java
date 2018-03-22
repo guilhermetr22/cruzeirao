@@ -1,25 +1,37 @@
 package cruzeirao.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import cruzeirao.modelos.Local;
 
 public class LocalService {
-	private ArrayList <Local> locais = new ArrayList<>();
+	private EntityManagerFactory emf;
 	
-	public LocalService()
-	{
+	public LocalService(){
+		emf = Persistence.createEntityManagerFactory("Cruzeirao");
+	}
+	
+	public void salvar(Local local){
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+			em.persist(local);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Local> getLocais(){
+		List<Local> locais;
 		
-	}
-	
-	public void salvar(Local local)
-	{
-		locais.add(local);
-	}
-	
-	public List<Local> getLocais()
-	{
-		return locais;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select u From Local u");
+		locais = q.getResultList();
+		em.close();
+		return locais; 
 	}
 }

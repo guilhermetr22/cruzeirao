@@ -1,26 +1,39 @@
 package cruzeirao.modelos;
 
-import java.util.Calendar;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Date;
+//import java.util.List;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="usuarios")
+public class User implements Serializable {
+
+	private static final long serialVersionUID = -4115440631798495868L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int IDUser;
+	
 	private String email;
 	private String nome;
-	private Calendar dataNascimento;
-	private List<Equipe> equipes;
-	private List<Inscrito> inscricoes;
-	private List<Campeonato> campeonatos;
-	private Enum tipo;
+	private Date dataNascimento;
+	//private List<Equipe> equipes;
+	//private List<Inscrito> inscricoes;
+	//private List<Campeonato> campeonatos;
+	//private Enum tipo;
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
 	private String cpf;
-	private String cref;
-	private Enum sexo;
-	private String foto;
+	//private String cref;
+	//private Enum sexo;
 	private String login;
 	private String senha;
 	
@@ -36,13 +49,13 @@ public class User {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Calendar getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(Calendar dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public List<Equipe> getEquipes() {
+/*	public List<Equipe> getEquipes() {
 		return equipes;
 	}
 	public void setEquipes(List<Equipe> equipes) {
@@ -65,7 +78,7 @@ public class User {
 	}
 	public void setTipo(Enum tipo) {
 		this.tipo = tipo;
-	}
+	}*/
 	public String getTelefoneFixo() {
 		return telefoneFixo;
 	}
@@ -96,7 +109,7 @@ public class User {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getCref() {
+/*	public String getCref() {
 		return cref;
 	}
 	public void setCref(String cref) {
@@ -107,13 +120,7 @@ public class User {
 	}
 	public void setSexo(Enum sexo) {
 		this.sexo = sexo;
-	}
-	public String getFoto() {
-		return foto;
-	}
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+	}*/
 	public String getLogin() {
 		return login;
 	}

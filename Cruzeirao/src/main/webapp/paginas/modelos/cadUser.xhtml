@@ -43,7 +43,7 @@
 					           	</p:inputMask>
 				           	
 				            <p:outputLabel for="RG" value="#{msg['paginas.modelos.cadUser.rg']}" />
-					            <p:inputMask id="RG" required="false" value="#{UserMB.usuario.rg}" mask="99.999.999-0">
+					            <p:inputMask id="RG" required="false" value="#{UserMB.usuario.rg}" mask="99.999.999-9">
 					            	<p:keyFilter mask="num" />	
 					           	</p:inputMask>
 				            
@@ -66,7 +66,8 @@
 		        		</h:panelGrid>
 		       		<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" styleClass="botoes"
 		       		update=":formUsuario"
-		        	action="#{UserMB.salvar}"/>
+		        	action="#{UserMB.salvar}"
+		        	ajax="false"/>
 		    	</p:panel>
 		    </div>
 		 </h:form>
