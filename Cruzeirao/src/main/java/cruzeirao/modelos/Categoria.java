@@ -1,11 +1,15 @@
 package cruzeirao.modelos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Categoria {
+public class Categoria implements Serializable{
+
+	private static final long serialVersionUID = -7153462733306145669L;
+	
 	private String nome;
 	private int nascidosApartirDe;
-	private List<Inscricao> inscricoes;
+	//private List<Inscricao> inscricoes;
 	private Campeonato campeonato;
 	private List<Fase> fases;
 	private int minJogadores;
@@ -24,12 +28,12 @@ public class Categoria {
 	public void setNascidosApartirDe(int nascidosApartirDe) {
 		this.nascidosApartirDe = nascidosApartirDe;
 	}
-	public List<Inscricao> getInscricoes() {
+/*	public List<Inscricao> getInscricoes() {
 		return inscricoes;
 	}
 	public void setInscricoes(List<Inscricao> inscricoes) {
 		this.inscricoes = inscricoes;
-	}
+	}*/
 	public Campeonato getCampeonato() {
 		return campeonato;
 	}

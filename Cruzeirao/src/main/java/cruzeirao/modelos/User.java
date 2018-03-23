@@ -36,7 +36,8 @@ public class User implements Serializable {
 	//private Enum sexo;
 	private String login;
 	private String senha;
-	
+	private Tipo tipo;
+
 	public String getEmail() {
 		return email;
 	}
@@ -140,6 +141,13 @@ public class User implements Serializable {
 		IDUser = iDUser;
 	}
 	
+	
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 	
 	
 }

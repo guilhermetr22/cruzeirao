@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
 import cruzeirao.service.UserService;
 
@@ -16,6 +17,7 @@ public class UserMB {
 	
 	public void salvar()
 	{
+		usuario.setTipo(Tipo.COMUM);
 		service.salvar(usuario);
 		usuario = new User();
 	}

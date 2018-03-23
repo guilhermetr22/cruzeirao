@@ -1,9 +1,24 @@
 package cruzeirao.modelos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Inscricao {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="inscricoes")
+public class Inscricao implements Serializable{
+	
+	private static final long serialVersionUID = -4086207985010677485L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long numero;
+	
 	private boolean pagamento;
 	private boolean validadas;
 	private List<Inscrito> inscritos;

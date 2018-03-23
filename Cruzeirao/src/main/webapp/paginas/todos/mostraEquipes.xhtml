@@ -1,0 +1,38 @@
+<ui:composition template="/paginas/modelos/layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	<ui:define name="title">
+		<h:outputText value="#{msg['paginas.todos.mostraEquipe.titulo']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	
+	  <p:dataTable id="equipes" var="equipe" value="#{EquipeMB.equipes}" 
+	  			   emptyMessage="#{msg['paginas.todos.mostraEquipe.vazio']}"
+	  			     style="border: solid 2px black;"> 
+        
+        <p:column headerText="#{msg['paginas.todos.mostraEquipe.nome']}" >
+        	<p:outputLabel value="#{equipe.nome}" />
+      	</p:column>
+      	
+		<p:column headerText="#{msg['paginas.todos.mostraEquipe.cidade']}" >
+        	<p:outputLabel value="#{equipe.cidade}" />
+      	</p:column>
+        
+        <p:column headerText="#{msg['paginas.todos.mostraEquipe.data']}" >
+        	<p:outputLabel value="#{equipe.dataFundacao}" />
+      	</p:column>     
+      	
+      	<p:column headerText="#{msg['paginas.todos.mostraEquipe.diretor']}" >
+        	<p:outputLabel value="#{equipe.diretor.nome}" />
+      	</p:column>            
+        
+    </p:dataTable>
+	 
+	</ui:define>
+</ui:composition>

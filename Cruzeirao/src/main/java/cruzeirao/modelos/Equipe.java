@@ -1,15 +1,37 @@
 package cruzeirao.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-public class Equipe {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="equipes")
+public class Equipe implements Serializable{
+	
+	private static final long serialVersionUID = 5460457849249703396L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id_time;
+	
 	private String nome;
+	
 	private Date dataFundacao;
 	private String cidade;
-	private List<User> diretores;
+	private User diretor;
 	
 	
+	public int getId_time() {
+		return id_time;
+	}
+	public void setId_time(int id_time) {
+		this.id_time = id_time;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -28,12 +50,14 @@ public class Equipe {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public List<User> getDiretores() {
-		return diretores;
+	public User getDiretor() {
+		return diretor;
 	}
-	public void setDiretores(List<User> diretores) {
-		this.diretores = diretores;
+	public void setDiretor(User diretor) {
+		this.diretor = diretor;
 	}
+
+	
 	
 	
 }
