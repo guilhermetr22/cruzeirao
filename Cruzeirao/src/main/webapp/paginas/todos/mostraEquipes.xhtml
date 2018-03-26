@@ -11,28 +11,28 @@
 	</ui:define>
 
 	<ui:define name="principal">
-	
-	  <p:dataTable id="equipes" var="equipe" value="#{EquipeMB.equipes}" 
-	  			   emptyMessage="#{msg['paginas.todos.mostraEquipe.vazio']}"
-	  			     style="border: solid 2px black;"> 
-        
-        <p:column headerText="#{msg['paginas.todos.mostraEquipe.nome']}" >
-        	<p:outputLabel value="#{equipe.nome}" />
-      	</p:column>
-      	
-		<p:column headerText="#{msg['paginas.todos.mostraEquipe.cidade']}" >
-        	<p:outputLabel value="#{equipe.cidade}" />
-      	</p:column>
-        
-        <p:column headerText="#{msg['paginas.todos.mostraEquipe.data']}" >
-        	<p:outputLabel value="#{equipe.dataFundacao}" />
-      	</p:column>     
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraEquipe.diretor']}" >
-        	<p:outputLabel value="#{equipe.diretor.nome}" />
-      	</p:column>            
-        
-    </p:dataTable>
-	 
+		<h:form id="formTabelaUsers">
+			  <p:dataTable id="equipes" var="equipe" value="#{EquipeMB.equipes}" 
+			  			   emptyMessage="#{msg['paginas.todos.mostraEquipe.vazio']}"
+			  			     style="border: solid 2px black;"> 
+		        
+		        <p:column headerText="#{msg['paginas.todos.mostraEquipe.nome']}" >
+		        	<p:outputLabel value="#{equipe.nome}" />
+		      	</p:column>
+		      	
+				<p:column headerText="#{msg['paginas.todos.mostraEquipe.cidade']}" >
+		        	<p:outputLabel value="#{equipe.cidade}" />
+		      	</p:column>
+		        
+		        <p:column headerText="#{msg['paginas.todos.mostraEquipe.data']}" >
+		        	<p:outputLabel value="#{equipe.dataFundacao}" />
+		      	</p:column>     
+		      	
+		      	<p:column headerText="#{msg['paginas.todos.mostraEquipe.diretor']}" >
+		        	<p:outputLabel value="#{equipe.diretor.nome}" />
+		      	</p:column>            
+		
+		   	 </p:dataTable>
+	 	</h:form>
 	</ui:define>
 </ui:composition>

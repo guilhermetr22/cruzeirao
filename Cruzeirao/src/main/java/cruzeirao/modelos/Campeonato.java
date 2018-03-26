@@ -1,8 +1,8 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +27,7 @@ public class Campeonato implements Serializable{
 /*	private List<Local> locais;
 	private List<Juiz> juizes;*/
 	
-	private List<Categoria> categorias;
+	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
@@ -38,8 +38,6 @@ public class Campeonato implements Serializable{
 	private double valorTaxa;
 	private int minJogadores;
 	private int maxJogadores;
-	
-	
 	
 	public int getIdCampeonato() {
 		return idCampeonato;
@@ -66,7 +64,7 @@ public class Campeonato implements Serializable{
 	public void setJuizes(List<Juiz> juizes) {
 		this.juizes = juizes;
 	}*/
-	public List<Categoria> getCategorias() {
+	public ArrayList<Categoria> getCategorias() {
 		return categorias;
 	}
 	public void addCategorias(Categoria categoria) {

@@ -1,7 +1,7 @@
 package cruzeirao.modelos;
 
 public enum Tipo {
-	ADMIN, DIRETOR, COMUM, ORGANIZADOR, TECNICO, JUIZ, JOGADOR;
+	ADMIN, DIRETOR, COMUM, TECNICO, JUIZ, JOGADOR;
 
 	public String toString() {
 		switch (this) {
@@ -11,8 +11,6 @@ public enum Tipo {
 			return "DIRETOR";
 		case COMUM:
 			return "COMUM";
-		case ORGANIZADOR:
-			return "ORGANIZADOR";
 		case TECNICO:
 			return "TECNICO";
 		case JUIZ:

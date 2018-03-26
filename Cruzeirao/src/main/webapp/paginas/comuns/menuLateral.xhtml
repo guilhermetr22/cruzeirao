@@ -10,19 +10,17 @@
 
 	<h:body>
 			<h:form>
-				<div id="menu">
-					<p:tieredMenu styleClass="menu-sistema">
-				          	<p:menuitem value="#{msg['paginas.inicio.menu']}" url="inicio.xhtml" />
-				        	
-				        	<p:separator />
+				<div id="menu" style="background:#7093DB">
+					<p:tieredMenu >
+				          	<p:menuitem value="#{msg['paginas.inicio.menu']}" url="inicio.xhtml"/>
+				        	 	
+				        	<p:separator/>
 				        	
 				       		<p:submenu label="#{msg['paginas.comuns.menuLateral.cadastros']}">
 				            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuNome']}" url="cadUser.xhtml" />
 				            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuNome']}" url="cadCampeonato.xhtml" />
 				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuNome']}" url="cadLocal.xhtml" />
 				        	</p:submenu>
-				        	
-						    <p:separator />
 						    
 						    <p:submenu label="#{msg['paginas.comuns.menuLateral.listagem']}">
 				            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuTodos']}" url="/paginas/todos/mostraUsers.xhtml"/>
@@ -30,12 +28,10 @@
 				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuTodos']}" url="/paginas/todos/mostraLocal.xhtml"/>
 				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuTodos']}" url="/paginas/todos/mostraEquipe.xhtml"/>
 				        	</p:submenu>
-				        	
-				        	<p:separator />
 						    
 			    	</p:tieredMenu>
 		    	</div>
-			</h:form>
+			</h:form>	
 	</h:body>
 
 

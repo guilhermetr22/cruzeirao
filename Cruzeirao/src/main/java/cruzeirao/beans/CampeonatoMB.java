@@ -18,20 +18,26 @@ public class CampeonatoMB {
 	private CategoriaService catService = new CategoriaService();
 	private Categoria categoria = new Categoria();
 	
-	public void salvar()
+	public String salvar()
 	{
 		catService.salvar(categoria);
 		campeonato.addCategorias(categoria);
+		
 		campService.salvar(campeonato);
+		
 		campeonato = new Campeonato();
 		categoria = new Categoria();
+		
+		return "inicio";
 	}
 	
-	public void salvarCat()
+	public String salvarCat()
 	{		
 		catService.salvar(categoria);
 		campeonato.addCategorias(categoria);
 		categoria = new Categoria();
+		
+		return "CadCategoria";
 	}
 	
 	public Categoria getCategoria() {
@@ -40,13 +46,6 @@ public class CampeonatoMB {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-
-	public String salvarNovaCategoria() {
-		catService.salvar(categoria);
-		campeonato.addCategorias(categoria);
-		categoria = new Categoria();
-		return "cadastroCategoria";
 	}
 	
 	public Campeonato getCampeonato() {

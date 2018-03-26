@@ -37,7 +37,7 @@
 						</p:inputText>	
 						
 					<p:outputLabel size="30" for="sexo" value="#{msg['paginas.modelos.cadCategoria.sexo']}" />
-					<p:selectOneRadio id="sexo" value="#{CampeonatoMB.categoria.sexo}">
+					<p:selectOneRadio id="sexo" required="false" value="#{CampeonatoMB.categoria.sexo}">
 						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 					</p:selectOneRadio>

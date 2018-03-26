@@ -5,16 +5,24 @@ import java.util.Date;
 //import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="usuarios")
+@NamedQuery(name = "User.pesquisarPorLogin", query = "select u from User u where u.login = :login")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -4115440631798495868L;
+	
+	public static final String PESQUISAR_POR_LOGIN = "User.pesquisarPorLogin";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,20 +30,25 @@ public class User implements Serializable {
 	
 	private String email;
 	private String nome;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+	
+	private String sexo;
+
 	//private List<Equipe> equipes;
 	//private List<Inscrito> inscricoes;
 	//private List<Campeonato> campeonatos;
-	//private Enum tipo;
+	
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
 	private String cpf;
-	//private String cref;
-	//private Enum sexo;
 	private String login;
 	private String senha;
+	
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 
 	public String getEmail() {
@@ -73,13 +86,8 @@ public class User implements Serializable {
 	}
 	public void setCampeonatos(List<Campeonato> campeonatos) {
 		this.campeonatos = campeonatos;
-	}
-	public Enum getTipo() {
-		return tipo;
-	}
-	public void setTipo(Enum tipo) {
-		this.tipo = tipo;
 	}*/
+	
 	public String getTelefoneFixo() {
 		return telefoneFixo;
 	}
@@ -110,18 +118,7 @@ public class User implements Serializable {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-/*	public String getCref() {
-		return cref;
-	}
-	public void setCref(String cref) {
-		this.cref = cref;
-	}
-	public Enum getSexo() {
-		return sexo;
-	}
-	public void setSexo(Enum sexo) {
-		this.sexo = sexo;
-	}*/
+	
 	public String getLogin() {
 		return login;
 	}
@@ -140,14 +137,48 @@ public class User implements Serializable {
 	public void setIDUser(int iDUser) {
 		IDUser = iDUser;
 	}
-	
-	
 	public Tipo getTipo() {
 		return tipo;
 	}
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + IDUser;
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (IDUser != other.IDUser)
+			return false;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		return true;
+	}
 	
+	@Override
+	public String toString() {
+		return nome;
+	}
 	
 }

@@ -15,11 +15,14 @@ public class UserMB {
 	private User usuario = new User();
 	private UserService service = new UserService();
 	
-	public void salvar()
+	public String salvar()
 	{
 		usuario.setTipo(Tipo.COMUM);
+		
 		service.salvar(usuario);
 		usuario = new User();
+		
+		return "inicio";
 	}
 
 	public User getUsuario() {

@@ -16,40 +16,39 @@
 		
 		<h:body>
 			<div id="global">
-				<p:layout id="layoutGlobal" fullPage="true" >
+				<p:layout id="layoutGlobal" style="background:#42426F" fullPage="true" >
 				
 						
 						
 						<!-- Cabeçalho
 						<p:layoutUnit position="north" size="160" >
 							<ui:include src="/paginas/comuns/cabecalho.xhtml" />
-						</p:layoutUnit> -->
+						</p:layoutUnit-->
 						
-						<!-- Menu Superior
+						<!-- Menu Superior 
 						<p:layoutUnit position="north">
 							<ui:include src="/paginas/comuns/menuSuperior.xhtml" />
 						</p:layoutUnit> -->
 				
-						<!-- Rodapé -->
-						<p:layoutUnit position="south" size="40">
+						<!-- Rodapé
+						<p:layoutUnit position="south" style="background:#42426F; border: solid 3px black" size="40">
 							<ui:include src="/paginas/comuns/rodape.xhtml" />
-						</p:layoutUnit>
+						</p:layoutUnit>-->
 				
 						<!-- Menu lateral -->
-						<p:layoutUnit position="west"
+						<p:layoutUnit position="west" style="background:#42426F; border: solid 3px black; position:relative	"
 							header="#{msg['paginas.comuns.menuLateral.opcoes']}"
-							size="230">
+							size="245">
 							<ui:include src="/paginas/comuns/menuLateral.xhtml" />
 						</p:layoutUnit>
 						
 						<!-- Página que será trocada no template -->
-						<p:layoutUnit position="center">
+						<p:layoutUnit position="center" style="background:#42426F; border: solid 3px black">
 							<ui:insert name="principal" />
 						</p:layoutUnit>
 						
 				</p:layout>
 			</div>
 		</h:body>
-		
 </h:html>
 

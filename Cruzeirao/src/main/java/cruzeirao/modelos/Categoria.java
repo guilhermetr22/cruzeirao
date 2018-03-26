@@ -3,9 +3,21 @@ package cruzeirao.modelos;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="categorias")
 public class Categoria implements Serializable{
 
 	private static final long serialVersionUID = -7153462733306145669L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id_cat;
 	
 	private String nome;
 	private int nascidosApartirDe;
@@ -14,7 +26,7 @@ public class Categoria implements Serializable{
 	private List<Fase> fases;
 	private int minJogadores;
 	private int maxJogadores;
-	private Enum sexo;
+	private String sexo;
 	
 	public String getNome() {
 		return nome;
@@ -58,12 +70,13 @@ public class Categoria implements Serializable{
 	public void setMaxJogadores(int maxJogadores) {
 		this.maxJogadores = maxJogadores;
 	}
-	public Enum getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(Enum sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	
 	
 	
 }

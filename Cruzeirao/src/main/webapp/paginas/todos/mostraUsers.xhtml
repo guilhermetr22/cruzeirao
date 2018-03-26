@@ -4,7 +4,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets"
 >
 
 	<ui:define name="titulo">
@@ -12,29 +11,36 @@
 	</ui:define>
 
 	<ui:define name="principal">
-	
-	  <p:dataTable id="tabelaUser" var="user" value="#{UserMB.usuarios}" 
-	  			   emptyMessage="#{msg['paginas.todos.mostraUsers.vazio']}"
-	  			   style="border: solid 2px black;">  
-        
-        <p:column headerText="#{msg['paginas.todos.mostraUsers.nome']}" >
-        	<p:outputLabel value="#{user.nome}" />
-      	</p:column>
-        
-        <p:column headerText="#{msg['paginas.todos.mostraUsers.username']}" >
-        	<p:outputLabel value="#{user.login}" />
-      	</p:column>                 
-                  
-        <p:column headerText="#{msg['paginas.todos.mostraUsers.cpf']}" >
-        	<p:outputLabel value="#{user.cpf}" />
-      	</p:column>
-        
-        <p:column headerText="#{msg['paginas.todos.mostraUsers.datanasc']}" >
-        	<p:outputLabel value="#{user.dataNascimento}" />
-      	</p:column>
-      	
-
-    </p:dataTable>
-	 
+		<h:form>
+		  <p:dataTable id="tabelaUser" var="user" value="#{UserMB.usuarios}" 
+		  			   emptyMessage="#{msg['paginas.todos.mostraUsers.vazio']}"
+		  			   style="border: solid 2px black;">  
+	        
+	        <p:column headerText="#{msg['paginas.todos.mostraUsers.nome']}" >
+	        	<p:outputLabel value="#{user.nome}" />
+	      	</p:column>
+	      	
+			<p:column headerText="#{msg['paginas.todos.mostraUsers.sexo']}" >
+	        	<p:outputLabel value="#{user.sexo}" />
+	      	</p:column>
+	      		      	
+			<p:column headerText="#{msg['paginas.todos.mostraUsers.tipo']}" >
+	        	<p:outputLabel value="#{user.tipo}" />
+	      	</p:column>
+	        
+	        <p:column headerText="#{msg['paginas.todos.mostraUsers.username']}" >
+	        	<p:outputLabel value="#{user.login}" />
+	      	</p:column>                 
+	                  
+	        <p:column headerText="#{msg['paginas.todos.mostraUsers.cpf']}" >
+	        	<p:outputLabel value="#{user.cpf}" />
+	      	</p:column>
+	        
+	        <p:column headerText="#{msg['paginas.todos.mostraUsers.datanasc']}" >
+	        	<p:outputLabel value="#{user.dataNascimento.getDate}" />
+	      	</p:column>
+ 
+   	 	</p:dataTable>
+	 </h:form>
 	</ui:define>
 </ui:composition>
