@@ -16,11 +16,12 @@ public class EquipeMB {
 	private Equipe equipe = new Equipe();
 	private EquipeService equipeService = new EquipeService();
 
-	public void salvar()
+	public String salvar()
 	{
 		equipeService.salvar(equipe);
 		equipe = new Equipe();
 	
+		return "inicio";
 	}
 	
 	public List<Equipe> getEquipes(){

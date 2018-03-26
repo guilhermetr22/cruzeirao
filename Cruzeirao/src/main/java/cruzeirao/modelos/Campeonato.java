@@ -8,16 +8,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import cruzeirao.modelos.Categoria;
 
 @Entity
 @Table(name="campeonatos")
+@NamedQuery(name = "Campeonato.pesquisarPorNome", query = "select u from Campeonato u where u.nome = :nome")
 public class Campeonato implements Serializable{
 	
 	private static final long serialVersionUID = 8784890467331743479L;
 
+	public static final String PESQUISAR_POR_NOME = "Campeonato.pesquisarPorNome";
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idCampeonato;
@@ -27,12 +34,19 @@ public class Campeonato implements Serializable{
 /*	private List<Local> locais;
 	private List<Juiz> juizes;*/
 	
+	@OneToMany(mappedBy="campeonato")
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	
+	@Temporal(TemporalType.DATE)
 	private Date dataInicioInscricao;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dataFimInscricao;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dataInicioCampeonato;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dataFimCampeonato;
 	
 	private double valorTaxa;

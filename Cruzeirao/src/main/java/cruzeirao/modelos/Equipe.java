@@ -7,13 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="equipes")
+@NamedQuery(name = "Equipe.pesquisarPorNome", query = "select u from Equipe u where u.nome = :nome")
 public class Equipe implements Serializable{
 	
 	private static final long serialVersionUID = 5460457849249703396L;
+	
+	public static final String PESQUISAR_POR_NOME = "Equipe.pesquisarPorNome";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,10 +28,13 @@ public class Equipe implements Serializable{
 	
 	private String nome;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dataFundacao;
-	private String cidade;
-	private User diretor;
 	
+	private String cidade;
+	
+	@OneToOne
+	private User diretor;
 	
 	public int getId_time() {
 		return id_time;
@@ -56,8 +66,31 @@ public class Equipe implements Serializable{
 	public void setDiretor(User diretor) {
 		this.diretor = diretor;
 	}
-
 	
-	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id_time;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Equipe other = (Equipe) obj;
+		if (id_time != other.id_time)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
+	}
 }

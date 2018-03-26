@@ -25,23 +25,26 @@
 			        	<p:messages id="messages" />
 					        <h:panelGrid columns="2" id="panel" style="text-align: center">
 					        
-						        <p:outputLabel size="30" value="#{msg['paginas.modelos.cadEquipe.nome']}"/>
+						        <p:outputLabel for="nome" size="30" value="#{msg['paginas.modelos.cadEquipe.nome']}"/>
 					            	<p:inputText id="nome" required="true" value="#{EquipeMB.equipe.nome}" label="Nome" />
 					            	
-					           
 					           	<p:outputLabel for="criacao" value="#{msg['paginas.modelos.cadEquipe.data']}" />
 					        		<p:calendar id="criacao" required="true" value="#{EquipeMB.equipe.dataFundacao}" pattern="dd/MM/yyyy" mask="true" />
 					        		
-					        	<p:outputLabel size="30" value="#{msg['paginas.modelos.cadEquipe.nome']}"/>
+					        	<p:outputLabel for="cidade" size="30" value="#{msg['paginas.modelos.cadEquipe.cidade']}"/>
 					            	<p:inputText id="cidade" required="true" value="#{EquipeMB.equipe.cidade}" label="Cidade" />
 					            	
+					            <p:outputLabel for="diretor" size="30" value="#{msg['paginas.modelos.cadEquipe.diretor']}"/>
+					            <p:selectOneMenu id="diretor" required="true" value="#{UserMB.usuario}">
+	  		 						<f:selectItems value="#{UserMB.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+	  							</p:selectOneMenu>
+	  							
 					  			<p:commandButton value="#{msg['paginas.modelos.cadEquipe.btnSalvar']}"
 					                 update=":formEquipe"
 					                 action="#{EquipeMB.salvar}"
 					                 ajax="false"
 					             />
-								
-							</h:panelGrid>
+						</h:panelGrid>
 	       		</p:panel>
 	       	</div>
 	       </h:form>
