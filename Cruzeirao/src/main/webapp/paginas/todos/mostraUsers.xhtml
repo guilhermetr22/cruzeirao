@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
 >
 
 	<ui:define name="titulo">
@@ -11,7 +12,6 @@
 	</ui:define>
 
 	<ui:define name="principal">
-		<h:form>
 		  <p:dataTable id="tabelaUser" var="user" value="#{UserMB.usuarios}" 
 		  			   emptyMessage="#{msg['paginas.todos.mostraUsers.vazio']}"
 		  			   style="border: solid 2px black;">  
@@ -38,10 +38,9 @@
 	      	</p:column>
 	        
 	        <p:column headerText="#{msg['paginas.todos.mostraUsers.datanasc']}" >
-	        	<p:outputLabel value="#{user.dataNascimento}" />
+	        	<p:outputLabel value="#{user.dataNascimento}"/>
 	      	</p:column>
  
    	 	</p:dataTable>
-	 </h:form>
 	</ui:define>
 </ui:composition>

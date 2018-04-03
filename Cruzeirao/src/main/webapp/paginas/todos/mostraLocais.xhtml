@@ -14,13 +14,13 @@
 	
 	  <p:dataTable id="locais" var="local" value="#{LocalMB.locais}" 
 	  			   emptyMessage="#{msg['paginas.todos.mostraLocal.vazio']}"
-	  			     style="border: solid 2px black;"> 
+	  			     style="border: solid 4px black;"> 
         
         <p:column headerText="#{msg['paginas.todos.mostraLocal.nome']}" >
         	<p:outputLabel value="#{local.nome}" />
       	</p:column>
         
-        <p:column headerText="#{msg['paginas.todos.mostraLocal.endereco']}" >
+        <p:column headerText="#{msg['paginas.todos.mostraLocal.endereco']}"  >
         	<p:outputLabel value="#{local.endereco}" />
       	</p:column>                 
         

@@ -1,0 +1,56 @@
+<ui:composition template="/paginas/cadastros/layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<h:head>
+		<ui:define name="titulo">
+			<h:outputText value="#{msg['paginas.incricoes.jogador']}" />
+		</ui:define>
+		
+		<link rel="stylesheet" type="text/css" href="/css/estilos.css" />
+
+	</h:head>
+
+	<ui:define name="principal">
+		<h:body>
+			<h:form style="float:center" id="formJogador" prependId="false">
+			 <div align="center">
+				
+				<p:panel id="painel" header="#{msg['paginas.incricoes.jogador']}" style="border-width:2px; border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
+					        <h:panelGrid columns="2" id="panel" style="text-align: center">
+					        
+					            <p:outputLabel for="jogador" size="30" value="#{msg['paginas.incricoes.selJ']}"/>
+					            <p:selectOneMenu id="jogador" required="true" value="#{InscMB.inscrito.usuario}">
+	  		 						<f:selectItems value="#{UserMB.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+	  							</p:selectOneMenu>
+	  							
+					            <p:outputLabel for="equipe" size="30" value="#{msg['paginas.incricoes.selT']}"/>
+					            <p:selectOneMenu id="equipe" required="true" value="#{InscMB.inscrito.equipe}">
+	  		 						<f:selectItems value="#{EquipeMB.equipes}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+	  							</p:selectOneMenu>
+	  							
+	  							<h:outputText value="Inscrição valida: " />
+       								<p:selectBooleanCheckbox value="#{InscMB.inscrito.valido}" />
+	  							
+					  			<p:commandButton value="#{msg['paginas.modelos.cadEquipe.btnSalvar']}"
+					                 update=":formJogador"
+					                 action="#{InscMB.salvar}"
+					                 ajax="false"
+					             />
+					             
+					            <p:tooltip for="jogador" position="top" value="Selecione o JOGADOR"/>
+								<p:tooltip for="equipe" position="top" value="Selecione a EQUIPE em que o jogador fará parte"/>
+								
+	 
+						</h:panelGrid>
+	       		</p:panel>
+	       	</div>
+	       </h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

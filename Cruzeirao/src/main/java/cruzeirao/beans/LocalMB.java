@@ -14,10 +14,12 @@ public class LocalMB {
 	private Local local = new Local();
 	private LocalService service =  new LocalService();
 	
-	public void salvar()
+	public String salvar()
 	{
 		service.salvar(local);
 		local = new Local();
+		
+		return "inicio";
 	}
 
 	public Local getLocal() {

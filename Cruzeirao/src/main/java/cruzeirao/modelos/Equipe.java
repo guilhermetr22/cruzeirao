@@ -1,7 +1,9 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,6 +38,8 @@ public class Equipe implements Serializable{
 	@OneToOne
 	private User diretor;
 	
+	private ArrayList<Inscrito> inscritos;
+	
 	public int getId_time() {
 		return id_time;
 	}
@@ -66,7 +70,13 @@ public class Equipe implements Serializable{
 	public void setDiretor(User diretor) {
 		this.diretor = diretor;
 	}
-	
+
+	public List<Inscrito> getInscritos() {
+		return inscritos;
+	}
+	public void addInscritos(Inscrito inscrito) {
+		this.inscritos.add(inscrito);
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -7,6 +7,8 @@
 		<class>cruzeirao.modelos.Inscricao</class>
 		<class>cruzeirao.modelos.Equipe</class>
 		<class>cruzeirao.modelos.Categoria</class>
+		<class>cruzeirao.modelos.Partida</class>
+		<class>cruzeirao.modelos.Inscrito</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBCruzeirao;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="gui"/>

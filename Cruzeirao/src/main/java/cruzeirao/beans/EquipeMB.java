@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import cruzeirao.modelos.Equipe;
+import cruzeirao.modelos.Tipo;
+import cruzeirao.modelos.User;
 import cruzeirao.service.EquipeService;
 
 
@@ -15,9 +17,12 @@ import cruzeirao.service.EquipeService;
 public class EquipeMB {
 	private Equipe equipe = new Equipe();
 	private EquipeService equipeService = new EquipeService();
+	private User diretor = new User();
 
 	public String salvar()
 	{
+		equipe.setDiretor(diretor);
+		equipe.getDiretor().setTipo(Tipo.DIRETOR);
 		equipeService.salvar(equipe);
 		equipe = new Equipe();
 	

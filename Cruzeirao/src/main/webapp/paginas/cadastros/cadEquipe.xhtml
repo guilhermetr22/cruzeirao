@@ -21,8 +21,7 @@
 			<h:form style="float:center" id="formEquipe" prependId="false">
 			 <div align="center">
 				
-				<p:panel id="painel" header="#{msg['paginas.modelos.cadEquipe.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
-			        	<p:messages id="messages" />
+				<p:panel id="painel" header="#{msg['paginas.modelos.cadEquipe.menuNome']}" style="border-width:2px; border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
 					        <h:panelGrid columns="2" id="panel" style="text-align: center">
 					        
 						        <p:outputLabel for="nome" size="30" value="#{msg['paginas.modelos.cadEquipe.nome']}"/>
@@ -35,7 +34,7 @@
 					            	<p:inputText id="cidade" required="true" value="#{EquipeMB.equipe.cidade}" label="Cidade" />
 					            	
 					            <p:outputLabel for="diretor" size="30" value="#{msg['paginas.modelos.cadEquipe.diretor']}"/>
-					            <p:selectOneMenu id="diretor" required="true" value="#{UserMB.usuario}">
+					            <p:selectOneMenu id="diretor" required="true" value="#{EquipeMB.equipe.diretor}">
 	  		 						<f:selectItems value="#{UserMB.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
 	  							</p:selectOneMenu>
 	  							
@@ -44,6 +43,12 @@
 					                 action="#{EquipeMB.salvar}"
 					                 ajax="false"
 					             />
+					             
+					            <p:tooltip for="nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o nome da EQUIPE"/>
+								<p:tooltip for="criacao" position="top" value="Insira a DATA DE CRIAÇÂO da equipe"/>
+								<p:tooltip for="cidade" showEvent="focus" hideEvent="blur" position="top" value="Insira a CIDADE da equipe"/>
+								<p:tooltip for="diretor" position="top" value="Selecione o DIRETOR da equipe"/>
+	 
 						</h:panelGrid>
 	       		</p:panel>
 	       	</div>

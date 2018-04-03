@@ -1,7 +1,6 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,13 +23,17 @@ public class Inscricao implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long numero;
 	
-	private boolean pagamento;
-	private boolean validadas;
-	private List<Inscrito> inscritos;
+	//private boolean pagamento;
+	
+	//private boolean validadas;
+	
+	//private List<Inscrito> inscritos;
 	
 	@ManyToOne
 	private Categoria categoria;
 	
+	@ManyToOne
+	private Campeonato campeonato;
 	
 	//private List<Partida> partidas;
 	
@@ -42,7 +45,7 @@ public class Inscricao implements Serializable{
 	public void setNumero(long numero) {
 		this.numero = numero;
 	}
-	public boolean isPagamento() {
+/*	public boolean isPagamento() {
 		return pagamento;
 	}
 	public void setPagamento(boolean pagamento) {
@@ -59,7 +62,7 @@ public class Inscricao implements Serializable{
 	}
 	public void setInscritos(List<Inscrito> inscritos) {
 		this.inscritos = inscritos;
-	}
+	}*/
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -77,6 +80,12 @@ public class Inscricao implements Serializable{
 	}
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
+	}
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
 	}
 	
 	

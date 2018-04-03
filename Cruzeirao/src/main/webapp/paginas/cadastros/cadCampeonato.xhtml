@@ -11,12 +11,12 @@
 		<h:outputText value="#{msg['paginas.modelos.cadCampeonato.titulo']}" />
 	</ui:define>
 	
-	<ui:define name="principal">	   	  
-	  <p:panel id="painel" header="#{msg['paginas.modelos.cadCampeonato.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
-	  	<h:form style="float:center" id="formCampeonato" prependId="false">   	
+	<ui:define name="principal">	
+		<h:form style="float:center" id="formCampeonato" prependId="false">   	   	  
+	  		<p:panel id="painel" header="#{msg['paginas.modelos.cadCampeonato.menuNome']}" style="border-width:2px; border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
 	  		<h:panelGrid columns="2" id="panel" style="text-align: center">          
 	  		
-      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCampeonato.nome']}" /> 
+      			<p:outputLabel for="Nome" value="#{msg['paginas.modelos.cadCampeonato.nome']}" /> 
       			<p:inputText id="Nome" required="true" value="#{CampeonatoMB.campeonato.nome}"/>
  	             
 				<p:outputLabel for="DataInicioIns" value="#{msg['paginas.modelos.cadCampeonato.Dinicio']}" /> 
@@ -45,17 +45,28 @@
   					<p:inputText id="valor"  value="#{CampeonatoMB.campeonato.valorTaxa}">
   						<p:keyFilter mask="num" />
 					</p:inputText>
-                 
+					 
+					
+				<p:outputLabel for="juiz" value="#{msg['paginas.modelos.cadCampeonato.juiz']}"/>
+					<p:selectOneMenu id="juiz" required="true" value="#{CampeonatoMB.campeonato.juiz}">
+		  		 		<f:selectItems value="#{UserMB.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+		  			</p:selectOneMenu>
+					
+				<p:tooltip for="Nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o NOME do Campeonato"/>
+				<p:tooltip for="DataInicioIns" position="top" value="Seleciona a data de INÍCIO das inscrições"/>
+                <p:tooltip for="DataFimIns" position="top" value="Seleciona a data de ENCERRAMENTO das inscrições"/>
+                <p:tooltip for="DataInicioCamp" position="top" value="Seleciona a data de INÍCIO do Campeonato"/>
+                <p:tooltip for="DataFimCamp" position="top" value="Seleciona a data de ENCERRAMENTO do Campeonato"/>
 	  		</h:panelGrid>
 	  
 	  		<p:commandButton value="#{msg['paginas.modelos.cadCampeonato.btnSalvar']}"
 	                 update=":formCampeonato"
-	                 action="/paginas/modelos/cadCategoria.xhtml"
+	                 action="/paginas/cadastros/cadCategoria.xhtml"
 	                 ajax="false"/>
 	                 
-	   </h:form>
-	  </p:panel>  
-	   
+	
+	  	</p:panel>  
+	   </h:form> 
 	</ui:define>
 	
 </ui:composition>

@@ -23,16 +23,32 @@
 				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuNome']}" url="cadEquipe.xhtml" />
 				        	</p:submenu>
 						    
+						    <p:separator/>
+						    
 						    <p:submenu label="#{msg['paginas.comuns.menuLateral.listagem']}">
 				            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuTodos']}" url="/paginas/todos/mostraUsers.xhtml"/>
 				            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuTodos']}" url="/paginas/todos/mostraCamp.xhtml"/>
-				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuTodos']}" url="/paginas/todos/mostraLocal.xhtml"/>
-				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuTodos']}" url="/paginas/todos/mostraEquipe.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuTodos']}" url="/paginas/todos/mostraLocais.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuTodos']}" url="/paginas/todos/mostraEquipes.xhtml"/>
 				        	</p:submenu>
 				        	
-				        	<p:submenu label="#{msg['paginas.comuns.menuLateral.inscricao']}">
-				        		<p:menuitem value="#{msg['paginas.modelos.cadUser.menuNome']}" url="cadUser.xhtml" />
+				        	<p:separator/>
 				        	
+				        	<p:submenu label="#{msg['paginas.comuns.menuLateral.inscricao']}">
+				        		<p:menuitem value="#{msg['paginas.inscricoes.inscreverJogador.menu']}" url="/paginas/inscricoes/inscreverJogador.xhtml" />
+				        		<p:menuitem value="#{msg['paginas.inscricoes.inscreverTime.menu']}" url="/paginas/inscricoes/inscreverTime.xhtml" />
+				        	</p:submenu>
+				        	
+				        	<p:separator/>
+				        	
+				        	<p:submenu label="#{msg['paginas.comuns.menuLateral.adm']}">
+				        		<p:menuitem value="#{msg['paginas.administrativo.jogos']}" url="/paginas/inscricoes/inscreverJogos.xhtml" />
+				        	</p:submenu>
+						    
+						    <p:separator/>
+				        	
+				        	<p:submenu label="#{msg['paginas.todos.tabelaC']}">
+				        		<p:menuitem value="#{msg['paginas.todos.tabela']}" url="/paginas/inscricoes/inscreverJogos.xhtml" />
 				        	</p:submenu>
 						    
 			    	</p:tieredMenu>

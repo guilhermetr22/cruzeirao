@@ -17,8 +17,6 @@
 		<h:body>
 			<div id="global">
 				<p:layout id="layoutGlobal" style="background:#42426F" fullPage="true" >
-				
-						
 						
 						<!-- Cabeçalho
 						<p:layoutUnit position="north" size="160" >
@@ -36,7 +34,7 @@
 						</p:layoutUnit>-->
 				
 						<!-- Menu lateral -->
-						<p:layoutUnit position="west" style="background:#42426F; border: solid 3px black; position:relative	"
+						<p:layoutUnit position="west" style="background:#42426F; border: solid 3px black; position:relative"
 							header="#{msg['paginas.comuns.menuLateral.opcoes']}"
 							size="245">
 							<ui:include src="/paginas/comuns/menuLateral.xhtml" />
@@ -45,8 +43,7 @@
 						<!-- Página que será trocada no template -->
 						<p:layoutUnit position="center" style="background:#42426F; border: solid 3px black">
 							<ui:insert name="principal" />
-						</p:layoutUnit>
-						
+						</p:layoutUnit>	
 				</p:layout>
 			</div>
 		</h:body>
