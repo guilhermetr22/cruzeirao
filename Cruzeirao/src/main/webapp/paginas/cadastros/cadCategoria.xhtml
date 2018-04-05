@@ -9,55 +9,57 @@
 		<h:outputText value="#{msg['paginas.modelos.cadCategoria.titulo']}" />
 	</ui:define>
 	
-	<ui:define name="principal">	   	  
-		<p:panel id="painel" header="#{msg['paginas.modelos.cadCategoria.menuNome']}" style="border-color:blue;border-width:2px; border-style:solid; width:600px; margin-left:auto; margin-right:auto;">
-	  		<p:outputLabel value="Campeonato: "/>
-			<p:outputLabel id="camp" value="#{CampeonatoMB.campeonato.nome}"/>
-			
-	  		<h:form id="formCategoria">
-	  			<h:panelGrid columns="2" id="panel" style="text-align: center"> 
-	  			
-		  			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nome']}" /> 
-	      				<p:inputText id="Nome" required="true" value="#{CampeonatoMB.categoria.nome}"/>
-	      				
-					<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nascidos']}" /> 
-	      				<p:inputMask id="nascidos" required="true" value="#{CampeonatoMB.categoria.nascidosApartirDe}" mask="9999">
-  							<p:keyFilter mask="num" />
-						</p:inputMask>
-	      				 					
-	      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.minJ']}" /> 
-	      				<p:inputText id="MinJ" required="true" value="#{CampeonatoMB.categoria.minJogadores}">
-				    		<p:keyFilter mask="num" />
-						</p:inputText>	
-      			
-					<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.maxJ']}" /> 
-	      				<p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.categoria.maxJogadores}">
-				    		<p:keyFilter mask="num"/>
-						</p:inputText>	
+	<ui:define name="principal">
+		<h:form style="float:center" id="formCategoria" prependId="false">   	   	  
+			<p:panel id="painel" header="#{msg['paginas.modelos.cadCategoria.menuNome']}" style="border-style:none; width:600px; margin-left:auto; margin-right:auto;">
+		  		<p:outputLabel value="Campeonato: "/>
+				<p:outputLabel id="camp" value="#{CampeonatoMB.campeonato.nome}"/>
+				
+	
+		  			<h:panelGrid columns="2" id="panel" style="text-align: center"> 
+		  			
+			  			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nome']}" /> 
+		      				<p:inputText id="Nome" required="true" value="#{CampeonatoMB.categoria.nome}"/>
+		      				
+						<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nascidos']}" /> 
+		      				<p:inputMask id="nascidos" required="true" value="#{CampeonatoMB.categoria.nascidosApartirDe}" mask="9999">
+	  							<p:keyFilter mask="num" />
+							</p:inputMask>
+		      				 					
+		      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.minJ']}" /> 
+		      				<p:inputText id="MinJ" required="true" value="#{CampeonatoMB.categoria.minJogadores}">
+					    		<p:keyFilter mask="num" />
+							</p:inputText>	
+	      			
+						<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.maxJ']}" /> 
+		      				<p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.categoria.maxJogadores}">
+					    		<p:keyFilter mask="num"/>
+							</p:inputText>	
+							
+						<p:outputLabel size="30" for="sexo" value="#{msg['paginas.modelos.cadCategoria.sexo']}" />
+						<p:selectOneRadio id="sexo" required="false" value="#{CampeonatoMB.categoria.sexo}">
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+						</p:selectOneRadio>
 						
-					<p:outputLabel size="30" for="sexo" value="#{msg['paginas.modelos.cadCategoria.sexo']}" />
-					<p:selectOneRadio id="sexo" required="false" value="#{CampeonatoMB.categoria.sexo}">
-						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-					</p:selectOneRadio>
-					
-					<p:tooltip for="Nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o NOME da Categoria"/>
-					<p:tooltip for="nascidos" showEvent="focus" hideEvent="blur" position="top" value="Insira o ano MÍNIMO para jogar nesta Categoria"/>
-					<p:tooltip for="MinJ" showEvent="focus" hideEvent="blur" position="top" value="Insira o a quantidade MÍNIMA de jogadores para esta Categoria"/>
-				    <p:tooltip for="MaxJ" showEvent="focus" hideEvent="blur" position="top" value="Insira o a quantidade MÁXIMA de jogadores para esta Categoria"/>
-					<p:tooltip for="sexo" showEvent="mouseover" hideEvent="mouseout" position="top" value="Insira o sexo desta Categoria"/>
-				</h:panelGrid>
-
-      			
-      			 <p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
-      			 	update=":formCategoria"
-	        		action="#{CampeonatoMB.salvar}"
-	        		ajax="false"/>
-	        		
-	        	<p:commandButton id="btnNovaCat" value="Adicionar nova categoria" icon="ui-icon-check"
-					update=":formCategoria" action="#{CategoriaMB.salvar}"
-					ajax="false" />
-	        </h:form>
-	     </p:panel>
+						<p:tooltip for="Nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o NOME da Categoria"/>
+						<p:tooltip for="nascidos" showEvent="focus" hideEvent="blur" position="top" value="Insira o ano MÍNIMO para jogar nesta Categoria"/>
+						<p:tooltip for="MinJ" showEvent="focus" hideEvent="blur" position="top" value="Insira o a quantidade MÍNIMA de jogadores para esta Categoria"/>
+					    <p:tooltip for="MaxJ" showEvent="focus" hideEvent="blur" position="top" value="Insira o a quantidade MÁXIMA de jogadores para esta Categoria"/>
+						<p:tooltip for="sexo" showEvent="mouseover" hideEvent="mouseout" position="top" value="Insira o sexo desta Categoria"/>
+					</h:panelGrid>
+	
+	      			<p:commandButton id="btnLimpar" value="Limpar" icon="ui-icon-refresh" update="painel" resetValues="true"/>
+	      			
+	      			<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" style="margin:0"
+	      			 	update=":formCategoria"
+		        		action="#{CampeonatoMB.salvar}"
+		        		ajax="false"/>
+		        		
+		        	<p:commandButton id="btnNovaCat" value="Adicionar nova categoria" icon="ui-icon-check"
+						update=":formCategoria" action="#{CategoriaMB.salvar}"
+						ajax="false" />
+	 		</p:panel>
+		</h:form>
 	</ui:define>	  	
 </ui:composition>

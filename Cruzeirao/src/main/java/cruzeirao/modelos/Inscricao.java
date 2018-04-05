@@ -1,23 +1,20 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="inscricoes")
-@NamedQuery(name = "Inscricao.pesquisarPorNome", query = "select u from Inscricao u where u.equipe.nome = :nome")
 public class Inscricao implements Serializable{
 	
 	private static final long serialVersionUID = -4086207985010677485L;
-
-	public static final String PESQUISAR_POR_NOME = "Inscricao.pesquisarPorNome";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,7 +24,7 @@ public class Inscricao implements Serializable{
 	
 	//private boolean validadas;
 	
-	//private List<Inscrito> inscritos;
+	private List<Inscrito> inscritos;
 	
 	@ManyToOne
 	private Categoria categoria;
@@ -50,19 +47,19 @@ public class Inscricao implements Serializable{
 	}
 	public void setPagamento(boolean pagamento) {
 		this.pagamento = pagamento;
-	}
-	public boolean isValidadas() {
+	}*/
+/*	public boolean isValidadas() {
 		return validadas;
 	}
 	public void setValidadas(boolean validadas) {
 		this.validadas = validadas;
-	}
+	}*/
 	public List<Inscrito> getInscritos() {
 		return inscritos;
 	}
 	public void setInscritos(List<Inscrito> inscritos) {
 		this.inscritos = inscritos;
-	}*/
+	}
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -87,6 +84,33 @@ public class Inscricao implements Serializable{
 	public void setCampeonato(Campeonato campeonato) {
 		this.campeonato = campeonato;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (numero ^ (numero >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Inscricao other = (Inscricao) obj;
+		if (numero != other.numero)
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Inscricao [numero=" + numero + ", campeonato=" + campeonato + ", equipe="
+				+ equipe + "]";
+	}
+	
+	
 	
 	
 }

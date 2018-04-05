@@ -6,7 +6,7 @@ import java.util.List;
 public class Fase {
 	private Calendar dataInicio;
 	private Calendar dataFim;
-	private Enum formato;
+	private TipoFase formato;
 	private Categoria categoria;
 	private List<Grupo> grupos;
 	private int numero;
@@ -22,12 +22,6 @@ public class Fase {
 	}
 	public void setDataFim(Calendar dataFim) {
 		this.dataFim = dataFim;
-	}
-	public Enum getFormato() {
-		return formato;
-	}
-	public void setFormato(Enum formato) {
-		this.formato = formato;
 	}
 	public Categoria getCategoria() {
 		return categoria;
@@ -47,6 +41,11 @@ public class Fase {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	
+	public TipoFase getFormato() {
+		return formato;
+	}
+	public void setFormato(TipoFase formato) {
+		this.formato = formato;
+	}
 	
 }

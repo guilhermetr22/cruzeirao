@@ -1,9 +1,12 @@
 package cruzeirao.beans;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import cruzeirao.modelos.Equipe;
+import cruzeirao.modelos.Inscricao;
 import cruzeirao.modelos.Inscrito;
 import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
@@ -17,7 +20,7 @@ public class InscritoMB {
 	private InscService service =  new InscService();
 	private Equipe equipe = new Equipe();
 	private User usuario = new User();
-	
+	private Inscricao inscricao = new Inscricao();
 	
 	public String salvar()
 	{
@@ -25,6 +28,7 @@ public class InscritoMB {
 		inscrito.setUsuario(usuario);
 		inscrito.getUsuario().setTipo(Tipo.JOGADOR);
 		equipe.addInscritos(inscrito);
+		inscrito.addInscricoes(inscricao);
 		
 		service.salvar(inscrito);
 		inscrito = new Inscrito();
@@ -55,6 +59,10 @@ public class InscritoMB {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
-
+	
+	public List<Inscrito> getInscritos()
+	{
+		return service.getInscritos();
+	}
 
 }

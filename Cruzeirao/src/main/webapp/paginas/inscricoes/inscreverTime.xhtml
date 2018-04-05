@@ -9,7 +9,7 @@
 	
 	<h:head>
 		<ui:define name="titulo">
-			<h:outputText value="#{msg['paginas.incricoes.jogador']}" />
+			<h:outputText value="#{msg['paginas.inscricoes.time']}" />
 		</ui:define>
 		
 		<link rel="stylesheet" type="text/css" href="/css/estilos.css" />
@@ -18,35 +18,35 @@
 
 	<ui:define name="principal">
 		<h:body>
-			<h:form style="float:center" id="formJogador" prependId="false">
+			<h:form style="float:center" id="formTime" prependId="false">
 			 <div align="center">
 				
-				<p:panel id="painel" header="#{msg['paginas.incricoes.jogador']}" style="border-width:2px; border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
+				<p:panel id="painel" header="#{msg['paginas.inscricoes.time']}" style="border-width:2px; border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
 					        <h:panelGrid columns="2" id="panel" style="text-align: center">
-					        
-					            <p:outputLabel for="jogador" size="30" value="#{msg['paginas.incricoes.selJ']}"/>
-					            <p:selectOneMenu id="jogador" required="true" value="#{InscMB.inscrito.usuario}">
-	  		 						<f:selectItems value="#{UserMB.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
-	  							</p:selectOneMenu>
 	  							
-					            <p:outputLabel for="equipe" size="30" value="#{msg['paginas.incricoes.selT']}"/>
-					            <p:selectOneMenu id="equipe" required="true" value="#{InscMB.inscrito.equipe}">
+					            <p:outputLabel for="equipe" size="30" value="#{msg['paginas.inscricoes.selT']}"/>
+					            <p:selectOneMenu id="equipe" required="true" value="#{InscricaoMB.inscricao.equipe}">
 	  		 						<f:selectItems value="#{EquipeMB.equipes}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
 	  							</p:selectOneMenu>
 	  							
-	  							<h:outputText value="Inscrição valida: " />
-       								<p:selectBooleanCheckbox value="#{InscMB.inscrito.valido}" />
+	  												        
+					            <p:outputLabel for="campeonato" size="30" value="#{msg['paginas.inscricoes.campeonato']}"/>
+					            <p:selectOneMenu id="campeonato" required="true" value="#{InscricaoMB.inscricao.campeonato}">
+	  		 						<f:selectItems value="#{CampMB.campeonatos}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+	  							</p:selectOneMenu>
+	  							 
+	  							<h:outputText value="#{msg['paginas.inscricoes.pago']}"/>
+       								<p:selectBooleanCheckbox value="#{InscricaoMB.inscrito.validada}" />
 	  							
 					  			<p:commandButton value="#{msg['paginas.modelos.cadEquipe.btnSalvar']}"
-					                 update=":formJogador"
-					                 action="#{InscMB.salvar}"
+					                 update=":formTime"
+					                 action="#{InscricaoMB.salvar}"
 					                 ajax="false"
 					             />
 					             
-					            <p:tooltip for="jogador" position="top" value="Selecione o JOGADOR"/>
+					            <p:tooltip for="campeonato" position="top" value="Selecione o CAMPEONATO em que o time irá jogar" />
 								<p:tooltip for="equipe" position="top" value="Selecione a EQUIPE em que o jogador fará parte"/>
 								
-	 
 						</h:panelGrid>
 	       		</p:panel>
 	       	</div>

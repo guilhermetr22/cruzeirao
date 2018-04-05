@@ -1,6 +1,7 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +12,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="inscricoes")
-@NamedQuery(name = "Inscricao.pesquisarPorNome", query = "select u from Inscricao u where u.equipe.nome = :nome")
+@Table(name="inscritos")
+@NamedQuery(name = "Inscrito.pesquisarPorNome", query = "select u from Inscrito u where u.usuario.nome = :nome")
 public class Inscrito implements Serializable{
 	
 	private static final long serialVersionUID = -6491770205391247735L;
-	public static final String PESQUISAR_POR_NOME = "Inscricao.pesquisarPorNome";
+	public static final String PESQUISAR_POR_NOME = "Inscrito.pesquisarPorNome";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -30,7 +31,7 @@ public class Inscrito implements Serializable{
 	@OneToOne
 	private Equipe equipe;
 	
-	//private Inscricao inscricao;
+	private ArrayList<Inscricao> inscricoes;
 	
 	//private boolean suspensoJogos;
 	private boolean valido;
@@ -47,13 +48,13 @@ public class Inscrito implements Serializable{
 	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
-/*	public Inscricao getInscricao() {
-		return inscricao;
+	public ArrayList<Inscricao> getInscricoes() {
+		return inscricoes;
 	}
-	public void setInscricao(Inscricao inscricao) {
-		this.inscricao = inscricao;
+	public void addInscricoes(Inscricao inscricao) {
+		this.inscricoes.add(inscricao);
 	}
-	public boolean isAceiteUsuario() {
+/*	public boolean isAceiteUsuario() {
 		return aceiteUsuario;
 	}
 	public void setAceiteUsuario(boolean aceiteUsuario) {
@@ -77,6 +78,12 @@ public class Inscrito implements Serializable{
 	}
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
+	}
+	public int getId_inscricao() {
+		return id_inscricao;
+	}
+	public void setId_inscricao(int id_inscricao) {
+		this.id_inscricao = id_inscricao;
 	}
 	
 }
