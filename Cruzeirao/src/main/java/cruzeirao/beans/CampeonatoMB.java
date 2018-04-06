@@ -22,7 +22,6 @@ public class CampeonatoMB {
 	{
 		catService.salvar(categoria);
 		campeonato.addCategorias(categoria);
-		
 		campService.salvar(campeonato);
 		
 		campeonato = new Campeonato();

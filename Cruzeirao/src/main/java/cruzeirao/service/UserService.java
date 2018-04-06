@@ -27,6 +27,18 @@ public class UserService {
 	    em.close();
 	}
 	
+	public User getUsuarioAtual(String name) {
+
+		List<User> users = this.getUsuarios();
+
+		for (User u : users) {
+			if (u.getLogin() == name)
+				return u;
+		}
+
+		return null;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<User> getUsuarios()
 	{

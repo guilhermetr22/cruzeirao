@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import cruzeirao.DAO.UserDAO;
 import cruzeirao.modelos.Equipe;
 import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
@@ -17,12 +18,13 @@ import cruzeirao.service.EquipeService;
 public class EquipeMB {
 	private Equipe equipe = new Equipe();
 	private EquipeService equipeService = new EquipeService();
-	private User diretor = new User();
+	private User userAtual = new User();
+	//private UserDAO user = new UserDAO();
 
 	public String salvar()
 	{
-		equipe.setDiretor(diretor);
-		equipe.getDiretor().setTipo(Tipo.DIRETOR);
+		equipe.setDiretor(userAtual);
+		userAtual.setTipo(Tipo.DIRETOR);
 		equipeService.salvar(equipe);
 		equipe = new Equipe();
 	
