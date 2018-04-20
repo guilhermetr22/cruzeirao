@@ -31,19 +31,15 @@
 					        		
 					        	<p:outputLabel for="cidade" size="30" value="#{msg['paginas.modelos.cadEquipe.cidade']}"/>
 					            	<p:inputText id="cidade" required="true" value="#{EquipeMB.equipe.cidade}" label="Cidade" />
-					            	
-					            <p:outputLabel for="diretor" size="30" value="#{msg['paginas.modelos.cadEquipe.diretor']}"/>
-					            <p:selectOneMenu id="diretor" required="false" value="#{EquipeMB.equipe.diretor}">
-	  		 						<f:selectItems value="#{UserMB.usuarios}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
-	  							</p:selectOneMenu>
+					            
 	  							
 					            <p:tooltip for="nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o nome da EQUIPE"/>
 								<p:tooltip for="criacao" position="top" value="Insira a DATA DE CRIAÇÂO da equipe"/>
 								<p:tooltip for="cidade" showEvent="focus" hideEvent="blur" position="top" value="Insira a CIDADE da equipe"/>
-								<p:tooltip for="diretor" position="top" value="Selecione o DIRETOR da equipe"/>
-	 
+								
+	   
 						</h:panelGrid>
-						s<p:commandButton id="btnLimpar" value="Limpar" icon="ui-icon-refresh" update="painel" resetValues="true"/>
+						<p:commandButton id="btnLimpar" value="Limpar" icon="ui-icon-refresh" update="formEquipe" resetValues="true"/>
 	  							
 					  	<p:commandButton value="#{msg['paginas.modelos.cadEquipe.btnSalvar']}"
 					         update=":formEquipe"
@@ -51,6 +47,12 @@
 					         ajax="false"
 					    />
          
+        				<p:commandButton value="#{msg['paginas.modelos.cadEquipe.jogador']}"
+					         update=":formEquipe"
+					         action="#{EquipeMB.salvarJogador}"
+					         ajax="false"
+					    />
+					    
 	       		</p:panel>
 	       	</div>
 	       </h:form>

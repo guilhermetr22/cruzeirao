@@ -23,12 +23,21 @@ public class EquipeMB {
 
 	public String salvar()
 	{
-		equipe.setDiretor(userAtual);
+		this.equipe.setDiretor(userAtual);
 		userAtual.setTipo(Tipo.DIRETOR);
 		equipeService.salvar(equipe);
 		equipe = new Equipe();
 	
 		return "inicio";
+	}
+	
+	public String salvarJogador()
+	{
+		
+		equipeService.salvar(equipe);
+		equipe = new Equipe();
+	
+		return "cadUser";
 	}
 	
 	public List<Equipe> getEquipes(){

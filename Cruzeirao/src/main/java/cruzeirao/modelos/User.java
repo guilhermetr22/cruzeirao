@@ -2,14 +2,17 @@ package cruzeirao.modelos;
 
 import java.io.Serializable;
 import java.util.Date;
-//import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,29 +29,51 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="IDUser")
 	private int IDUser;
 	
+	@Column(name="Email")
 	private String email;
+
+	@Column(name="Nome")
 	private String nome;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="DataNascimento")
 	private Date dataNascimento;
 	
+	@Column(name="sexo")
 	private String sexo;
 
-	//private List<Equipe> equipes;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="jogadores")
+	private Equipe equipe;
+	
 	//private List<Inscrito> inscricoes;
 	//private List<Campeonato> campeonatos;
 	
+	@Column(name="telefoneFixo")
 	private String telefoneFixo;
+	
+	@Column(name="telefoneMovel")
 	private String telefoneMovel;
+	
+	@Column(name="Endereco")
 	private String endereco;
+	
+	@Column(name="RG")
 	private String rg;
+	
+	@Column(name="CPF")
 	private String cpf;
+	
+	@Column(name="Login")
 	private String login;
+	
 	private String senha;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name="Tipo")
 	private Tipo tipo;
 
 	public String getEmail() {
@@ -69,13 +94,7 @@ public class User implements Serializable {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-/*	public List<Equipe> getEquipes() {
-		return equipes;
-	}
-	public void setEquipes(List<Equipe> equipes) {
-		this.equipes = equipes;
-	}
-	public List<Inscrito> getInscricoes() {
+/*	List<Inscrito> getInscricoes() {
 		return inscricoes;
 	}
 	public void setInscricoes(List<Inscrito> inscricoes) {
@@ -148,6 +167,13 @@ public class User implements Serializable {
 	}
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+		
+	public Equipe getEquipe() {
+		return equipe;
+	}
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
 	}
 	@Override
 	public int hashCode() {

@@ -27,7 +27,6 @@ public class InscritoMB {
 		inscrito.setEquipe(equipe);
 		inscrito.setUsuario(usuario);
 		inscrito.getUsuario().setTipo(Tipo.JOGADOR);
-		equipe.addInscritos(inscrito);
 		inscrito.addInscricoes(inscricao);
 		
 		service.salvar(inscrito);

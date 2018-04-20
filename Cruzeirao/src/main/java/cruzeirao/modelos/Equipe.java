@@ -1,16 +1,17 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,19 +27,25 @@ public class Equipe implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
 	private int id_time;
 	
+	@Column(name="Nome")
 	private String nome;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="Data Fundação")
 	private Date dataFundacao;
 	
+	@Column(name="Cidade")
 	private String cidade;
 	
-	@OneToOne
 	private User diretor;
 	
-	private ArrayList<Inscrito> inscritos;
+	@OneToMany(mappedBy = "equipe", cascade = CascadeType.PERSIST)
+	private List <User> jogadores;
+	
+	//private ArrayList<Inscrito> inscritos;
 	
 	public int getId_time() {
 		return id_time;
@@ -71,11 +78,17 @@ public class Equipe implements Serializable{
 		this.diretor = diretor;
 	}
 
-	public List<Inscrito> getInscritos() {
+/*	public ArrayList<Inscrito> getInscritos() {
 		return inscritos;
 	}
-	public void addInscritos(Inscrito inscrito) {
-		this.inscritos.add(inscrito);
+	public void addInscritos(User usuario) {
+		this.inscritos.add(usuario);
+	}*/
+	public List<User> getJogadores() {
+		return jogadores;
+	}
+	public void addJogadores(User jogador) {
+		this.jogadores.add(jogador);
 	}
 	@Override
 	public int hashCode() {

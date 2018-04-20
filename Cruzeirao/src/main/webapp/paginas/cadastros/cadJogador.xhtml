@@ -1,0 +1,101 @@
+<ui:composition template="layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+
+	<h:head>
+		<ui:define name="titulo">
+			<h:outputText value="#{msg['paginas.modelos.cadUser.titulo']}" />
+		</ui:define>
+		
+		<link rel="stylesheet" type="text/css" href="/css/estilos.css" />
+
+	</h:head>
+
+	<ui:define name="principal">
+		<h:body>	
+		    <h:form style="float:center" id="formJogador" prependId="false">
+			<div align="center">
+		    	<p:panel id="painel" header="#{msg['paginas.modelos.cadUser.menuNome']}" style="border-width:3px; border-style:hidden; width:500px; margin-left:auto; margin-right:auto;">
+		        	<p:messages id="messages" />
+				        <h:panelGrid columns="2" id="panel">
+				        
+				            <p:outputLabel for="Nome" size="30" value="#{msg['paginas.modelos.cadUser.nome']}" />
+				            <p:inputText id="Nome" required="true" value="#{UserMB.usuario.nome}" label="Nome"/>
+				            
+				            <p:outputLabel for="Email" size="30" value="#{msg['paginas.modelos.cadUser.email']}"/>
+				            <p:inputText id="Email" required="false" value="#{UserMB.usuario.email}" label="Email" />
+				 
+				 			<p:outputLabel for="Sexo" size="30" value="#{msg['paginas.modelos.cadUser.sexo']}"/>
+							<p:selectOneButton id="Sexo" required="true" value="#{UserMB.usuario.sexo}">
+					            <f:selectItem itemLabel="M" itemValue="Masculino" />
+					            <f:selectItem itemLabel="F" itemValue="Feminino" />
+			        		</p:selectOneButton>
+			        		
+				            <p:outputLabel for="Login" size="30" value="#{msg['paginas.modelos.cadUser.nomeUser']}" />
+				            <p:inputText id="Login" required="true" value="#{UserMB.usuario.login}" label="Login"/>
+				            
+				            <p:outputLabel for="Senha" size="30" value="#{msg['paginas.modelos.cadUser.senha']}" />
+				         	<p:password id="Senha" value="#{UserMB.usuario.senha}" label="Senha" required="true"/>
+				         	
+				            <p:outputLabel for="cpf" size="30" value="#{msg['paginas.modelos.cadUser.cpf']}" />
+					            <p:inputMask id="cpf" required="true" value="#{UserMB.usuario.cpf}" mask="999.999.999-99"> 
+					            	<p:keyFilter mask="num" />	
+					           	</p:inputMask>
+							
+				            <p:outputLabel for="RG" value="#{msg['paginas.modelos.cadUser.rg']}" />
+					            <p:inputMask id="RG" required="false" value="#{UserMB.usuario.rg}" mask="99.999.999-9">
+					            	<p:keyFilter mask="num" />	
+					           	</p:inputMask>
+				            
+				            <p:outputLabel for="nascimento" value="#{msg['paginas.modelos.cadUser.dataNascimento']}" />
+				        	<p:calendar id="nascimento" required="true" value="#{UserMB.usuario.dataNascimento}" pattern="dd/MM/yyyy" mask="true" />
+				             
+				            <p:outputLabel for="Endereco" 	size="30" value="#{msg['paginas.modelos.cadUser.endereco']}" />
+				            <p:inputText id="Endereco" required="true" value="#{UserMB.usuario.endereco}" label="Endereco"/>
+		            		
+		           			<p:outputLabel for="TelMovel" size="30" value="#{msg['paginas.modelos.cadUser.telMovel']}" />
+					            <p:inputMask id="TelMovel" required="true" value="#{UserMB.usuario.telefoneMovel}" mask="(99) 99999-9999">
+					           		<p:keyFilter mask="num" />
+					            </p:inputMask>
+		           
+		           			<p:outputLabel for="TelFixo" size="30" value="#{msg['paginas.modelos.cadUser.telFixo']}" />
+					            <p:inputMask id="TelFixo" required="false" value="#{UserMB.usuario.telefoneFixo}" mask="(99) 9999-9999">
+					            	<p:keyFilter mask="num" />
+					            </p:inputMask>
+				            
+				            <p:tooltip for="Nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu NOME"/>
+				            <p:tooltip for="Email" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu EMAIL"/>
+				            <p:tooltip for="Sexo" showEvent="mouseover" hideEvent="mouseout" position="top" value="Insira o seu SEXO"/>
+				            <p:tooltip for="Login" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu LOGIN para entrar no sistema"/>
+				            <p:tooltip for="Senha" showEvent="focus" hideEvent="blur" position="top" value="Insira a sua SENHA para entrar no sistema"/>
+				            <p:tooltip for="cpf" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu CPF"/>
+				            <p:tooltip for="RG" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu RG"/>
+				            <p:tooltip for="nascimento" showEvent="focus" hideEvent="blur" position="top" value="Insira a sua data de NASCIMENTO"/>
+				            <p:tooltip for="Endereco" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu ENDEREÇO"/>
+				            <p:tooltip for="TelMovel" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu CELULAR"/>
+				            <p:tooltip for="TelMovel" showEvent="focus" hideEvent="blur" position="top" value="Insira o seu TELEFONE FIXO"/>
+				            
+		        		</h:panelGrid>
+		        		
+		       			<p:commandButton id="btnLimpar" value="Limpar" icon="ui-icon-refresh" update="panel" resetValues="true"/>
+		        	
+		        		<p:commandButton id="btnSalvar" value="Sair" icon="ui-icon-check"
+		       				update=":formJogador"
+		        			action="#{UserMB.salvarJogador}"
+		        			ajax="false"/>
+		        		<p:commandButton id="btnNovaCat" value="Adicionar nova categoria" icon="ui-icon-check"
+							update=":formJogador" action="#{UseraMB.newJogador}"
+							ajax="false" />
+		        	
+		    	</p:panel>
+		    </div>
+		 </h:form>
+		</h:body>
+	</ui:define>
+    
+</ui:composition>

@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LocaleBean {
 
-	    private Locale locale = Locale.ENGLISH;
+	    private Locale locale = Locale.getDefault();
 
 	    public Locale getLocale() {
 	        return locale;
