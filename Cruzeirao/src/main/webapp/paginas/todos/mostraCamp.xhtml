@@ -13,40 +13,56 @@
 
 	<ui:define name="principal">
 	
+	<h:form id="form">
 	  <p:dataTable id="tabelaCamp" var="camp" value="#{CampeonatoMB.campeonatos}" 
 	  			   emptyMessage="#{msg['paginas.todos.mostraCampeonato.vazio']}"
 	  			   style="border: solid 2px black;">  
+       
+        	<f:facet name="header">
+            	Campeonatos
+        	</f:facet>
         
-        <p:column headerText="#{msg['paginas.todos.mostraCampeonato.nome']}" >
-        	<p:outputLabel value="#{camp.nome}" />
-      	</p:column>
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.categorias']}" >
-        	<p:outputLabel value="#{camp.categorias}" />
-      	</p:column>
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.DInicio']}" >
-        	<p:outputLabel value="#{camp.dataInicioCampeonato}" />
-      	</p:column>
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.DFim']}" >
-        	<p:outputLabel value="#{camp.dataFimCampeonato}" />
-      	</p:column>
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.minJ']}" >
-        	<p:outputLabel value="#{camp.minJogadores}" />
-      	</p:column>
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.maxJ']}" >
-        	<p:outputLabel value="#{camp.maxJogadores}" />
-      	</p:column>
-      	
-      	<p:column headerText="#{msg['paginas.todos.mostraCampeonato.valor']}" >
-        	<p:outputLabel value="#{camp.valorTaxa}" />
-      	</p:column>
-      	
-
-    </p:dataTable>
+	        <p:column headerText="#{msg['paginas.todos.mostraCampeonato.nome']}" >
+	        	<p:outputLabel value="#{camp.nome}" />
+	      	</p:column>
+	      	
+	      	<p:column style="width:32px;text-align: center">
+	            <p:commandButton update=":form:campDetalhes" oncomplete="PF('campDialog').show()" icon="ui-icon-search" title="Detalhes">
+	                <f:setPropertyActionListener value="#{camp}" target="#{CampeonatoMB.campSelecionado}" />
+	            </p:commandButton>
+       		</p:column>
+    	</p:dataTable>
+    	
+    	
+    	<p:dialog header="Detalhes" widgetVar="campDialog" resizable="false">
+	        <p:outputPanel id="campDetalhes" style="text-align:center;">
+	            <p:panelGrid  columns="2" columnClasses="1,2">
 	 
+	                <h:outputText value="Data de Início:" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataInicioCampeonato}" />
+	 
+	                <h:outputText value="Data de encerramento: " />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataFimCampeonato}" />
+	 
+	                <h:outputText value="Mín. de jogadores: " />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.minJogadores}" />
+	                
+	                <h:outputText value="Max de jogadores" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.maxJogadores}" />
+	                
+	                <h:outputText value="Taxa Inscrição:" />
+	                <h:outputText value="$#{CampeonatoMB.campSelecionado.valorTaxa}"/>
+	                
+	                <h:outputText value="Taxa Inscrição:" />
+	                <h:outputText value="$#{CampeonatoMB.campSelecionado.valorTaxa}"/>
+	                
+	                <h:outputText value="Categorias:" />
+	                <p:dataList value="#{CampeonatoMB.campSelecionado.categorias}" type="ordered" />
+	                
+	            </p:panelGrid>
+	        </p:outputPanel>
+    	</p:dialog>
+    	
+	</h:form>
 	</ui:define>
 </ui:composition>

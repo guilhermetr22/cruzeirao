@@ -17,6 +17,7 @@ public class CampeonatoMB {
 	private CampService campService = new CampService();
 	private CategoriaService catService = new CategoriaService();
 	private Categoria categoria = new Categoria();
+	private Campeonato campSelecionado = new Campeonato();
 	
 	public String salvar()
 	{
@@ -59,4 +60,14 @@ public class CampeonatoMB {
 	{
 		return campService.getCampeonatos();
 	}
+
+	public Campeonato getCampSelecionado() {
+		return campSelecionado;
+	}
+
+	public void setCampSelecionado(Campeonato campSelecionado) {
+		this.campSelecionado = campSelecionado;
+	}
+	
+	
 }

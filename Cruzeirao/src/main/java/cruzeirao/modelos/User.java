@@ -45,8 +45,6 @@ public class User implements Serializable {
 	@Column(name="sexo")
 	private String sexo;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="jogadores")
 	private Equipe equipe;
 	
 	//private List<Inscrito> inscricoes;
