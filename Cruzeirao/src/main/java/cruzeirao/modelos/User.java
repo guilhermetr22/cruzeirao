@@ -3,11 +3,11 @@ package cruzeirao.modelos;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,6 +45,8 @@ public class User implements Serializable {
 	@Column(name="sexo")
 	private String sexo;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Equipe", referencedColumnName="IDEquipe")
 	private Equipe equipe;
 	
 	//private List<Inscrito> inscricoes;
@@ -65,7 +67,7 @@ public class User implements Serializable {
 	@Column(name="CPF")
 	private String cpf;
 	
-	@Column(name="Login")
+	@Column(name="Login", unique=true)
 	private String login;
 	
 	private String senha;

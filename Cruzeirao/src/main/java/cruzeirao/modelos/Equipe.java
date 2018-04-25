@@ -7,9 +7,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,7 +30,7 @@ public class Equipe implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID")
+	@Column(name="IDEquipe")
 	private int id_time;
 	
 	@Column(name="Nome")
@@ -40,9 +43,10 @@ public class Equipe implements Serializable{
 	@Column(name="Cidade")
 	private String cidade;
 	
+	@JoinColumn(name="Diretor", referencedColumnName="IDUser")
 	private User diretor;
 	
-	@OneToMany(mappedBy = "equipe", cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="equipe", cascade = CascadeType.ALL)
 	private List <User> jogadores;
 	
 	//private ArrayList<Inscrito> inscritos;

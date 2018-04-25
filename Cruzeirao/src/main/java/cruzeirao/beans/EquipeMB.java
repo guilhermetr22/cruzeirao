@@ -19,7 +19,8 @@ public class EquipeMB {
 	private Equipe equipe = new Equipe();
 	private EquipeService equipeService = new EquipeService();
 	private User userAtual = new User();
-	//private UserDAO user = new UserDAO();
+	private UserDAO user = new UserDAO();
+	private Equipe equipeSelecionada = new Equipe();
 
 	public String salvar()
 	{
@@ -50,6 +51,14 @@ public class EquipeMB {
 	
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
+	}
+
+	public Equipe getEquipeSelecionada() {
+		return equipeSelecionada;
+	}
+
+	public void setEquipeSelecionada(Equipe equipeSelecionada) {
+		this.equipeSelecionada = equipeSelecionada;
 	}
 	
 }

@@ -3,8 +3,12 @@ package cruzeirao.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import cruzeirao.modelos.Categoria;
-
+ 
 @Entity
 @Table(name="campeonatos")
 @NamedQuery(name = "Campeonato.pesquisarPorNome", query = "select u from Campeonato u where u.nome = :nome")
@@ -27,28 +31,35 @@ public class Campeonato implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="IDCamp")
 	private int idCampeonato;
 	
 	private String nome;
 	
 /*	private List<Local> locais;*/
 	
-	@OneToMany(mappedBy="campeonato")
-	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="campeonato", cascade = CascadeType.PERSIST)
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="Início inscrições")
 	private Date dataInicioInscricao;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="Fim Inscrições")
 	private Date dataFimInscricao;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="Inicio Campeonato")
 	private Date dataInicioCampeonato;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="Fim Campeonato")
 	private Date dataFimCampeonato;
 	
+	@Column(name="Valor inscrição")
 	private double valorTaxa;
+	
 	private int minJogadores;
 	private int maxJogadores;
 	
@@ -71,7 +82,7 @@ public class Campeonato implements Serializable{
 	public void setLocais(List<Local> locais) {
 		this.locais = locais;
 	}*/
-	public ArrayList<Categoria> getCategorias() {
+	public List<Categoria> getCategorias() {
 		return categorias;
 	}
 	public void addCategorias(Categoria categoria) {

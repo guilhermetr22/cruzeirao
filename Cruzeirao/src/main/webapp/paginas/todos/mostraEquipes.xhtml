@@ -11,28 +11,46 @@
 	</ui:define>
 
 	<ui:define name="principal">
-		<h:form id="formTabelaEquipes">
+		<h:form id="formEquipes">
 			  <p:dataTable id="equipes" var="equipe" value="#{EquipeMB.equipes}" 
 			  			   emptyMessage="#{msg['paginas.todos.mostraEquipe.vazio']}"
 			  			     style="border: solid 2px black;"> 
 		        
+		        <f:facet name="header">
+            		Equipes
+        		</f:facet>
+        
 		        <p:column headerText="#{msg['paginas.todos.mostraEquipe.nome']}" >
 		        	<p:outputLabel value="#{equipe.nome}" />
 		      	</p:column>
 		      	
-				<p:column headerText="#{msg['paginas.todos.mostraEquipe.cidade']}" >
-		        	<p:outputLabel value="#{equipe.cidade}" />
-		      	</p:column>
-		        
-		        <p:column headerText="#{msg['paginas.todos.mostraEquipe.data']}" >
-		        	<p:outputLabel value="#{equipe.dataFundacao}" />
-		      	</p:column>     
-		      	
-		      	<p:column headerText="#{msg['paginas.todos.mostraEquipe.diretor']}" >
-		        	<p:outputLabel value="#{equipe.diretor.nome}" />
-		      	</p:column>            
-		
+		      	<p:column style="width:32px;text-align: center">
+	            	<p:commandButton update=":form:equipeDetalhes" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="Detalhes">
+	                	<f:setPropertyActionListener value="#{equipe}" target="#{EquipeMB.equipeSelecionada}" />
+	            	</p:commandButton>
+       			</p:column>
 		   	 </p:dataTable>
+		   	 
+		   	<p:dialog header="Detalhes" widgetVar="equipeDialog" resizable="false">
+	       		<p:outputPanel id="equipeDetalhes" style="text-align:center;">
+		            <p:panelGrid  columns="2" columnClasses="1,2">
+		 
+		                <h:outputText value="Cidade:" />
+		                <h:outputText value="#{EquipeMB.equipeSelecionada.cidade}" />
+		 
+		                <h:outputText value="Data de fundação: " />
+		                <h:outputText value="#{EquipeMB.equipeSelecionada.dataFundacao}" />
+		 
+		                <h:outputText value="Diretor: " />
+		                <h:outputText value="#{EquipeMB.equipeSelecionada.diretor}" />
+		                
+		                <h:outputText value="Jogadores:" />
+		                <p:dataList value="#{EquipeMB.equipeSelecionada.jogadores}" type="ordered" />
+		                
+		            </p:panelGrid>
+	        </p:outputPanel>
+    	</p:dialog>
+
 	 	</h:form>
 	</ui:define>
 </ui:composition>
