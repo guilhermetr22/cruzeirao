@@ -1,4 +1,4 @@
- 	package cruzeirao.service;
+package cruzeirao.service;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class CampService {
 		List <Campeonato> campeonatos;
 		
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Campeonato a");
+		Query q = em.createQuery("Select u From Campeonato u");
 		campeonatos = q.getResultList();
 		em.close();
 		

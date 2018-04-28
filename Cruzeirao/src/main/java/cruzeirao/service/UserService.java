@@ -39,6 +39,19 @@ public class UserService {
 		return null;
 	}
 	
+	public User salvarEditado(User usuario) {
+
+		User user = null;
+		EntityManager em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		user = em.merge(usuario);
+		em.getTransaction().commit();
+		em.close();
+
+		return user;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<User> getUsuarios()
 	{

@@ -25,22 +25,29 @@ public class Categoria implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
 	private int id_cat;
 	
+	@Column
 	private String nome;
+	
 	private int nascidosApartirDe;
+	
 	//private List<Inscricao> inscricoes;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Campeonato", referencedColumnName="IDCamp")
+	@JoinColumn(name = "IDCampeonato", referencedColumnName="IDCamp")
 	private Campeonato campeonato;
 	
 	private List<Fase> fases;
 	
+	@Column
 	private int minJogadores;
 	
+	@Column
 	private int maxJogadores;
 	
+	@Column
 	private String sexo;
 	
 	public String getNome() {
@@ -91,7 +98,31 @@ public class Categoria implements Serializable{
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id_cat;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Categoria other = (Categoria) obj;
+		if (id_cat != other.id_cat)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
+	}
 	
 }

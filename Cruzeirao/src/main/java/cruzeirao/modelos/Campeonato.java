@@ -17,8 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import cruzeirao.modelos.Categoria;
  
 @Entity
 @Table(name="campeonatos")
@@ -34,30 +32,31 @@ public class Campeonato implements Serializable{
 	@Column(name="IDCamp")
 	private int idCampeonato;
 	
+	@Column(name="Nome")
 	private String nome;
 	
 /*	private List<Local> locais;*/
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="campeonato", cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	
+	@Column
 	@Temporal(TemporalType.DATE)
-	@Column(name="Início inscrições")
 	private Date dataInicioInscricao;
 	
+	@Column
 	@Temporal(TemporalType.DATE)
-	@Column(name="Fim Inscrições")
 	private Date dataFimInscricao;
 	
+	@Column
 	@Temporal(TemporalType.DATE)
-	@Column(name="Inicio Campeonato")
 	private Date dataInicioCampeonato;
 	
+	@Column
 	@Temporal(TemporalType.DATE)
-	@Column(name="Fim Campeonato")
 	private Date dataFimCampeonato;
 	
-	@Column(name="Valor inscrição")
+	@Column
 	private double valorTaxa;
 	
 	private int minJogadores;
