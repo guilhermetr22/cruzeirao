@@ -31,17 +31,37 @@ public class CampeonatoMB {
 	private Date data_fim;
 	private Date data_insc_inicio;
 	private Date data_insc_fim;
+	private Calendar inicio_cal = new GregorianCalendar();
+	private Calendar fim_cal = new GregorianCalendar();
+	private Calendar inicio_insc_cal = new GregorianCalendar();
+	private Calendar fim_insc_cal = new GregorianCalendar();
 	
 	public String salvar()
 	{
-		campeonato.setDataInicioCampeonato(data_inicio);
-		campeonato.setDataFimCampeonato(data_fim);
-		campeonato.setDataInicioInscricao(data_insc_inicio);
-		campeonato.setDataFimInscricao(data_insc_fim);
+		inicio_cal.setTime(data_inicio);
+		fim_cal.setTime(data_fim);
+		inicio_insc_cal.setTime(data_insc_inicio);
+		fim_insc_cal.setTime(data_insc_fim);
+
+		campeonato.setDataInicioCampeonato(inicio_cal);
+		campeonato.setDataFimCampeonato(fim_cal);
+		campeonato.setDataInicioInscricao(inicio_insc_cal);
+		campeonato.setDataFimInscricao(fim_insc_cal);
 			
 		campService.salvar(campeonato);
 		
 		return "cadCategoria";
+	}
+	
+
+	public String salvarNewCategoria() 
+	{
+		catService.salvar(categoria);
+		campeonato.addCategorias(categoria);
+		
+		categoria = new Categoria();
+		
+		return "cadastroCategoria";
 	}
 	
 	public Categoria getCategoria() {

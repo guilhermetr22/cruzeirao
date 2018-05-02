@@ -1,7 +1,7 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -37,24 +37,24 @@ public class Campeonato implements Serializable{
 	
 /*	private List<Local> locais;*/
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	private List<Categoria> categorias = new ArrayList<Categoria>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy="campeonato")
+	private List<Categoria> categorias;
 	
 	@Column
 	@Temporal(TemporalType.DATE)
-	private Date dataInicioInscricao;
+	private Calendar dataInicioInscricao;
 	
 	@Column
 	@Temporal(TemporalType.DATE)
-	private Date dataFimInscricao;
+	private Calendar dataFimInscricao;
 	
 	@Column
 	@Temporal(TemporalType.DATE)
-	private Date dataInicioCampeonato;
+	private Calendar dataInicioCampeonato;
 	
 	@Column
 	@Temporal(TemporalType.DATE)
-	private Date dataFimCampeonato;
+	private Calendar dataFimCampeonato;
 	
 	@Column
 	private double valorTaxa;
@@ -87,30 +87,7 @@ public class Campeonato implements Serializable{
 	public void addCategorias(Categoria categoria) {
 		this.categorias.add(categoria);
 	}
-	public Date getDataInicioInscricao() {
-		return dataInicioInscricao;
-	}
-	public void setDataInicioInscricao(Date dataInicioInscricao) {
-		this.dataInicioInscricao = dataInicioInscricao;
-	}
-	public Date getDataFimInscricao() {
-		return dataFimInscricao;
-	}
-	public void setDataFimInscricao(Date dataFimInscricao) {
-		this.dataFimInscricao = dataFimInscricao;
-	}
-	public Date getDataInicioCampeonato() {
-		return dataInicioCampeonato;
-	}
-	public void setDataInicioCampeonato(Date dataInicioCampeonato) {
-		this.dataInicioCampeonato = dataInicioCampeonato;
-	}
-	public Date getDataFimCampeonato() {
-		return dataFimCampeonato;
-	}
-	public void setDataFimCampeonato(Date dataFimCampeonato) {
-		this.dataFimCampeonato = dataFimCampeonato;
-	}
+
 	public double getValorTaxa() {
 		return valorTaxa;
 	}
@@ -130,6 +107,30 @@ public class Campeonato implements Serializable{
 		this.maxJogadores = maxJogadores;
 	}
 	
+	public Calendar getDataInicioInscricao() {
+		return dataInicioInscricao;
+	}
+	public void setDataInicioInscricao(Calendar dataInicioInscricao) {
+		this.dataInicioInscricao = dataInicioInscricao;
+	}
+	public Calendar getDataFimInscricao() {
+		return dataFimInscricao;
+	}
+	public void setDataFimInscricao(Calendar dataFimInscricao) {
+		this.dataFimInscricao = dataFimInscricao;
+	}
+	public Calendar getDataInicioCampeonato() {
+		return dataInicioCampeonato;
+	}
+	public void setDataInicioCampeonato(Calendar dataInicioCampeonato) {
+		this.dataInicioCampeonato = dataInicioCampeonato;
+	}
+	public Calendar getDataFimCampeonato() {
+		return dataFimCampeonato;
+	}
+	public void setDataFimCampeonato(Calendar dataFimCampeonato) {
+		this.dataFimCampeonato = dataFimCampeonato;
+	}
 	@Override
 	public String toString() {
 		return "Campeonato [nome=" + nome + "]";

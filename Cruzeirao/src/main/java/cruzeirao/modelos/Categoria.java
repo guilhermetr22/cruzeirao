@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,21 +26,20 @@ public class Categoria implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column
 	private int id_cat;
 	
-	@Column
 	private String nome;
-	
 	private int nascidosApartirDe;
 	
-	//private List<Inscricao> inscricoes;
+	private List<Fase> fases;
+	
+	@OneToMany(mappedBy="categoria")
+	private List<Inscricao> inscricoes;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IDCampeonato", referencedColumnName="IDCamp")
 	private Campeonato campeonato;
-	
-	private List<Fase> fases;
+
 	
 	@Column
 	private int minJogadores;
@@ -62,12 +62,12 @@ public class Categoria implements Serializable{
 	public void setNascidosApartirDe(int nascidosApartirDe) {
 		this.nascidosApartirDe = nascidosApartirDe;
 	}
-/*	public List<Inscricao> getInscricoes() {
+	public List<Inscricao> getInscricoes() {
 		return inscricoes;
 	}
 	public void setInscricoes(List<Inscricao> inscricoes) {
 		this.inscricoes = inscricoes;
-	}*/
+	}
 	public Campeonato getCampeonato() {
 		return campeonato;
 	}
@@ -124,5 +124,6 @@ public class Categoria implements Serializable{
 			return false;
 		return true;
 	}
+	
 	
 }

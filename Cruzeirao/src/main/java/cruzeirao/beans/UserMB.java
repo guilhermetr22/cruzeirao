@@ -1,5 +1,8 @@
 package cruzeirao.beans;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -8,7 +11,6 @@ import javax.faces.bean.SessionScoped;
 import cruzeirao.modelos.Equipe;
 import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
-import cruzeirao.service.EquipeService;
 import cruzeirao.service.UserService;
 
 @ManagedBean (name = "UserMB")
@@ -17,10 +19,14 @@ public class UserMB {
 	private User usuario = new User();
 	private UserService service = new UserService();
 	private Equipe equipe = new Equipe();
-	private EquipeService equipeService = new EquipeService();
+	private Date data;
+	private Calendar data_cal = new GregorianCalendar();
 	
 	public String salvar()
 	{
+		data_cal.setTime(data);
+		usuario.setDataNascimento(data_cal);
+		
 		this.usuario.setTipo(Tipo.COMUM);
 		
 		service.salvar(usuario);
@@ -31,8 +37,12 @@ public class UserMB {
 	
 	public String newJogador()
 	{
+		
+		data_cal.setTime(data);
+		usuario.setDataNascimento(data_cal);
+		
 		service.salvar(usuario);
-		this.equipe.addJogadores(usuario);
+		equipe.addJogadores(usuario);
 		
 		usuario = new User();
 		
@@ -41,6 +51,10 @@ public class UserMB {
 	
 	public String salvarJogador()
 	{
+		
+		data_cal.setTime(data);
+		usuario.setDataNascimento(data_cal);
+		
 		service.salvar(usuario);
 		equipe.addJogadores(usuario);
 		
@@ -61,5 +75,13 @@ public class UserMB {
 	public List<User> getUsuarios()
 	{
 		return service.getUsuarios();
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 }
