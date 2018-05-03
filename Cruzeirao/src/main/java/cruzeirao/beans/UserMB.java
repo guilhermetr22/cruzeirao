@@ -34,35 +34,6 @@ public class UserMB {
 		
 		return "inicio";
 	}
-	
-	public String newJogador()
-	{
-		
-		data_cal.setTime(data);
-		usuario.setDataNascimento(data_cal);
-		
-		service.salvar(usuario);
-		equipe.addJogadores(usuario);
-		
-		usuario = new User();
-		
-		return "cadJogador";
-	}
-	
-	public String salvarJogador()
-	{
-		
-		data_cal.setTime(data);
-		usuario.setDataNascimento(data_cal);
-		
-		service.salvar(usuario);
-		equipe.addJogadores(usuario);
-		
-		usuario = new User();
-		equipe = new Equipe();
-		
-		return "inicio";
-	}
 
 	public User getUsuario() {
 		return usuario;

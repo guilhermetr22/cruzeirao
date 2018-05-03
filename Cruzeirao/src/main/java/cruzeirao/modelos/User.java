@@ -1,8 +1,8 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 @Entity
 @Table(name="usuarios")
@@ -51,7 +52,8 @@ public class User implements Serializable {
 	private Equipe equipe;
 	
 	//private List<Inscrito> inscricoes;
-	//private List<Campeonato> campeonatos;
+	
+	private ArrayList<Convite> convites = new ArrayList<Convite>();
 	
 	@Column(name="telefoneFixo")
 	private String telefoneFixo;
@@ -100,12 +102,6 @@ public class User implements Serializable {
 	}
 	public void setInscricoes(List<Inscrito> inscricoes) {
 		this.inscricoes = inscricoes;
-	}
-	public List<Campeonato> getCampeonatos() {
-		return campeonatos;
-	}
-	public void setCampeonatos(List<Campeonato> campeonatos) {
-		this.campeonatos = campeonatos;
 	}*/
 	
 	public String getTelefoneFixo() {
@@ -206,6 +202,22 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return nome;
+	}	
+	
+
+	
+	public ArrayList<Convite> getConvites() {
+		return convites;
+	}
+
+	public void setConvites(ArrayList<Convite> convites) {
+		this.convites = convites;
 	}
 	
+	public void addConvite(Convite c){
+		this.convites.add(c);
+	}
+	public void removeConvite(Convite c){
+		this.convites.remove(c);
+	}
 }

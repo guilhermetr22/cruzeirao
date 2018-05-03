@@ -24,8 +24,10 @@ public class EquipeMB {
 
 	public String salvar()
 	{
-		this.equipe.setDiretor(userAtual);
-		userAtual.setTipo(Tipo.DIRETOR);
+		//userAtual = user.pesquisarPorUsername(userAtual.getLogin());
+		//equipe.setDiretor(userAtual);
+		//userAtual.setTipo(Tipo.DIRETOR);
+		
 		equipeService.salvar(equipe);
 		equipe = new Equipe();
 	

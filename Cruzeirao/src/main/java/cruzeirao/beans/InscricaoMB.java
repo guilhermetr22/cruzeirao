@@ -20,7 +20,6 @@ public class InscricaoMB {
 	
 	public String salvar()
 	{
-		inscricao.setCampeonato(campeonato);
 		inscricao.setEquipe(equipe);
 		
 		service.salvar(inscricao);

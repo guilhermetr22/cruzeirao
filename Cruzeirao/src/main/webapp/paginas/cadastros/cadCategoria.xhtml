@@ -19,25 +19,25 @@
 		  			<h:panelGrid columns="2" id="panel" style="text-align: center"> 
 		  			
 			  			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nome']}" /> 
-		      				<p:inputText id="Nome" required="true" value="#{CategoriaMB.categoria.nome}"/>
+		      				<p:inputText id="Nome" required="true" value="#{CampeonatoMB.categoria.nome}"/>
 		      				
 						<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.nascidos']}" /> 
-		      				<p:inputMask id="nascidos" required="true" value="#{CategoriaMB.categoria.nascidosApartirDe}" mask="9999">
+		      				<p:inputMask id="nascidos" required="true" value="#{CampeonatoMB.categoria.nascidosApartirDe}" mask="9999">
 	  							<p:keyFilter mask="num" />
 							</p:inputMask>
 		      				 					
 		      			<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.minJ']}" /> 
-		      				<p:inputText id="MinJ" required="true" value="#{CategoriaMB.categoria.minJogadores}">
+		      				<p:inputText id="MinJ" required="true" value="#{CampeonatoMB.categoria.minJogadores}">
 					    		<p:keyFilter mask="num" />
 							</p:inputText>	
 	      			
 						<p:outputLabel size="30" value="#{msg['paginas.modelos.cadCategoria.maxJ']}" /> 
-		      				<p:inputText id="MaxJ" required="true" value="#{CategoriaMB.categoria.maxJogadores}">
+		      				<p:inputText id="MaxJ" required="true" value="#{CampeonatoMB.categoria.maxJogadores}">
 					    		<p:keyFilter mask="num"/>
 							</p:inputText>	
 							
 						<p:outputLabel size="30" for="sexo" value="#{msg['paginas.modelos.cadCategoria.sexo']}" />
-						<p:selectOneRadio id="sexo" required="false" value="#{CategoriaMB.categoria.sexo}">
+						<p:selectOneRadio id="sexo" required="false" value="#{CampeonatoMB.categoria.sexo}">
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 						</p:selectOneRadio>
@@ -51,12 +51,12 @@
 	      			
 	      			<p:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check"
 	      			 	update=":formCategoria"
-		        		action="#{CategoriaMB.salvar}"
+		        		action="#{CampeonatoMB.salvar}"
 		        		ajax="false"/>
 		        		
 		        	<p:commandButton id="btnNovaCat" value="Adicionar nova categoria" icon="ui-icon-check"
 						update=":formCategoria" 
-						action="#{CategoriaMB.salvaNewCat}"
+						action="#{CampeonatoMB.salvarNewCategoria}"
 						ajax="false" />
 	 		</p:panel>
 		</h:form>

@@ -1,13 +1,15 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -24,16 +26,19 @@ public class Partida implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int partidaID;
 	
-	private Date data = new Date();
+	private Calendar data = new GregorianCalendar();
+	
+	@ManyToOne
+	private Inscricao timeA;
+	
+	@ManyToOne
+	private Inscricao timeB;
 	
 	private Local local;
-	
 	private User juiz;
 	
 	private List<Gol> golsMandantes;
 	private List<Gol> golsVisitantes;
-	private List<Gol> golsPenaltiMandantes;
-	private List<Gol> golsPenaltiVisitantes;
 	private List<Cartao> cartoesMandante;
 	private List<Cartao> cartoesVisitante;
 	
@@ -48,18 +53,6 @@ public class Partida implements Serializable {
 	}
 	public void setGolsVisitantes(List<Gol> golsVisitantes) {
 		this.golsVisitantes = golsVisitantes;
-	}
-	public List<Gol> getGolsPenaltiMandantes() {
-		return golsPenaltiMandantes;
-	}
-	public void setGolsPenaltiMandantes(List<Gol> golsPenaltiMandantes) {
-		this.golsPenaltiMandantes = golsPenaltiMandantes;
-	}
-	public List<Gol> getGolsPenaltiVisitantes() {
-		return golsPenaltiVisitantes;
-	}
-	public void setGolsPenaltiVisitantes(List<Gol> golsPenaltiVisitantes) {
-		this.golsPenaltiVisitantes = golsPenaltiVisitantes;
 	}
 	public List<Cartao> getCartoesMandante() {
 		return cartoesMandante;
@@ -79,10 +72,10 @@ public class Partida implements Serializable {
 	public void setPartidaID(int partidaID) {
 		this.partidaID = partidaID;
 	}
-	public Date getData() {
+	public Calendar getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 	public Local getLocal() {

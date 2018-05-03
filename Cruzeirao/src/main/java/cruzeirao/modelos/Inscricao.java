@@ -1,6 +1,7 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,57 +9,80 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import cruzeirao.service.CampService;
 
 @Entity
 @Table(name="inscricoes")
+@NamedQuery(name = "Inscricao.pesquisarPorNome", query = "select u from Inscricao u where u.equipe.nome = :nome")
 public class Inscricao implements Serializable{
 	
 	private static final long serialVersionUID = -4086207985010677485L;
+	public static final String PESQUISAR_POR_NOME = "Inscricao.pesquisarPorNome";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long numero;
+	private long IDInsc;
 	
-	//private boolean pagamento;
+	private boolean pagamento;
+	private boolean validada;
 	
-	//private boolean validadas;
+	private List<User> jogadores = new ArrayList<User>();
 	
-	private List<Inscrito> inscritos;
+	@ManyToOne
+	private Equipe equipe;
 	
 	@ManyToOne
 	private Categoria categoria;
 	
-	@ManyToOne
-	private Campeonato campeonato;
+	@OneToMany(mappedBy="timeA")
+	private List<Partida> partidas = new ArrayList<Partida>();
 	
-	//private List<Partida> partidas;
+	@Transient
+	CampService campService = new CampService();
 	
-	private Equipe equipe;
-	
-	public long getNumero() {
-		return numero;
+	public Campeonato getCampeonato() {
+		for(Campeonato c : campService.getCampeonatos())
+		{
+			for(Categoria cat : c.getCategorias())
+			{
+				if(cat.equals(categoria))
+				{
+					return c;
+				}
+			}
+		}
+		return null;
 	}
-	public void setNumero(long numero) {
-		this.numero = numero;
+	
+	public Inscricao()
+	{
+		pagamento = false;
+		validada = false;
 	}
-/*	public boolean isPagamento() {
+
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+	public boolean getPagamento() {
 		return pagamento;
 	}
 	public void setPagamento(boolean pagamento) {
 		this.pagamento = pagamento;
-	}*/
-/*	public boolean isValidadas() {
-		return validadas;
+	}
+	public boolean isValidadas() {
+		return validada;
 	}
 	public void setValidadas(boolean validadas) {
-		this.validadas = validadas;
-	}*/
-	public List<Inscrito> getInscritos() {
-		return inscritos;
-	}
-	public void setInscritos(List<Inscrito> inscritos) {
-		this.inscritos = inscritos;
+		this.validada = validadas;
 	}
 	public Categoria getCategoria() {
 		return categoria;
@@ -66,51 +90,20 @@ public class Inscricao implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-/*	public List<Partida> getPartidas() {
+	public List<Partida> getPartidas() {
 		return partidas;
 	}
 	public void setPartidas(List<Partida> partidas) {
 		this.partidas = partidas;
-	}*/
-	public Equipe getEquipe() {
-		return equipe;
 	}
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
+	public void setJogadores(ArrayList<User> jogadores) {
+		this.jogadores = jogadores;
 	}
-	public Campeonato getCampeonato() {
-		return campeonato;
+	public void addJogador(User u){
+		jogadores.add(u);
 	}
-	public void setCampeonato(Campeonato campeonato) {
-		this.campeonato = campeonato;
+	public void removeJogador(User u){
+		jogadores.remove(u);
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (numero ^ (numero >>> 32));
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Inscricao other = (Inscricao) obj;
-		if (numero != other.numero)
-			return false;
-		return true;
-	}
-	@Override
-	public String toString() {
-		return "Inscricao [numero=" + numero + ", campeonato=" + campeonato + ", equipe="
-				+ equipe + "]";
-	}
-	
-	
-	
 	
 }

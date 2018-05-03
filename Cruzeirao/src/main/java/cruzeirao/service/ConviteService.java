@@ -7,54 +7,54 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import cruzeirao.modelos.Equipe;
+import cruzeirao.modelos.Convite;
 
-public class EquipeService {
+public class ConviteService {
 	private EntityManagerFactory emf;
 	
-	public EquipeService(){
+	public ConviteService(){
 		emf = Persistence.createEntityManagerFactory("Cruzeirao");
 	}
 	
-	public void salvar(Equipe equipe){
+	public void salvar(Convite convite){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-			em.persist(equipe);
+			em.persist(convite);
 		em.getTransaction().commit();
 		em.close();
 	}
 	
-	public void remove(Equipe time) {
+	public void remove(Convite convite) {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			Equipe time2 = em.merge(time);
-			em.remove(time2);
+			Convite conv = em.merge(convite);
+			em.remove(conv);
 		em.getTransaction().commit();
 		em.close();
 	}
 	
-	public Equipe salvarEditado(Equipe t) {
+	public Convite salvarEditado(Convite convite) {
 
-		Equipe time = null;
+		Convite c = null;
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			time = em.merge(t);
+			c = em.merge(convite);
 		em.getTransaction().commit();
 		em.close();
 		
-		return time;
+		return c;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Equipe> getEquipes(){
-		List<Equipe> equipes;
+	public List<Convite> getConvites(){
+		List<Convite> convites;
 		
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select u From Equipe u");
-		equipes = q.getResultList();
+		Query q = em.createQuery("Select u From Convite u");
+		convites = q.getResultList();
 		em.close();
-		return equipes; 
+		return convites; 
 	}
 }

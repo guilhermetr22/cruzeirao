@@ -9,6 +9,7 @@
 		<class>cruzeirao.modelos.Categoria</class>
 		<class>cruzeirao.modelos.Partida</class>
 		<class>cruzeirao.modelos.Inscrito</class>
+		<class>cruzeirao.modelos.Convite</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Cruzeirao;create=true"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>

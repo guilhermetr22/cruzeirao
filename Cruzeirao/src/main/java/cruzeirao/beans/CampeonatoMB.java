@@ -48,9 +48,13 @@ public class CampeonatoMB {
 		campeonato.setDataInicioInscricao(inicio_insc_cal);
 		campeonato.setDataFimInscricao(fim_insc_cal);
 			
+		catService.salvar(categoria);
+		campeonato.addCategorias(categoria);
 		campService.salvar(campeonato);
+		campeonato = new Campeonato();
+		categoria = new Categoria();
 		
-		return "cadCategoria";
+		return "inicio";
 	}
 	
 
@@ -58,9 +62,7 @@ public class CampeonatoMB {
 	{
 		catService.salvar(categoria);
 		campeonato.addCategorias(categoria);
-		
 		categoria = new Categoria();
-		
 		return "cadastroCategoria";
 	}
 	

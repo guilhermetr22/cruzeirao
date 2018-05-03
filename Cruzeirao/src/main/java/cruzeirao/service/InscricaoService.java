@@ -24,6 +24,29 @@ public class InscricaoService {
 		em.close();
 	}
 	
+	public void remove(Inscricao insc) {
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			Inscricao insc2 = em.merge(insc);
+			em.remove(insc2);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public Inscricao salvarEditado(Inscricao i) {
+
+		Inscricao insc = null;
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+			insc = em.merge(i);
+		em.getTransaction().commit();
+		em.close();
+		
+		return insc;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Inscricao> getInscricoes(){
 		List<Inscricao> inscricoes;
