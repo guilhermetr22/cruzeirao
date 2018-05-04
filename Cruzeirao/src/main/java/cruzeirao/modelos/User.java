@@ -3,6 +3,7 @@ package cruzeirao.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +43,7 @@ public class User implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DataNascimento")
-	private Calendar dataNascimento;
+	private Date dataNascimento;
 	
 	@Column(name="sexo")
 	private String sexo;
@@ -91,10 +92,10 @@ public class User implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Calendar getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(Calendar dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 /*	List<Inscrito> getInscricoes() {

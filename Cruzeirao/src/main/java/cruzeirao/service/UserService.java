@@ -64,4 +64,16 @@ public class UserService {
 		
 		return usuarios;
 	}
+	
+	
+	public void remover(User usuario) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();	
+			usuario = em.find(User.class,usuario.getIDUser());
+			em.remove(usuario);
+		em.getTransaction().commit();	
+	    em.close();
+		
+	}
 }

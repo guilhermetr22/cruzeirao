@@ -1,14 +1,10 @@
 package cruzeirao.beans;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import cruzeirao.modelos.Equipe;
 import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
 import cruzeirao.service.UserService;
@@ -17,17 +13,14 @@ import cruzeirao.service.UserService;
 @SessionScoped
 public class UserMB {
 	private User usuario = new User();
+	private List<User> usuarios;
 	private UserService service = new UserService();
-	private Equipe equipe = new Equipe();
-	private Date data;
-	private Calendar data_cal = new GregorianCalendar();
+	private User userSelecionado = new User();
 	
 	public String salvar()
 	{
-		data_cal.setTime(data);
-		usuario.setDataNascimento(data_cal);
-		
-		this.usuario.setTipo(Tipo.COMUM);
+	
+		usuario.setTipo(Tipo.COMUM);
 		
 		service.salvar(usuario);
 		usuario = new User();
@@ -45,14 +38,19 @@ public class UserMB {
 	
 	public List<User> getUsuarios()
 	{
-		return service.getUsuarios();
+		if(usuarios == null)
+			usuarios = service.getUsuarios();
+		
+		return usuarios;
 	}
 
-	public Date getData() {
-		return data;
+	public User getUserSelecionado() {
+		return userSelecionado;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
-	}
+	public void remover(User usuario)
+	{
+		service.remover(usuario);
+		usuarios.remove(usuario);
+	}	
 }

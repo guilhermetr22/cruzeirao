@@ -1,7 +1,6 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
  
 @Entity
 @Table(name="campeonatos")
@@ -31,36 +28,26 @@ public class Campeonato implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="IDCamp")
 	private int idCampeonato;
-	
+
 	@Column(name="Nome")
 	private String nome;
 	
 /*	private List<Local> locais;*/
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy="campeonato")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private List<Categoria> categorias;
 	
-	@Column
-	@Temporal(TemporalType.DATE)
-	private Calendar dataInicioInscricao;
-	
-	@Column
-	@Temporal(TemporalType.DATE)
-	private Calendar dataFimInscricao;
-	
-	@Column
-	@Temporal(TemporalType.DATE)
-	private Calendar dataInicioCampeonato;
-	
-	@Column
-	@Temporal(TemporalType.DATE)
-	private Calendar dataFimCampeonato;
+	private Date dataInicioInscricao;
+	private Date dataFimInscricao;
+	private Date dataInicioCampeonato;
+	private Date dataFimCampeonato;
 	
 	@Column
 	private double valorTaxa;
 	
 	private int minJogadores;
 	private int maxJogadores;
+	
 	
 	public int getIdCampeonato() {
 		return idCampeonato;
@@ -107,28 +94,28 @@ public class Campeonato implements Serializable{
 		this.maxJogadores = maxJogadores;
 	}
 	
-	public Calendar getDataInicioInscricao() {
+	public Date getDataInicioInscricao() {
 		return dataInicioInscricao;
 	}
-	public void setDataInicioInscricao(Calendar dataInicioInscricao) {
+	public void setDataInicioInscricao(Date dataInicioInscricao) {
 		this.dataInicioInscricao = dataInicioInscricao;
 	}
-	public Calendar getDataFimInscricao() {
+	public Date getDataFimInscricao() {
 		return dataFimInscricao;
 	}
-	public void setDataFimInscricao(Calendar dataFimInscricao) {
+	public void setDataFimInscricao(Date dataFimInscricao) {
 		this.dataFimInscricao = dataFimInscricao;
 	}
-	public Calendar getDataInicioCampeonato() {
+	public Date getDataInicioCampeonato() {
 		return dataInicioCampeonato;
 	}
-	public void setDataInicioCampeonato(Calendar dataInicioCampeonato) {
+	public void setDataInicioCampeonato(Date dataInicioCampeonato) {
 		this.dataInicioCampeonato = dataInicioCampeonato;
 	}
-	public Calendar getDataFimCampeonato() {
+	public Date getDataFimCampeonato() {
 		return dataFimCampeonato;
 	}
-	public void setDataFimCampeonato(Calendar dataFimCampeonato) {
+	public void setDataFimCampeonato(Date dataFimCampeonato) {
 		this.dataFimCampeonato = dataFimCampeonato;
 	}
 	@Override

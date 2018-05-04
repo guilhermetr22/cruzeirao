@@ -17,30 +17,52 @@
 			  			   emptyMessage="#{msg['paginas.todos.mostraUsers.vazio']}"
 			  			   style="border: solid 2px black;">  
 		        
+		        <f:facet name="header">
+		        	Usuários
+		        </f:facet>
+		        
 		        <p:column headerText="#{msg['paginas.todos.mostraUsers.nome']}" >
 		        	<p:outputLabel value="#{user.nome}" />
 		      	</p:column>
 		      	
-				<p:column headerText="#{msg['paginas.todos.mostraUsers.sexo']}" >
-		        	<p:outputLabel value="#{user.sexo}" />
-		      	</p:column>
-		      		    	
-				<p:column headerText="#{msg['paginas.todos.mostraUsers.tipo']}" >
-		        	<p:outputLabel value="#{user.tipo}" />
-		        	
-		      	</p:column> 
-		        <p:column headerText="#{msg['paginas.todos.mostraUsers.username']}" >
-		        	<p:outputLabel value="#{user.login}" />
-		      	</p:column>                 
-		                  
-		        <p:column headerText="#{msg['paginas.todos.mostraUsers.cpf']}" >
-		        	<p:outputLabel value="#{user.cpf}" />
-		      	</p:column>
-		        
-		        <p:column headerText="#{msg['paginas.todos.mostraUsers.datanasc']}" >
-		        	<p:outputLabel value="#{user.dataNascimento}"/>
-		      	</p:column>
-	   	 	</p:dataTable>
+		      	<p:column style="width:32px;text-align: center">
+	            	<p:commandButton update="formTabelaUsers" oncomplete="PF('userDialog').show()" icon="ui-icon-search">
+	                	<f:setPropertyActionListener value="#{user}" target="#{UserMB.userSelecionado}" />
+	            	</p:commandButton>
+       			</p:column>
+       			
+       			
+       			<p:column style="width:32px;text-align: center"> 
+					<p:commandButton id="remover" styleClass="ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{UserMB.remover(user)}"
+						update="tabelaUser" />
+	  			</p:column>
+       			
+    		</p:dataTable>
+    		
+    		<p:dialog header="Detalhes" widgetVar="userDialog" resizable="false">
+	        <p:outputPanel id="userDetalhes" style="text-align:center;">
+	            <p:panelGrid  columns="2" columnClasses="1,2">
+	            
+		            <h:outputText value="Sexo:" />
+		            <h:outputText value="#{UserMB.userSelecionado.sexo}" />
+			      	
+			      	<h:outputText value="Tipo:" />
+		            <h:outputText value="#{UserMB.userSelecionado.tipo}" />
+		            
+		            <h:outputText value="Login:" />
+		            <h:outputText value="#{UserMB.userSelecionado.login}" />
+		            
+		            <h:outputText value="CPF:" />
+		            <h:outputText value="#{UserMB.userSelecionado.cpf}" />
+		            
+		            <h:outputText value="Nascimento:" />
+		            <h:outputText value="#{UserMB.userSelecionado.dataNascimento}" />
+			      		    	
+				</p:panelGrid>
+	        </p:outputPanel>
+    		</p:dialog>
 	   	</h:form>
 	</ui:define>
 </ui:composition>

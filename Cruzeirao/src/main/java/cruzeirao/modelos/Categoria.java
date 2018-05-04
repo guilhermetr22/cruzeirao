@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -31,23 +30,16 @@ public class Categoria implements Serializable{
 	private String nome;
 	private int nascidosApartirDe;
 	
-	private List<Fase> fases;
+	//private List<Fase> fases;
 	
 	@OneToMany(mappedBy="categoria")
 	private List<Inscricao> inscricoes;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDCampeonato", referencedColumnName="IDCamp")
 	private Campeonato campeonato;
-
 	
-	@Column
 	private int minJogadores;
-	
-	@Column
 	private int maxJogadores;
-	
-	@Column
 	private String sexo;
 	
 	public String getNome() {
@@ -73,12 +65,6 @@ public class Categoria implements Serializable{
 	}
 	public void setCampeonato(Campeonato campeonato) {
 		this.campeonato = campeonato;
-	}
-	public List<Fase> getFases() {
-		return fases;
-	}
-	public void setFases(List<Fase> fases) {
-		this.fases = fases;
 	}
 	public int getMinJogadores() {
 		return minJogadores;
