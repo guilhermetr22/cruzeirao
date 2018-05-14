@@ -1,0 +1,52 @@
+<ui:composition template="layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['paginas.inscricoes.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	
+	 <h:form id="formTableInsc">
+	
+		<p:dataTable value="#{InscricaoMB.allInscricoes}" var="i"
+			id="tableInscricoes">
+			
+			<p:column headerText="#{msg['paginas.inscricoes.nomeTime']}">
+				<h:outputText value="#{i.equipe.nome}" />
+			</p:column>
+			
+			<p:column headerText="#{msg['paginas.inscricoes.diretor']}">
+				<h:outputText value="#{i.equipe.diretor.nome}" />
+			</p:column>
+			
+			<p:column headerText="#{msg['paginas.inscricoes.nomeCategoria']}">
+				<h:outputText value="#{i.categoria.nome}"/>
+			</p:column>
+			
+			<p:column style="width:100px" headerText="#{msg['paginas.inscricoes.autorizar']}">
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{InscricaoMB.remove(i)}"
+						update=":formTableInsc" />
+			</p:column>
+			
+			<p:column style="width:100px" headerText="#{msg['paginas.inscricoes.confirmar']}">
+					<p:commandLink id="confirmar" styleClass="ui-icon ui-icon-check"
+						style="text-align:center"
+						actionListener="#{InscricaoMB.autorizar(i)}"
+						update=":formTableInsc" />
+			</p:column>
+
+		</p:dataTable>
+		
+	</h:form>
+	  
+	</ui:define>
+</ui:composition>

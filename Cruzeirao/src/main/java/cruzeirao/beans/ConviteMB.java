@@ -113,7 +113,7 @@ public class ConviteMB {
 	}
 	
 	public List<Equipe> getTimesUsuarioAtual() {
-		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getNome());
+		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
 		
 		equipes = equipeService.getEquipes();
 		
@@ -129,7 +129,7 @@ public class ConviteMB {
 	}
 	
 	public List<Convite> getConvitesUsuarioAtual() {
-		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getNome());
+		usuarioAtual = user.pesquisarPorUsername(usuarioAtual.getUserAtual());
 		
 		return usuarioAtual.getConvites();
 	}
@@ -181,6 +181,23 @@ public class ConviteMB {
 	
 	public List<User> getUsuarios(){
 		return userService.getUsuarios();
+	}
+	
+	
+	public void autorizar(Equipe time) {
+		Inscricao insc = null;
+		
+		for(Inscricao i : time.getInscricoes())
+		{
+			if(i.getEquipe() == time)
+			{
+				insc = i;
+			}
+		}
+		insc.setPagamento(true);
+		insc.setValidadas(true);
+		
+		inscService.salvarEditado(insc);
 	}
 	
 	public void remove(Equipe time) {

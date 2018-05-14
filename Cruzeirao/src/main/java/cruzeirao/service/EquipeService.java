@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import cruzeirao.modelos.Equipe;
 
 public class EquipeService {
-	private EntityManagerFactory emf;
+	private static EntityManagerFactory emf;
 	
 	public EquipeService(){
 		emf = Persistence.createEntityManagerFactory("Cruzeirao");
@@ -48,7 +48,7 @@ public class EquipeService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Equipe> getEquipes(){
+	public static List<Equipe> getEquipes(){
 		List<Equipe> equipes;
 		
 		EntityManager em = emf.createEntityManager();

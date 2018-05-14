@@ -2,7 +2,6 @@ package cruzeirao.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -19,6 +18,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 
 @Entity
@@ -205,7 +207,9 @@ public class User implements Serializable {
 		return nome;
 	}	
 	
-
+	public String getUserAtual(){
+		return (((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getName());
+	}
 	
 	public ArrayList<Convite> getConvites() {
 		return convites;

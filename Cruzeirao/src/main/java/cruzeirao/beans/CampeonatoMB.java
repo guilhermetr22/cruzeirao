@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import cruzeirao.DAO.UserDAO;
 import cruzeirao.modelos.Campeonato;
 import cruzeirao.modelos.Categoria;
+import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
 import cruzeirao.service.CampService;
 import cruzeirao.service.CategoriaService;
@@ -26,6 +27,11 @@ public class CampeonatoMB {
 	
 	public String salvar()
 	{			
+		userAtual = userDAO.pesquisarPorUsername(userAtual.getUserAtual());
+		userAtual.setTipo(Tipo.ORGANIZADOR);
+		
+		userService.salvarEditado(userAtual);
+		
 		campService.salvar(campeonato);
 		campeonato = new Campeonato();
 		
