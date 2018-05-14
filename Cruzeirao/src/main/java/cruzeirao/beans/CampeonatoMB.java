@@ -18,42 +18,20 @@ import cruzeirao.service.UserService;
 public class CampeonatoMB {
 	private Campeonato campeonato = new	Campeonato();
 	private CampService campService = new CampService();
-	private Categoria categoria = new Categoria();
 	private List<Campeonato> campeonatos;
-	private CategoriaService catService = new CategoriaService();
-	private Campeonato campSelecionado = new Campeonato();
+	private Campeonato campSelecionado;
 	private User userAtual = new User();
 	private UserService userService = new UserService();
 	private UserDAO userDAO = new UserDAO();
 	
 	public String salvar()
 	{			
-		catService.salvar(categoria);
-		categoria.setCampeonato(campeonato);
-		campeonato.addCategorias(categoria);
 		campService.salvar(campeonato);
 		campeonato = new Campeonato();
-		categoria = new Categoria();
 		
 		return "inicio";
 	}
 	
-
-	public String salvarNewCategoria() 
-	{
-		catService.salvar(categoria);
-		campeonato.addCategorias(categoria);
-		categoria = new Categoria();
-		return "cadastroCategoria";
-	}
-	
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
 	
 	public Campeonato getCampeonato() {
 		return campeonato;

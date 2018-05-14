@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import cruzeirao.modelos.Campeonato;
-import cruzeirao.modelos.User;
 
 public class CampService {
 	
@@ -39,6 +38,18 @@ public class CampService {
 		em.close();
 		
 		return campeonatos;
+	}
+	
+	public Campeonato getCampeonatooAtual(String name) {
+
+		List<Campeonato> campeonatos = this.getCampeonatos();
+
+		for (Campeonato u : campeonatos) {
+			if (u.getNome() == name)
+				return u;
+		}
+
+		return null;
 	}
 
 	public void remover(Campeonato campeonato) {

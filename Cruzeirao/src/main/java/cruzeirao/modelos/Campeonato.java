@@ -1,13 +1,13 @@
 package cruzeirao.modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +26,7 @@ public class Campeonato implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IDCamp")
+	@Column
 	private int idCampeonato;
 
 	@Column(name="Nome")
@@ -34,15 +34,18 @@ public class Campeonato implements Serializable{
 	
 /*	private List<Local> locais;*/
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	private List<Categoria> categorias;
-	
-	private Date dataInicioInscricao;
-	private Date dataFimInscricao;
-	private Date dataInicioCampeonato;
-	private Date dataFimCampeonato;
+	@OneToMany(mappedBy="campeonato", cascade=CascadeType.ALL)
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 	
 	@Column
+	private Date dataInicioInscricao;
+	@Column
+	private Date dataFimInscricao;
+	@Column
+	private Date dataInicioCampeonato;
+	@Column
+	private Date dataFimCampeonato;
+	
 	private double valorTaxa;
 	
 	private int minJogadores;
@@ -71,8 +74,11 @@ public class Campeonato implements Serializable{
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 	public void addCategorias(Categoria categoria) {
-		this.categorias.add(categoria);
+		categorias.add(categoria);
 	}
 
 	public double getValorTaxa() {

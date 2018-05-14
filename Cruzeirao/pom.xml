@@ -35,6 +35,7 @@
 			<scope>compile</scope>
 		</dependency>
 		
+				
 		<!-- JPA -->
 		<dependency>
 			<groupId>org.apache.derby</groupId>
@@ -47,6 +48,53 @@
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
 			<version>2.6.2</version>
 		</dependency>
+			
+			
+		<!-- Spring Security -->
+		<dependency>
+		    <groupId>org.apache.taglibs</groupId>
+		    <artifactId>taglibs-standard-impl</artifactId>
+		    <version>1.2.5</version>
+		</dependency>	
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>5.0.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>5.0.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>5.0.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-test</artifactId>
+		    <version>5.0.5.RELEASE</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- Commons Logging -->
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		
+		  <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		  </dependency>
   </dependencies>
   	
 </project>

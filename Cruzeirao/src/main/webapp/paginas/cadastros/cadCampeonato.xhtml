@@ -54,9 +54,9 @@
                 <p:tooltip for="DataFimCamp" position="top" value="Seleciona a data de ENCERRAMENTO do ca	mpeonato"/>
 	  		</h:panelGrid>
 	  
-	  		<p:commandButton value="#{msg['paginas.modelos.cadCampeonato.btnAdd']}"
+	  		<p:commandButton value="#{msg['paginas.modelos.cadCampeonato.salvar']}"
 	                 update=":formCampeonato"
-	                 action="/paginas/cadastros/cadCategoria.xhtml"
+	                 action="#{CampeonatoMB.salvar}"
 	                 ajax="false"/>
 	                 
 	

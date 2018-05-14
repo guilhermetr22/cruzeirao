@@ -15,7 +15,7 @@ public class UserMB {
 	private User usuario = new User();
 	private List<User> usuarios;
 	private UserService service = new UserService();
-	private User userSelecionado = new User();
+	private User userSelecionado;
 	
 	public String salvar()
 	{
@@ -46,6 +46,10 @@ public class UserMB {
 
 	public User getUserSelecionado() {
 		return userSelecionado;
+	}
+
+	public void setUserSelecionado(User userSelecionado) {
+		this.userSelecionado = userSelecionado;
 	}
 
 	public void remover(User usuario)

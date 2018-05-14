@@ -9,6 +9,10 @@
 </h:head>
 
 <h:body>
+	<f:metadata>
+		<f:event listener="#{loginMB.preRender}" type="preRenderView"></f:event>
+	</f:metadata>
+	
 	<p:panel id="pnl" header="Sistema Cruzeirão"
 		style="border-color:black;border-width:2px; border-style:solid; width:400px; margin-left:auto; margin-right:auto;">
 	
@@ -33,12 +37,14 @@
 			</p:password>
 	
 					<p:commandButton value="Login" ajax="false"
-					action="#{loginBean.login}"
+					action="#{LoginMB.login}"
 					style="width: 50%; max-width: 200px;" />
 
 			</h:panelGrid>
 	
 		</h:form>
 	</p:panel>
+	
+	<p:blockUI block="pnl" />
 </h:body>
 </html>
