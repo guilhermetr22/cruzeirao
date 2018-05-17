@@ -26,7 +26,7 @@ import cruzeirao.service.UserService;
 @ManagedBean(name = "InscricaoMB")
 @SessionScoped
 public class InscricaoMB {
-	private List<Equipe> equipes = new ArrayList<Equipe>();
+	private List<Equipe> equipes;
 	private Equipe equipeAtual = new Equipe();
 	private Campeonato campAtual = new Campeonato();
 	private Categoria catAtual = new Categoria();
@@ -127,7 +127,7 @@ public class InscricaoMB {
 	
 	public List<Equipe> getEquipesUsuarioAtual() {
 		userAtual = user.pesquisarPorUsername(userAtual.getUserAtual());
-		equipes = EquipeService.getEquipes();
+		equipes = equipeService.getEquipes();
 
 		for(Equipe t : equipes) {
 			if(t.getDiretor().getLogin() != userAtual.getLogin()) {

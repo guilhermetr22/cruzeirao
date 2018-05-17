@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		
-		auth.inMemoryAuthentication().withUser("adm").password("123").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("adm").password("{noop}123").roles("ADMIN");
 		auth.userDetailsService(userService); 
 	}
 	   
@@ -36,19 +36,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         
         //Libera todos os recursos do JSF
         http.authorizeRequests().antMatchers("/javax.faces.resource/**").permitAll();
-        http.authorizeRequests().antMatchers("/paginas.cadastros/inicio.xhtml").permitAll();
-        http.authorizeRequests().antMatchers("/paginas.cadastros/cadUser.xhtml").permitAll();
+        http.authorizeRequests().antMatchers("/bemVindo.xhtml").permitAll();
+        http.authorizeRequests().antMatchers("/paginas/cadastros/cadUser.xhtml").permitAll();
         
     	//Login
     	http.formLogin().loginPage("/login.xhtml").permitAll()
-		.defaultSuccessUrl("/paginas.cadastros/inicio.xhtml", true)
+		.defaultSuccessUrl("/paginas/cadastros/inicio.xhtml", true)
 		.failureUrl("/login.xhtml?error=true")
 		.usernameParameter("username")
 		.passwordParameter("password");
     	
     	//Logout
         http.logout().logoutUrl("/logout")
-                     .logoutSuccessUrl("/paginas.cadastros/inicio.xhtml");
+                     .logoutSuccessUrl("/paginas/cadastros/inicio.xhtml");
 
         // Todas as requisições para partes internas da aplicação devem ser autenticadas
 		http.authorizeRequests().anyRequest().authenticated();

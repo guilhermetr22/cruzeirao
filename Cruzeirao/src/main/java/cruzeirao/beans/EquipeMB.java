@@ -10,6 +10,7 @@ import cruzeirao.modelos.Equipe;
 import cruzeirao.modelos.Tipo;
 import cruzeirao.modelos.User;
 import cruzeirao.service.EquipeService;
+import cruzeirao.service.UserService;
 
 
 
@@ -21,14 +22,16 @@ public class EquipeMB {
 	private User userAtual = new User();
 	private UserDAO user = new UserDAO();
 	private Equipe equipeSelecionada = new Equipe();
+	private UserService userService = new UserService();
 
 	public String salvar()
 	{
-		//userAtual = user.pesquisarPorUsername(userAtual.getLogin());
-		//equipe.setDiretor(userAtual);
-		//userAtual.setTipo(Tipo.DIRETOR);
+		userAtual = user.pesquisarPorUsername(userAtual.getUserAtual());
+		equipe.setDiretor(userAtual);
+		userAtual.setTipo(Tipo.DIRETOR);
 		
 		equipeService.salvar(equipe);
+		userService.salvarEditado(userAtual);
 		equipe = new Equipe();
 	
 		return "inicio";

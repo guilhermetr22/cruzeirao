@@ -40,7 +40,7 @@
 				            <p:inputText id="Login" required="true" value="#{UserMB.usuario.login}" label="Login"/>
 				            
 				            <p:outputLabel for="Senha" size="30" value="#{msg['paginas.modelos.cadUser.senha']}" />
-				         	<p:password id="Senha" value="#{UserMB.usuario.senha}" label="Senha" required="true"/>
+				         	<p:password id="Senha" value="#{UserMB.usuario.senha}" label="Senha" required="true" maxlength="10"/>
 				         	
 				            <p:outputLabel for="cpf" size="30" value="#{msg['paginas.modelos.cadUser.cpf']}" />
 					            <p:inputMask id="cpf" required="true" value="#{UserMB.usuario.cpf}" mask="999.999.999-99"> 

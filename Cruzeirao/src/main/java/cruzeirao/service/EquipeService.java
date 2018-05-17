@@ -48,7 +48,7 @@ public class EquipeService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<Equipe> getEquipes(){
+	public List<Equipe> getEquipes(){
 		List<Equipe> equipes;
 		
 		EntityManager em = emf.createEntityManager();
