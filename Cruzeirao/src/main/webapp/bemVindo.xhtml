@@ -4,13 +4,13 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<meta charset="UTF-8" />
+		<title>CRUZEIRÃO 2018</title>
 		
       <style>
             body{
-                background-image: url("#{resource['imagens/welcome.png']}");
-                width:200%;
-                height:200%;
+                background-image: url("#{resource['imagens/welcome2.png']}");
+                width:99%;
+                height:10%;
                 background-repeat: no-repeat;  
                 float:center              
             }
@@ -20,15 +20,17 @@
 	
 	<h:body>
 		<h:form id="form">
-			<p:panel id="menuPnl" header="Menu" style="border:1px solid black;width:160px; background:none">
-				<p:button href="/login.xhtml" value="Login" icon="ui-icon-person"/>       
-			 	<p:button href="/paginas/cadastros/cadUser.xhtml" value="Cadastro" icon="ui-icon-plus"/>
-			 	<p:commandButton type="button" onclick="PF('detalhesDialog').show()" value="Sobre" icon="ui-icon-info" ajax="false" title="Sobre"/>
+			<p:panel id="menuPnl" style="border:1px solid black;width:160px; background:#666666;position: absolute; left:870px; top:640px;">
+				<p:button href="/login.xhtml" value="Login" icon="ui-icon-person" style="background-color:#000000; font-weight:bold; color:white"/>
+			 	<p:button href="/paginas/cadastros/cadUser.xhtml" value="Cadastro" icon="ui-icon-plus" style="background-color:#000000; font-weight:bold; color:white"/>
+			 	<p:button onclick="PF('detalhesDialog').show()" value="Sobre" icon="ui-icon-info" ajax="true" title="Sobre" style="background-color:#000000; font-weight:bold; color:white"/>
 			</p:panel>		
 			
-			<p:dialog header="Sobre" widgetVar="detalhesDialog" resizable="false" modal="true" height="100" position="center">
-    			<h:outputText value="Desenvolvido por Guilherme Rodrigues" />
-    			<h:outputText value="RA - 150654"/>
+			<p:dialog header="Sobre" widgetVar="detalhesDialog" resizable="false" modal="false" height="100" position="center">
+				<p:panelGrid columns="1" style="border:none">
+					<h:outputText value="Desenvolvido por Guilherme Rodrigues" />
+					<h:outputText value="RA - 150654"/>
+				</p:panelGrid>
 			</p:dialog> 
 		</h:form>	
 	</h:body>

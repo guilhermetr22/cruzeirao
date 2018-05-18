@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	//Página de acesso negado
         http.exceptionHandling().accessDeniedPage("/acessonegado.xhtml");
         
-        //Libera todos os recursos do JSF
+        //Libera todos os recursos do JSF nas páginas abaixo
         http.authorizeRequests().antMatchers("/javax.faces.resource/**").permitAll();
         http.authorizeRequests().antMatchers("/bemVindo.xhtml").permitAll();
         http.authorizeRequests().antMatchers("/paginas/cadastros/cadUser.xhtml").permitAll();

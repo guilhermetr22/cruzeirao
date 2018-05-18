@@ -21,21 +21,21 @@
 		<h:body>
 			<div id="global">
 				<p:layout id="layoutGlobal" style="background:#42426F" fullPage="true">
-						
-						<!-- Cabeçalho -->
-						<p:layoutUnit position="north" size="99" style="background:#42426F; border: solid 2px black;" >
-							<ui:include src="/paginas/comuns/cabecalho.xhtml" />
-						</p:layoutUnit>
-				
-						<!-- Menu lateral --> 
-						<p:layoutUnit position="west" style="background:#42426F; border: solid 2px black; position:relative"
+										
+						<!-- Menu superior -->
+						<p:layoutUnit position="north" style="background:#42426F; border: solid 2px black"
 							header="#{msg['paginas.comuns.menuLateral.opcoes']}"
-							size="244">
-							<ui:include src="/paginas/comuns/menuLateral.xhtml" />
+							size="96">
+							<ui:include src="/paginas/comuns/menuSuperior.xhtml" />
+						</p:layoutUnit>
+			
+						<!-- Informações na parte direita -->
+						<p:layoutUnit position="east" size="300" style="border: none; position:absolute;">
+							<ui:include src="/paginas/comuns/infoDireita.xhtml" />
 						</p:layoutUnit>
 						
 						<!-- Página que será trocada no template -->
-						<p:layoutUnit position="center" style="background:#42426F; border: solid 2px black">
+						<p:layoutUnit position="center" style="border: none; position: absolute">
 							<ui:insert name="principal" />
 						</p:layoutUnit>	
 				</p:layout>

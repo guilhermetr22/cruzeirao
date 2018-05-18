@@ -4,20 +4,60 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:form>  
-	    <p:growl id="messages"/>
-	 
-	    <p:menubar>
-	        <p:submenu label="File" icon="ui-icon-document">
-	            <p:submenu label="New" icon="ui-icon-contact">
-	                <p:menuitem value="Project" url="#" />
-	                <p:menuitem value="Other" url="#" />
-	            </p:submenu>
-	            <p:menuitem value="Open" url="#" />
-	            <p:separator />
-	            <p:menuitem value="Quit" url="#" />
-	        </p:submenu>
-	       </p:menubar>
-	  </h:form>
+	
+	<h:head>
+		<h:outputStylesheet name="css/estilos.css"/>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<div id="menu" style="background:#7093DB">
+					<p:menubar>
+				          	<p:menuitem value="#{msg['paginas.inicio.menu']}" url="inicio.xhtml"/>
+				        	
+				       		<p:submenu label="#{msg['paginas.comuns.menuLateral.cadastros']}">
+				            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuNome']}" url="cadCampeonato.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.modelos.cadCategoria.menuNome']}" url="cadCategoria.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuNome']}" url="cadLocal.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuNome']}" url="cadEquipe.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.inscricoes.inscreverTime.menu']}" url="/paginas/inscricoes/inscreverTime.xhtml" />
+				        	</p:submenu>
+						    
+						    <p:submenu label="#{msg['paginas.comuns.menuLateral.listagem']}">
+				            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuTodos']}" url="/paginas/todos/mostraUsers.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuTodos']}" url="/paginas/todos/mostraCamp.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuTodos']}" url="/paginas/todos/mostraLocais.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuTodos']}" url="/paginas/todos/mostraEquipes.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.inscricoes.menuTodos']}" url="/paginas/todos/mostraInscritos.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.inscricoes.menuTodos2']}" url="/paginas/todos/mostraEquipesCampeonato.xhtml"/>
+				        	</p:submenu>
+				        	
+				        	<p:submenu label="#{msg['paginas.comuns.menuLateral.inscricao']}">
+				        		<p:menuitem value="#{msg['paginas.inscricoes.inscreverJogador.menu']}" url="/paginas/inscricoes/inscreverJogador.xhtml" />
+				        		<p:menuitem value="#{msg['paginas.inscricoes.inscreverTime.menu']}" url="/paginas/inscricoes/inscreverTime.xhtml" />
+				        	</p:submenu>
+						    
+				        	<p:submenu label="#{msg['paginas.todos.tabelaC']}">
+				        		<p:menuitem value="#{msg['pages.resultados.menu']}" url="resultados.xhtml" />
+				        		<p:menuitem value="#{msg['pages.chave.menu']}" url="chave.xhtml"/>
+				        	</p:submenu>
+
+					        <p:submenu label="#{msg['paginas.comuns.menuLateral.organizador']}" >
+					            <p:menuitem value="#{msg['paginas.inscricoes.menu']}" url="autorizacaoInscricao.xhtml" />
+					        </p:submenu>
+				        	
+				        	<p:submenu label="#{msg['paginas.comuns.menuLateral.idioma']}">
+				        		<p:menuitem value="#{msg['paginas.linguagem.menu']}" url="linguagem.xhtml" />
+				        	</p:submenu>
+				        	 	
+				        	<p:menuitem value="#{msg['paginas.sobre.menu']}" url="Sobre.xhtml"/>
+						    
+			    	</p:menubar>
+			    	
+			    </div>
+			</h:form>	
+	
+	</h:body>
+
     
 </ui:composition>

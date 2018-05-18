@@ -1,11 +1,20 @@
 @charset "ISO-8859-1";
  
 /*menu lateral aparecendo por cima*/
+/*menu superior aparecendo por cima*/
 
-.ui-layout-west{
-    z-index:100 !important;
+.ui-layout-north {
+	z-index:50 !important;
+	overflow:visible !important;
 }
-.ui-layout-west .ui-layout-unit-content{
-    overflow:visible !important;
-    z-index:100 !important
+.ui-layout-north .ui-layout-unit-content {
+	overflow:visible !important;
+}
+
+.ui-layout-center{
+	z-index:0 !important;
+}
+
+.ui-layout-center .ui-layout-unit-content {
+	overflow:visible !important;
 }
