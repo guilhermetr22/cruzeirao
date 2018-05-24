@@ -16,6 +16,7 @@ public class UserMB {
 	private List<User> usuarios;
 	private UserService service = new UserService();
 	private User userSelecionado;
+	private Alertas msg = new Alertas();
 	
 	public String salvar()
 	{
@@ -25,7 +26,9 @@ public class UserMB {
 		service.salvar(usuario);
 		usuario = new User();
 		
-		return "inicio";
+		msg.exibirErroGrowl("Usuário cadastrado com sucesso!");
+		
+		return "bemVindo";
 	}
 
 	public User getUsuario() {

@@ -2,7 +2,7 @@ package cruzeirao.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,13 +38,13 @@ public class Campeonato implements Serializable{
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	
 	@Column
-	private Date dataInicioInscricao;
+	private Calendar dataInicioInscricao;
 	@Column
-	private Date dataFimInscricao;
+	private Calendar dataFimInscricao;
 	@Column
-	private Date dataInicioCampeonato;
+	private Calendar dataInicioCampeonato;
 	@Column
-	private Date dataFimCampeonato;
+	private Calendar dataFimCampeonato;
 	
 	private double valorTaxa;
 	
@@ -100,28 +100,28 @@ public class Campeonato implements Serializable{
 		this.maxJogadores = maxJogadores;
 	}
 	
-	public Date getDataInicioInscricao() {
+	public Calendar getDataInicioInscricao() {
 		return dataInicioInscricao;
 	}
-	public void setDataInicioInscricao(Date dataInicioInscricao) {
+	public void setDataInicioInscricao(Calendar dataInicioInscricao) {
 		this.dataInicioInscricao = dataInicioInscricao;
 	}
-	public Date getDataFimInscricao() {
+	public Calendar getDataFimInscricao() {
 		return dataFimInscricao;
 	}
-	public void setDataFimInscricao(Date dataFimInscricao) {
+	public void setDataFimInscricao(Calendar dataFimInscricao) {
 		this.dataFimInscricao = dataFimInscricao;
 	}
-	public Date getDataInicioCampeonato() {
+	public Calendar getDataInicioCampeonato() {
 		return dataInicioCampeonato;
 	}
-	public void setDataInicioCampeonato(Date dataInicioCampeonato) {
+	public void setDataInicioCampeonato(Calendar dataInicioCampeonato) {
 		this.dataInicioCampeonato = dataInicioCampeonato;
 	}
-	public Date getDataFimCampeonato() {
+	public Calendar getDataFimCampeonato() {
 		return dataFimCampeonato;
 	}
-	public void setDataFimCampeonato(Date dataFimCampeonato) {
+	public void setDataFimCampeonato(Calendar dataFimCampeonato) {
 		this.dataFimCampeonato = dataFimCampeonato;
 	}
 	@Override

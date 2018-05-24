@@ -11,7 +11,10 @@
 		<h:outputText value="#{msg['paginas.modelos.cadCampeonato.titulo']}" />
 	</ui:define>
 	
-	<ui:define name="principal">	
+	<ui:define name="principal">
+		<p:growl id="messages" sticky="false" life="3000"
+			for="mensagemGrowl" autoUpdate="true" />
+			
 		<h:form style="float:center" id="formCampeonato" prependId="false">   	   	  
 	  		<p:panel id="painel" header="#{msg['paginas.modelos.cadCampeonato.menuNome']}" style="border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
 	  		<h:panelGrid columns="2" id="panel" style="text-align: center">          
@@ -20,16 +23,16 @@
       			<p:inputText id="Nome" required="true" value="#{CampeonatoMB.campeonato.nome}"/>
  	             
 				<p:outputLabel for="DataInicioIns" value="#{msg['paginas.modelos.cadCampeonato.Dinicio']}" /> 
-				<p:calendar id="DataInicioIns" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataInicioCampeonato}"/>
+				<p:calendar id="DataInicioIns" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.data_inicio}"/>
 				  
 				<p:outputLabel for="DataFimIns" value="#{msg['paginas.modelos.cadCampeoanto.Dfim']}" /> 
-				<p:calendar id="DataFimIns" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimCampeonato}"/>
+				<p:calendar id="DataFimIns" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.data_fim}"/>
 						
 				<p:outputLabel for="DataInicioCamp" value="#{msg['paginas.modelos.cadCampeonato.DIinicio']}" /> 
-				<p:calendar id="DataInicioCamp" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataInicioInscricao}"/>
+				<p:calendar id="DataInicioCamp" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.data_insc_inicio}"/>
 				  			  
 				<p:outputLabel for="DataFimCamp" value="#{msg['paginas.modelos.cadCampeonato.DIfim']}" /> 
-				<p:calendar id="DataFimCamp" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.campeonato.dataFimInscricao}"/>
+				<p:calendar id="DataFimCamp" required="true" pattern="dd/MM/yyyy" mask="true" value="#{CampeonatoMB.data_insc_fim}"/>
 				  
 				<p:outputLabel value="#{msg['paginas.modelos.cadCampeonato.minJ']}" /> 
 			    <p:inputText id="MinJ" required="true" value="#{CampeonatoMB.campeonato.minJogadores}">
