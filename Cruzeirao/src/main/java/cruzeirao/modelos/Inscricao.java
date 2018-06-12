@@ -27,10 +27,7 @@ public class Inscricao implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long IDInsc;
-	
-	private boolean pagamento;
-	private boolean validada;
-	
+
 	private List<User> jogadores = new ArrayList<User>();
 	
 	@ManyToOne
@@ -38,6 +35,9 @@ public class Inscricao implements Serializable{
 	
 	@ManyToOne
 	private Categoria categoria;
+	
+	private boolean pagamento;
+	private boolean validada;
 	
 	@OneToMany(mappedBy="timeA")
 	private List<Partida> partidas = new ArrayList<Partida>();
@@ -72,18 +72,6 @@ public class Inscricao implements Serializable{
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
-	public boolean getPagamento() {
-		return pagamento;
-	}
-	public void setPagamento(boolean pagamento) {
-		this.pagamento = pagamento;
-	}
-	public boolean isValidadas() {
-		return validada;
-	}
-	public void setValidadas(boolean validadas) {
-		this.validada = validadas;
-	}
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -93,8 +81,20 @@ public class Inscricao implements Serializable{
 	public List<Partida> getPartidas() {
 		return partidas;
 	}
-	public void setPartidas(List<Partida> partidas) {
-		this.partidas = partidas;
+	public void addPartidas(Partida partida) {
+		this.partidas.add(partida);
+	}
+	public void setPagamento(boolean pagamento) {
+		this.pagamento = pagamento;
+	}
+	public boolean getPagamento() {
+		return pagamento;
+	}
+	public boolean isValidadas() {
+		return validada;
+	}
+	public void setValidadas(boolean validadas) {
+		this.validada = validadas;
 	}
 	public void setJogadores(ArrayList<User> jogadores) {
 		this.jogadores = jogadores;
@@ -105,5 +105,10 @@ public class Inscricao implements Serializable{
 	public void removeJogador(User u){
 		jogadores.remove(u);
 	}
-	
+	public long getIDInsc() {
+		return IDInsc;
+	}
+	public void setIDInsc(long iDInsc) {
+		IDInsc = iDInsc;
+	}
 }

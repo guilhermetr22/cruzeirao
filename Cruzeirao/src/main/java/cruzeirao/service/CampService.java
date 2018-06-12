@@ -22,7 +22,7 @@ public class CampService {
 	{
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();	
-			em.persist(campeonato);
+		em.persist(campeonato);
 		em.getTransaction().commit();	
 	    em.close();
 	}

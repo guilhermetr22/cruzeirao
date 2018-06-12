@@ -26,9 +26,9 @@ public class UserMB {
 		service.salvar(usuario);
 		usuario = new User();
 		
-		msg.exibirErroGrowl("Usuário cadastrado com sucesso!");
+		msg.exibirInfoGrowl("Sucesso", "Usuário cadastrado!");
 		
-		return "bemVindo";
+		return "login";
 	}
 
 	public User getUsuario() {

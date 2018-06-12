@@ -9,10 +9,9 @@
 		
       <style>
             body{
-                background-image: url("#{resource['imagens/welcome2.png']}");
+                background-image: url("#{resource['imagens/welcome2.png']}") !important;
                 width:99%;
                 height:10%;
-                background-repeat: no-repeat;  
                 float:center              
             }
         </style>
@@ -27,7 +26,7 @@
 			</p:panel>		
 			
 			<p:dialog header="Sobre" widgetVar="detalhesDialog" resizable="false" height="100" position="center">
-				<p:panelGrid columns="1" style="border:none">
+				<p:panelGrid columns="1" style="border:black">
 					<h:outputText value="Desenvolvido por Guilherme Rodrigues" />
 					<h:outputText value="RA - 150654"/>
 				</p:panelGrid>

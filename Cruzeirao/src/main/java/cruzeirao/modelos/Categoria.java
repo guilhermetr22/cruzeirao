@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,6 +27,9 @@ public class Categoria implements Serializable{
 	@Column
 	private int id_cat;
 	
+	@ManyToOne
+	private Campeonato campeonato;
+	
 	@Column
 	private String nome;
 	
@@ -38,15 +40,23 @@ public class Categoria implements Serializable{
 	
 	@OneToMany(mappedBy="categoria")
 	private List<Inscricao> inscricoes;
-	
-	@ManyToOne
-	@JoinColumn(referencedColumnName="IDCamp")
-	private Campeonato campeonato;
-	
+
 	private int minJogadores;
 	private int maxJogadores;
 	private String sexo;
 	
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
+	}
+	public int getId_cat() {
+		return id_cat;
+	}
+	public void setId_cat(int id_cat) {
+		this.id_cat = id_cat;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -64,12 +74,6 @@ public class Categoria implements Serializable{
 	}
 	public void setInscricoes(List<Inscricao> inscricoes) {
 		this.inscricoes = inscricoes;
-	}
-	public Campeonato getCampeonato() {
-		return campeonato;
-	}
-	public void setCampeonato(Campeonato campeonato) {
-		this.campeonato = campeonato;
 	}
 	public int getMinJogadores() {
 		return minJogadores;
@@ -89,6 +93,12 @@ public class Categoria implements Serializable{
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,6 +125,4 @@ public class Categoria implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 }

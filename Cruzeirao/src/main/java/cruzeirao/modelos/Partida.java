@@ -42,6 +42,8 @@ public class Partida implements Serializable {
 	private List<Cartao> cartoesMandante;
 	private List<Cartao> cartoesVisitante;
 	
+	private Partida prox_partida;
+	
 	public List<Gol> getGolsMandantes() {
 		return golsMandantes;
 	}
@@ -90,7 +92,23 @@ public class Partida implements Serializable {
 	public void setJuiz(User juiz) {
 		this.juiz = juiz;
 	}
-	
-	
+	public Partida getProx_partida() {
+		return prox_partida;
+	}
+	public void setProx_partida(Partida prox_partida) {
+		this.prox_partida = prox_partida;
+	}
+	public Inscricao getTimeA() {
+		return timeA;
+	}
+	public void setTimeA(Inscricao timeA) {
+		this.timeA = timeA;
+	}
+	public Inscricao getTimeB() {
+		return timeB;
+	}
+	public void setTimeB(Inscricao timeB) {
+		this.timeB = timeB;
+	}
 	
 }

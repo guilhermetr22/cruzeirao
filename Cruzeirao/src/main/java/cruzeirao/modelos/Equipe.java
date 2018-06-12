@@ -2,7 +2,8 @@ package cruzeirao.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="equipes")
@@ -33,9 +32,8 @@ public class Equipe implements Serializable{
 	@Column(name="Nome")
 	private String nome;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name="Data Fundação")
-	private Date dataFundacao;
+	private Calendar dataFundacao = new GregorianCalendar();
 	
 	@Column(name="Cidade")
 	private String cidade;
@@ -58,10 +56,10 @@ public class Equipe implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getDataFundacao() {
+	public Calendar getDataFundacao() {
 		return dataFundacao;
 	}
-	public void setDataFundacao(Date dataFundacao) {
+	public void setDataFundacao(Calendar dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
 	public String getCidade() {
@@ -86,6 +84,12 @@ public class Equipe implements Serializable{
 		this.inscricoes.remove(inscricao);
 	}
 
+	@Override
+	public String toString() {
+		return "Equipe [id_time=" + id_time + ", nome=" + nome + ", dataFundacao=" + dataFundacao + ", cidade=" + cidade
+				+ ", diretor=" + diretor + ", inscricoes=" + inscricoes + "]";
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

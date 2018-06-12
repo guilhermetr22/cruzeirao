@@ -22,7 +22,7 @@ public class UserService {
 	{
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();	
-			em.persist(usuario);
+		em.persist(usuario);
 		em.getTransaction().commit();	
 	    em.close();
 	}
@@ -70,10 +70,9 @@ public class UserService {
 
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();	
-			usuario = em.find(User.class,usuario.getIDUser());
-			em.remove(usuario);
+		usuario = em.find(User.class,usuario.getIDUser());
+		em.remove(usuario);
 		em.getTransaction().commit();	
 	    em.close();
-		
 	}
 }

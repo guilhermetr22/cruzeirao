@@ -19,7 +19,7 @@ public class ConviteService {
 	public void salvar(Convite convite){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-			em.persist(convite);
+		em.persist(convite);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -28,8 +28,8 @@ public class ConviteService {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			Convite conv = em.merge(convite);
-			em.remove(conv);
+		Convite conv = em.merge(convite);
+		em.remove(conv);
 		em.getTransaction().commit();
 		em.close();
 	}

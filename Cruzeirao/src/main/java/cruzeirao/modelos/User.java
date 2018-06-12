@@ -2,7 +2,8 @@ package cruzeirao.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,15 +36,29 @@ public class User implements Serializable {
 	@Column(name="IDUser")
 	private int IDUser;
 	
-	@Column(name="Email")
-	private String email;
-
+	@Enumerated(EnumType.STRING)
+	@Column(name="Tipo")
+	private Tipo tipo;
+	
 	@Column(name="Nome")
 	private String nome;
+
+	@Column(name="RG")
+	private String rg;
 	
-	@Temporal(TemporalType.DATE)
+	@Column(name="CPF")
+	private String cpf;
+
 	@Column(name="DataNascimento")
-	private Date dataNascimento;
+	private Calendar dataNascimento = new GregorianCalendar();
+	
+	@Column(name="Login", unique=true)
+	private String login;
+	
+	private String senha;
+	
+	@Column(name="Email")
+	private String email;
 	
 	@Column(name="sexo")
 	private String sexo;
@@ -53,9 +66,7 @@ public class User implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Equipe", referencedColumnName="IDEquipe")
 	private Equipe equipe;
-	
-	//private List<Inscrito> inscricoes;
-	
+
 	private ArrayList<Convite> convites = new ArrayList<Convite>();
 	
 	@Column(name="telefoneFixo")
@@ -67,26 +78,16 @@ public class User implements Serializable {
 	@Column(name="Endereco")
 	private String endereco;
 	
-	@Column(name="RG")
-	private String rg;
 	
-	@Column(name="CPF")
-	private String cpf;
 	
-	@Column(name="Login", unique=true)
-	private String login;
 	
-	private String senha;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name="Tipo")
-	private Tipo tipo;
 
-	public String getEmail() {
-		return email;
+	public int getIDUser() {
+		return IDUser;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setIDUser(int iDUser) {
+		IDUser = iDUser;
 	}
 	public String getNome() {
 		return nome;
@@ -94,19 +95,18 @@ public class User implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getDataNascimento() {
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Calendar getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-/*	List<Inscrito> getInscricoes() {
-		return inscricoes;
-	}
-	public void setInscricoes(List<Inscrito> inscricoes) {
-		this.inscricoes = inscricoes;
-	}*/
-	
 	public String getTelefoneFixo() {
 		return telefoneFixo;
 	}
@@ -150,12 +150,6 @@ public class User implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public int getIDUser() {
-		return IDUser;
-	}
-	public void setIDUser(int iDUser) {
-		IDUser = iDUser;
-	}
 	public Tipo getTipo() {
 		return tipo;
 	}
@@ -175,6 +169,7 @@ public class User implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -205,7 +200,7 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return nome;
-	}	
+	}
 	
 	public String getUserAtual(){
 		return (((SecurityContext) SecurityContextHolder.getContext()).getAuthentication().getName());

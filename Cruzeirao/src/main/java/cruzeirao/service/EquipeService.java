@@ -19,7 +19,7 @@ public class EquipeService {
 	public void salvar(Equipe equipe){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-			em.persist(equipe);
+		em.persist(equipe);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -28,8 +28,8 @@ public class EquipeService {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			Equipe time2 = em.merge(time);
-			em.remove(time2);
+		Equipe time2 = em.merge(time);
+		em.remove(time2);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -40,7 +40,7 @@ public class EquipeService {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-			time = em.merge(t);
+		time = em.merge(t);
 		em.getTransaction().commit();
 		em.close();
 		

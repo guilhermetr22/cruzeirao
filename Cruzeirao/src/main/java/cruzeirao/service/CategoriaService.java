@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import cruzeirao.modelos.Categoria;
+import cruzeirao.modelos.Equipe;
 
 public class CategoriaService {
 	private EntityManagerFactory emf;
@@ -35,6 +36,18 @@ public class CategoriaService {
 		categorias = q.getResultList();
 		em.close();
 		return categorias; 
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Equipe> getEquipes(){
+		List<Equipe> equipes;
+		
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select equipes From Categoria u");
+		equipes = q.getResultList();
+		em.close();
+		
+		return equipes;
 	}
 }
 
