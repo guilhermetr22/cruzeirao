@@ -130,7 +130,7 @@ public class InscricaoMB {
 		equipes = equipeService.getEquipes();
 
 		for(Equipe t : equipes) {
-			if(t.getDiretor().getLogin() != userAtual.getLogin()) {
+			if(t.getDiretor().getUsername() != userAtual.getUsername()) {
 				equipes.remove(t);
 			}
 		}
@@ -237,11 +237,11 @@ public class InscricaoMB {
 	
 	public List<User> getTodosMenosDiretor() {
 		List<User> users = userService.getUsuarios();
-		userAtual = user.pesquisarPorUsername(userAtual.getUserAtual());
+		userAtual = user.pesquisarPorUsername(userAtual.getUsername());
 		User aux = null;
 
 		for (User u : users) {
-			if (u.getLogin() == userAtual.getLogin())
+			if (u.getUsername() == userAtual.getUsername())
 				aux = u;
 		}
 

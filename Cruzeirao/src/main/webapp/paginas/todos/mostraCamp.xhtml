@@ -47,10 +47,10 @@
 	            <p:panelGrid  columns="2" columnClasses="1,2">
 	 
 	                <h:outputText value="Data de Início:" />
-	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataInicioCampeonato}" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataInicioCampeonato.time}" />
 	 
 	                <h:outputText value="Data de encerramento: " />
-	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataFimCampeonato}" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataFimCampeonato.time}" />
 	 
 	                <h:outputText value="Mín. de jogadores: " />
 	                <h:outputText value="#{CampeonatoMB.campSelecionado.minJogadores}" />
@@ -60,6 +60,9 @@
 	                
 	                <h:outputText value="Taxa Inscrição:" />
 	                <h:outputText value="R$#{CampeonatoMB.campSelecionado.valorTaxa}"/>
+	                
+	                <h:outputText value="Organizador:" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.diretor.nome}"/> 
 	                
 	                <h:outputText value="Categorias:" />
 	                <p:dataList value="#{CampeonatoMB.campSelecionado.categorias}" type="ordered" converter="NomeCategoriaConveter"/>

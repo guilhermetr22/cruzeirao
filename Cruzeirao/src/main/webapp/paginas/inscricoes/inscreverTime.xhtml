@@ -8,7 +8,7 @@
 >
 	
 	<ui:define name="title">
-		<h:outputText value="#{msg['paginas.inscreverTime.title	']}" />
+		<h:outputText value="#{msg['paginas.inscreverTime.title']}" />
 	</ui:define>
 	
 
@@ -26,10 +26,10 @@
 	  		<p:ajax listener="#{InscricaoMB.updateCategorias}" event="change" update="formInscTime" process="camp"/>
         </p:selectOneMenu>
         
-        <p:outputLabel for="categ" value="#{msg['pages.inscreverTime.categoria']}" />
+        <p:outputLabel for="categ" value="#{msg['paginas.modelos.cadCategoria.categoria']}" />
         
         <p:selectOneMenu id="categ" style="width:125px" value="#{InscricaoMB.catAtual}" converter="catConverter">
-            <f:selectItem itemLabel="#{msg['pages.inscreverTime.submenu']}" itemValue="" />
+            <f:selectItem itemLabel="#{msg['paginas.inscreverTime.submenu']}" itemValue="" />
             <f:selectItems value="#{InscricaoMB.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"/>
         </p:selectOneMenu>
         

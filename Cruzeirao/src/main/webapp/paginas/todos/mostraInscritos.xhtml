@@ -7,26 +7,27 @@
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 >
 	<ui:define name="title">
-		<h:outputText value="#{msg['paginas.todos.mostraLocal.titulo']}" />
+		<h:outputText value="#{msg['paginas.inscritos.todos.title']}" />
 	</ui:define>
 
 	<ui:define name="principal">
 	
-	  <p:dataTable id="inscritos" var="inscrito" value="#{InscMB.inscritos}" 
+	  <p:dataTable id="inscricoes" var="inscrito" value="#{InscricaoMB.inscricoesValidadas}" 
 	  			   emptyMessage="#{msg['paginas.inscritos.vazio']}"
 	  			     style="border: solid 4px black;"> 
-        
-        <p:column headerText="#{msg['paginas.inscritos.todos.id']}" >
-        	<p:outputLabel value="#{inscrito.id_inscricao}" />
-      	</p:column>
-        
+      
         <p:column headerText="#{msg['paginas.inscritos.todos.nome']}"  >
-        	<p:outputLabel value="#{inscrito.nome}" />
+        	<p:outputLabel value="#{inscrito.equipe.nome}" />
       	</p:column>                 
            
-        <p:column headerText="#{msg['paginas.inscritos.todos.equipe']}"  >
-        	<p:outputLabel value="#{inscrito.equipe}" />
+        <p:column headerText="#{msg['paginas.inscritos.todos.campeonato']}"  >
+        	<p:outputLabel value="#{inscrito.campeonato}" />
       	</p:column> 
+      	
+      <p:column headerText="#{msg['paginas.inscritos.todos.categoria']}"  >
+        	<p:outputLabel value="#{inscrito.categoria.nome}" />
+      	</p:column> 
+      
          
     </p:dataTable> 
 	 

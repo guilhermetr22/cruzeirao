@@ -25,7 +25,7 @@
 		      	</p:column>
 		      	
 		      	<p:column style="width:32px;text-align: center">
-	            	<p:commandButton update=":form:equipeDetalhes" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="Detalhes">
+	            	<p:commandButton update="formEquipes" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="Detalhes">
 	                	<f:setPropertyActionListener value="#{equipe}" target="#{EquipeMB.equipeSelecionada}" />
 	            	</p:commandButton>
        			</p:column>
@@ -34,16 +34,15 @@
 		   	<p:dialog header="Detalhes" widgetVar="equipeDialog" resizable="false">
 	       		<p:outputPanel id="equipeDetalhes" style="text-align:center;">
 		            <p:panelGrid  columns="2" columnClasses="1,2">
-		 
+		                <h:outputText value="Diretor: " />
+		                <h:outputText value="#{EquipeMB.equipeSelecionada.diretor}" />
+		                
 		                <h:outputText value="Cidade:" />
 		                <h:outputText value="#{EquipeMB.equipeSelecionada.cidade}" />
 		 
 		                <h:outputText value="Data de fundação: " />
-		                <h:outputText value="#{EquipeMB.equipeSelecionada.dataFundacao}" />
-		 
-		                <h:outputText value="Diretor: " />
-		                <h:outputText value="#{EquipeMB.equipeSelecionada.diretor}" />
-		                
+		                <h:outputText value="#{EquipeMB.equipeSelecionada.dataFundacao.time}" />
+
 		                <h:outputText value="Jogadores:" />
 		                <p:dataList value="#{EquipeMB.equipeSelecionada.inscricoes}" type="ordered" />
 		                

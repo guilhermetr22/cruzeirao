@@ -1,5 +1,8 @@
 package cruzeirao.beans;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -23,11 +26,18 @@ public class EquipeMB {
 	private UserDAO user = new UserDAO();
 	private Equipe equipeSelecionada = new Equipe();
 	private UserService userService = new UserService();
+	private Calendar fund_cal = new GregorianCalendar();
+	private Date fund = new Date();
 
 	public String salvar()
 	{
+		fund_cal.setTime(fund);
+		
+		equipe.setDataFundacao(fund_cal);
+		
 		userAtual = user.pesquisarPorUsername(userAtual.getUserAtual());
 		equipe.setDiretor(userAtual);
+		
 		userAtual.setTipo(Tipo.DIRETOR);
 		
 		equipeService.salvar(equipe);
@@ -35,15 +45,6 @@ public class EquipeMB {
 		equipe = new Equipe();
 	
 		return "inicio";
-	}
-	
-	public String salvarJogador()
-	{
-		
-		equipeService.salvar(equipe);
-		equipe = new Equipe();
-	
-		return "cadUser";
 	}
 	
 	public List<Equipe> getEquipes(){
@@ -64,6 +65,22 @@ public class EquipeMB {
 
 	public void setEquipeSelecionada(Equipe equipeSelecionada) {
 		this.equipeSelecionada = equipeSelecionada;
+	}
+
+	public Calendar getFund_cal() {
+		return fund_cal;
+	}
+
+	public void setFund_cal(Calendar fund_cal) {
+		this.fund_cal = fund_cal;
+	}
+
+	public Date getFund() {
+		return fund;
+	}
+
+	public void setFund(Date fund) {
+		this.fund = fund;
 	}
 	
 }

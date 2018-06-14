@@ -12,10 +12,14 @@
 		<class>cruzeirao.modelos.Convite</class>
 		<validation-mode>CALLBACK</validation-mode>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample;create=true"/>
-			<property name="javax.persistence.jdbc.user" value="user"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Cruzeirao;create=true"/>
 			<property name="javax.persistence.jdbc.password" value="123"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+			<property name="javax.persistence.jdbc.user" value="gui"/>
+			<property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<property name="javax.persistence.schema-generation.scripts.action" value="create"/>
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -32,7 +32,7 @@ public class UserService {
 		List<User> users = this.getUsuarios();
 
 		for (User u : users) {
-			if (u.getLogin() == name)
+			if (u.getUsername() == name)
 				return u;
 		}
 

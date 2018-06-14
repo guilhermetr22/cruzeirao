@@ -25,7 +25,7 @@ public class UserSistemaService implements UserDetailsService{
 		if(usuario != null){
 			return new UserSistema(usuario, obtemGruposdoUsuario(usuario));
 		}
-		throw new UsernameNotFoundException("Usuário Não Encontrado");
+		throw new UsernameNotFoundException("Usuário Não Encontrado:" + login);
 	}
 	
 	

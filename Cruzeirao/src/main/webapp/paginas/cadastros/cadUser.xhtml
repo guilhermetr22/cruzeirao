@@ -7,7 +7,7 @@
 	<h:head>
 		<meta charset="UTF-8" />
 		
-		<title>NOVO USUÁRIO</title>
+		<title>Cruzeirão -> Novo Usuário</title>
 	</h:head>
 
 		<h:body>	
@@ -32,7 +32,7 @@
 			        		</p:selectOneButton>
 			        		
 				            <p:outputLabel for="Login" size="30" value="#{msg['paginas.modelos.cadUser.nomeUser']}" />
-				            <p:inputText id="Login" required="true" value="#{UserMB.usuario.login}" label="Login"/>
+				            <p:inputText id="Login" required="true" value="#{UserMB.usuario.username}" label="Username"/>
 				            
 				            <p:outputLabel for="Senha" size="30" value="#{msg['paginas.modelos.cadUser.senha']}" />
 				         	<p:password id="Senha" value="#{UserMB.usuario.senha}" label="Senha" required="true" maxlength="10"/>
@@ -48,7 +48,7 @@
 					           	</p:inputMask>
 				            
 				            <p:outputLabel for="nascimento" value="#{msg['paginas.modelos.cadUser.dataNascimento']}" />
-				        	<p:calendar id="nascimento" required="true" value="#{UserMB.usuario.dataNascimento}" pattern="dd/MM/yyyy" mask="true" />
+				        	<p:calendar id="nascimento" required="true" value="#{UserMB.nasc}" pattern="dd/MM/yyyy" mask="true" />
 				             
 				            <p:outputLabel for="Endereco" 	size="30" value="#{msg['paginas.modelos.cadUser.endereco']}" />
 				            <p:inputText id="Endereco" required="true" value="#{UserMB.usuario.endereco}" label="Endereco"/>
@@ -77,8 +77,9 @@
 				            
 		        		</h:panelGrid>
 		        		
-		        		<h:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check" update="growl"
-		        			action="#{UserMB.salvar}"/>
+		        		<h:commandButton id="btnSalvar" value="Salvar" icon="ui-icon-check"
+		        			action="#{UserMB.salvar}"
+		        			ajax="false"/>
 		        	
 		    	</p:panel>
 		    </div>

@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.context.SecurityContext;
@@ -24,7 +25,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @Entity
 @Table(name="usuarios")
-@NamedQuery(name = "User.pesquisarPorLogin", query = "select u from User u where u.login = :login")
+@NamedQuery(name = "User.pesquisarPorLogin", query = "SELECT u FROM User u WHERE u.username = :username")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -4115440631798495868L;
@@ -52,8 +53,8 @@ public class User implements Serializable {
 	@Column(name="DataNascimento")
 	private Calendar dataNascimento = new GregorianCalendar();
 	
-	@Column(name="Login", unique=true)
-	private String login;
+	@Column(unique=true)
+	private String username;
 	
 	private String senha;
 	
@@ -66,6 +67,10 @@ public class User implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Equipe", referencedColumnName="IDEquipe")
 	private Equipe equipe;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Campeonato", referencedColumnName="IDCamp")
+	private Campeonato campeonato;
 
 	private ArrayList<Convite> convites = new ArrayList<Convite>();
 	
@@ -138,11 +143,11 @@ public class User implements Serializable {
 		this.cpf = cpf;
 	}
 	
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getSenha() {
 		return senha;
@@ -175,7 +180,7 @@ public class User implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + IDUser;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 	@Override
@@ -189,10 +194,10 @@ public class User implements Serializable {
 		User other = (User) obj;
 		if (IDUser != other.IDUser)
 			return false;
-		if (login == null) {
-			if (other.login != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!login.equals(other.login))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}
@@ -216,6 +221,12 @@ public class User implements Serializable {
 	
 	public void addConvite(Convite c){
 		this.convites.add(c);
+	}
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
 	}
 	public void removeConvite(Convite c){
 		this.convites.remove(c);

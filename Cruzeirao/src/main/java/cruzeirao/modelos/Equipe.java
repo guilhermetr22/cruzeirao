@@ -32,7 +32,7 @@ public class Equipe implements Serializable{
 	@Column(name="Nome")
 	private String nome;
 	
-	@Column(name="Data Fundação")
+	@Column(name="Fundacao")
 	private Calendar dataFundacao = new GregorianCalendar();
 	
 	@Column(name="Cidade")

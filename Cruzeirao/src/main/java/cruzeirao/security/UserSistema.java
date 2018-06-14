@@ -12,7 +12,7 @@ public class UserSistema extends org.springframework.security.core.userdetails.U
 	private User usuario;
 	
 	public UserSistema(User usuario, Collection<? extends GrantedAuthority> tipo) {
-		super(usuario.getLogin(), usuario.getSenha(), true, true, true, true, tipo);
+		super(usuario.getUsername(), usuario.getSenha(), true, true, true, true, tipo);
 		this.usuario = usuario;
 	}
 	

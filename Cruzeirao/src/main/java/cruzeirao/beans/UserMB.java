@@ -1,5 +1,8 @@
 package cruzeirao.beans;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -17,18 +20,23 @@ public class UserMB {
 	private UserService service = new UserService();
 	private User userSelecionado;
 	private Alertas msg = new Alertas();
+	private Calendar nasc_cal = new GregorianCalendar();
+	private Date nasc = new Date();
 	
 	public String salvar()
 	{
-	
+		nasc_cal.setTime(nasc);
+		
 		usuario.setTipo(Tipo.COMUM);
+		
+		usuario.setDataNascimento(nasc_cal);
 		
 		service.salvar(usuario);
 		usuario = new User();
 		
-		msg.exibirInfoGrowl("Sucesso", "Usuário cadastrado!");
+		msg.exibirInfoGrowl("Cadastrado", "Usuário cadastrado!");
 		
-		return "login";
+		return "./bemVindo";
 	}
 
 	public User getUsuario() {
@@ -59,5 +67,21 @@ public class UserMB {
 	{
 		service.remover(usuario);
 		usuarios.remove(usuario);
-	}	
+	}
+
+	public Calendar getNasc_cal() {
+		return nasc_cal;
+	}
+
+	public void setNasc_cal(Calendar nasc_cal) {
+		this.nasc_cal = nasc_cal;
+	}
+
+	public Date getNasc() {
+		return nasc;
+	}
+
+	public void setNasc(Date nasc) {
+		this.nasc = nasc;
+	}
 }

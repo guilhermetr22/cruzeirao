@@ -15,10 +15,10 @@
 				value="#{InscricaoMB.convitesUsuarioAtual}"
 				emptyMessage="#{msg['paginas.listaConvite.empty']}">
 				<p:column headerText="#{msg['paginas.listaConvite.nomeTime']}">
-					<h:outputText value="#{c.inscricao.time.nome}" />
+					<h:outputText value="#{c.inscricao.equipe.nome}" />
 				</p:column>
 				<p:column headerText="#{msg['paginas.listaConvite.nomeDiretor']}">
-					<h:outputText value="#{c.inscricao.time.diretor}" />
+					<h:outputText value="#{c.inscricao.equipe.diretor}" />
 				</p:column>
 				<p:column headerText="#{msg['paginas.listaConvite.campeonato']}">
 					<h:outputText value="#{c.inscricao.campeonato.nome}" />
@@ -27,7 +27,7 @@
 					<h:outputText value="#{c.inscricao.categoria.nome}" />
 				</p:column>
 				<p:column headerText="#{msg['paginas.listaConvite.dataConvite']}">
-					<h:outputText value="#{c.data.getTime()}" />
+					<h:outputText value="#{c.data.time}" />
 				</p:column>
 				<p:column style="width:100px"
 					headerText="#{msg['paginas.inscricoes.autorizar']}">

@@ -1,4 +1,4 @@
-package cruzeirao.security;
+	package cruzeirao.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter { 
 	
+	@Autowired
 	private static UserDetailsService userService = new UserSistemaService();
 	
 	public SecurityConfig() {
@@ -22,9 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		
-		auth.inMemoryAuthentication().withUser("adm").password("{noop}123").roles("ADMIN");
-		auth.userDetailsService(userService); 
+		auth.inMemoryAuthentication().withUser("adm").password("123").roles("ADMIN");
+		auth.userDetailsService(userService);
 	}
+	
+	
 	   
     protected void configure(HttpSecurity http) throws Exception {
     	

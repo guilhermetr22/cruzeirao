@@ -50,10 +50,10 @@ public class CampeonatoMB {
 				
 				if(fim_insc_cal.after(inicio_cal) == false)
 				{
-					//userAtual = userDAO.pesquisarPorUsername(userAtual.getUserAtual());
-					//userAtual.setTipo(Tipo.ORGANIZADOR);
+					userAtual = userDAO.pesquisarPorUsername(userAtual.getUserAtual());
+					userAtual.setTipo(Tipo.ORGANIZADOR);
 					
-					//userService.salvarEditado(userAtual);
+					userService.salvarEditado(userAtual);
 					
 					campeonato.setDataInicioCampeonato(inicio_cal);
 					campeonato.setDataFimCampeonato(fim_cal);

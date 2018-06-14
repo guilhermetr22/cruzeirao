@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -45,6 +46,9 @@ public class Campeonato implements Serializable{
 	private Calendar dataInicioCampeonato = new GregorianCalendar();
 	@Column
 	private Calendar dataFimCampeonato = new GregorianCalendar();
+	
+	@JoinColumn(name="Organizador", referencedColumnName="IDUser")
+	private User diretor;
 	
 	private double valorTaxa;
 	
@@ -120,6 +124,12 @@ public class Campeonato implements Serializable{
 		this.maxJogadores = maxJogadores;
 	}
 
+	public User getDiretor() {
+		return diretor;
+	}
+	public void setDiretor(User diretor) {
+		this.diretor = diretor;
+	}
 	@Override
 	public String toString() {
 		return nome;
