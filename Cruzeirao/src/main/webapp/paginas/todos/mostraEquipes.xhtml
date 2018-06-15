@@ -44,7 +44,9 @@
 		                <h:outputText value="#{EquipeMB.equipeSelecionada.dataFundacao.time}" />
 
 		                <h:outputText value="Jogadores:" />
-		                <p:dataList value="#{EquipeMB.equipeSelecionada.inscricoes}" type="ordered" />
+		                <ui:repeat value="#{EquipeMB.equipeSelecionada.inscricoes}" var="jog">
+							<h:outputText value="#{jog.IDInsc}"/>
+						</ui:repeat>
 		                
 		            </p:panelGrid>
 	        </p:outputPanel>

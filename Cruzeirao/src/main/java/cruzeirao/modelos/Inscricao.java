@@ -96,7 +96,10 @@ public class Inscricao implements Serializable{
 	public void setValidadas(boolean validadas) {
 		this.validada = validadas;
 	}
-	public void setJogadores(ArrayList<User> jogadores) {
+	public List<User> getJogadores() {
+		return jogadores;
+	}
+	public void setJogadores(List<User> jogadores) {
 		this.jogadores = jogadores;
 	}
 	public void addJogador(User u){

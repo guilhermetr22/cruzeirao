@@ -47,7 +47,7 @@ public class User implements Serializable {
 	@Column(name="RG")
 	private String rg;
 	
-	@Column(name="CPF")
+	@Column(name="CPF", unique=true)
 	private String cpf;
 
 	@Column(name="DataNascimento")
