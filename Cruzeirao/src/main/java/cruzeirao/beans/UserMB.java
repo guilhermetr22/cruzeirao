@@ -22,21 +22,33 @@ public class UserMB {
 	private Alertas msg = new Alertas();
 	private Calendar nasc_cal = new GregorianCalendar();
 	private Date nasc = new Date();
-	
+	private Date hoje_date = new Date();
+	private Calendar hoje_cal = new GregorianCalendar();
+
 	public String salvar()
 	{
+		hoje_cal.setTime(hoje_date);
+		
 		nasc_cal.setTime(nasc);
 		
-		usuario.setTipo(Tipo.COMUM);
-		
-		usuario.setDataNascimento(nasc_cal);
-		
-		service.salvar(usuario);
-		usuario = new User();
-		
-		msg.exibirInfoGrowl("Cadastrado", "Usuário cadastrado!");
-		
-		return "./bemVindo";
+		if(hoje_cal.after(nasc_cal))
+		{
+			usuario.setTipo(Tipo.COMUM);
+			
+			usuario.setDataNascimento(nasc_cal);
+			
+			service.salvar(usuario);
+			usuario = new User();
+			
+			msg.exibirInfoGrowl("Cadastrado", "Usuário cadastrado!");
+			
+			return "bemVindo";
+		}
+		else {
+			msg.exibirErroGrowl("Data de nascimento inválida");
+			return "cadUser";
+		}
+
 	}
 
 	public User getUsuario() {
