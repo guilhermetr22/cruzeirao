@@ -1,0 +1,7 @@
+@charset "ISO-8859-1";
+
+/*menu superior aparecendo por cima*/
+
+.ui-layout-north {
+	z-index:5 !important;
+}

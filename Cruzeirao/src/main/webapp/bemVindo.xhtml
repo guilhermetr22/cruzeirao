@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>CRUZEIRÃO 2018</title>	 
+      <style>
+            body{
+                background-image: url("#{resource['imagens/welcome2.png']}") !important;
+                width:99%;
+                height:10%;
+                float:center                
+            }
+        </style>
+	</h:head>
+	
+	<h:body>
+		<h:form id="form">
+			<p:panel id="menuPnl" style="border:1px solid black;width:160px; background:#666666;position: absolute; left:870px; top:640px;">
+				<p:button href="/login.xhtml" value="Login" icon="ui-icon-person" style="background-color:#000000; font-weight:bold; color:white"/>
+			 	<p:button href="/paginas/cadastros/cadUser.xhtml" value="Cadastro" icon="ui-icon-plus" style="background-color:#000000; font-weight:bold; color:white"/>
+			 	<p:button onclick="PF('detalhesDialog').show()" value="Sobre" icon="ui-icon-info" title="Sobre" style="background-color:#000000; font-weight:bold; color:white"/>
+			</p:panel>		  
+			
+			<p:dialog header="Sobre" widgetVar="detalhesDialog" resizable="false" height="100" position="center">
+				<p:panelGrid columns="1" style="border:black">
+					<h:outputText value="Desenvolvido por Guilherme Rodrigues" />
+					<h:outputText value="RA - 150654"/>
+				</p:panelGrid>
+			</p:dialog>
+		</h:form>
+	</h:body>
+</html>

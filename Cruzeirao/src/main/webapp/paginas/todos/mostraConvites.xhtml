@@ -1,0 +1,48 @@
+<ui:composition template="/paginas/cadastros/layoutPrincipal.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['paginas.listaConvite.title']}" />
+	</ui:define>
+	<ui:define name="principal">
+		<h:form id="formTableConvites">
+			<p:dataTable id="convites" var="c"
+				value="#{InscricaoMB.convitesUsuarioAtual}"
+				emptyMessage="#{msg['paginas.listaConvite.empty']}">
+				<p:column headerText="#{msg['paginas.listaConvite.nomeTime']}">
+					<h:outputText value="#{c.inscricao.equipe.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['paginas.listaConvite.nomeDiretor']}">
+					<h:outputText value="#{c.inscricao.equipe.diretor}" />
+				</p:column>
+				<p:column headerText="#{msg['paginas.listaConvite.campeonato']}">
+					<h:outputText value="#{c.inscricao.campeonato.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['paginas.listaConvite.categoria']}">
+					<h:outputText value="#{c.inscricao.categoria.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['paginas.listaConvite.dataConvite']}">
+					<h:outputText value="#{c.data.time}" />
+				</p:column>
+				<p:column style="width:100px"
+					headerText="#{msg['paginas.inscricoes.autorizar']}">
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center" actionListener="#{InscricaoMB.removeConvite(c)}"
+						update=":formTableConvites" />
+				</p:column>
+				<p:column style="width:100px"
+					headerText="#{msg['paginas.inscricoes.confirmar']}">
+					<p:commandLink id="confirmar" styleClass="ui-icon ui-icon-check"
+						style="text-align:center"
+						actionListener="#{InscricaoMB.autorizarConvite(c)}"
+						update=":formTableConvites" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

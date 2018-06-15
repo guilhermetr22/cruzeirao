@@ -1,0 +1,80 @@
+<ui:composition template="/paginas/cadastros/layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['paginas.todos.mostraCampeonato.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	
+	<h:form id="form">
+	  <p:dataTable id="tabelaCamp" var="camp" value="#{CampeonatoMB.campeonatos}" 
+	  			   emptyMessage="#{msg['paginas.todos.mostraCampeonato.vazio']}"
+	  			   style="border: solid 2px black;">  
+       
+        	<f:facet name="header">
+            	Campeonatos
+        	</f:facet>
+        
+	        <p:column headerText="#{msg['paginas.todos.mostraCampeonato.nome']}" >
+	        	<p:outputLabel value="#{camp.nome}" />
+	      	</p:column>
+	      	
+	      	<p:column style="width:32px;text-align: center">
+	            <p:commandButton update=":form:campDetalhes" oncomplete="PF('campDialog').show()" icon="ui-icon-search" title="Detalhes">
+	                <f:setPropertyActionListener value="#{camp}" target="#{CampeonatoMB.campSelecionado}" />
+	            </p:commandButton>
+       		</p:column>
+       		
+       		      			
+       		<p:column style="width:32px;text-align: center"> 
+				<p:commandButton id="remover" styleClass="ui-icon-trash"
+					style="text-align:center"
+					actionListener="#{CampeonatoMB.remover(camp)}"
+					update="tabelaCamp" />
+	  		</p:column>
+    	</p:dataTable>
+    	
+    	
+    	<p:dialog header="Detalhes" widgetVar="campDialog" resizable="false">
+	        <p:outputPanel id="campDetalhes" style="text-align:center;">
+	            <p:panelGrid  columns="2" columnClasses="1,2">
+	 
+	                <h:outputText value="Data de Início:" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataInicioCampeonato.time}" />
+	 
+	                <h:outputText value="Data de encerramento: " />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.dataFimCampeonato.time}" />
+	 
+	                <h:outputText value="Mín. de jogadores: " />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.minJogadores}" />
+	                
+	                <h:outputText value="Max de jogadores" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.maxJogadores}" />
+	                
+	                <h:outputText value="Taxa Inscrição:" />
+	                <h:outputText value="R$#{CampeonatoMB.campSelecionado.valorTaxa}"/>
+	                
+	                <h:outputText value="Organizador:" />
+	                <h:outputText value="#{CampeonatoMB.campSelecionado.diretor.nome}"/> 
+	                
+	                <h:outputText value="Categorias:" />  
+					<ui:repeat value="#{CampeonatoMB.campSelecionado.categorias}" var="cat">
+					  <h:outputText value="#{cat.nome}"/>
+					</ui:repeat>
+
+	                
+	                
+	            </p:panelGrid>
+	        </p:outputPanel>
+    	</p:dialog>
+    	
+	</h:form>
+	</ui:define>
+</ui:composition>

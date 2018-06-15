@@ -1,0 +1,37 @@
+<ui:composition template="layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+
+	<ui:define name="titulo">
+		<h:outputText value="#{msg['paginas.modelos.cadLocal.titulo']}" />
+	</ui:define>
+	
+	<ui:define name="principal">
+		<h:form style="float:center" id="formLocal" prependId="false">	   	  
+			<p:panel id="painel" header="#{msg['paginas.modelos.cadLocal.menuNome']}" style="border-width:2px; border-style:hidden; width:600px; margin-left:auto; margin-right:auto;">
+		  		<h:panelGrid columns="2" id="panel" style="text-align:center"> 
+	      			<p:outputLabel for="nome" value="#{msg['paginas.modelos.cadLocal.nome']}" />
+	      			<p:inputText id="nome" required="true" value="#{LocalMB.local.nome}"/>
+	      
+		  			<p:outputLabel for="end" value="#{msg['paginas.modelos.cadLocal.endereco']}" />
+		 			<p:inputText id="end" required="true" value="#{LocalMB.local.endereco}"/>	
+		 			
+		 			<p:tooltip for="nome" showEvent="focus" hideEvent="blur" position="top" value="Insira o nome do LOCAL para refêrencia"/>
+					<p:tooltip for="end" showEvent="focus" hideEvent="blur" position="top" value="Insira o endereço completo do LOCAL dos jogos"/>
+	 
+		 		 </h:panelGrid>
+		 		 
+		  		 <p:commandButton value="#{msg['paginas.modelos.cadLocal.btnSalvar']}"
+		                 update=":formLocal"
+		                 action="#{LocalMB.salvar}"
+		                 />
+			</p:panel>
+		</h:form>
+	   
+	</ui:define>
+</ui:composition>

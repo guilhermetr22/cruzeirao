@@ -1,0 +1,64 @@
+<ui:composition template="/paginas/cadastros/layoutPrincipal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['paginas.inscreverTime.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <p:panel id="pnl" header="#{msg['paginas.inscreverTime.menu']}"  style="border-color:black;border-width:2px; border-style:solid; ">
+	  
+	  <h:form id="formInscTime">	
+	  <p:panelGrid columns="2">
+      <p:outputLabel for="camp" value="#{msg['paginas.inscreverTime.campeonato']}" />
+        
+        <p:selectOneMenu id="camp" style="width:125px" value="#{InscricaoMB.campAtual}" converter="campConverter">
+            <f:selectItem itemLabel="#{msg['paginas.inscreverTime.submenu']}" itemValue="" />
+	  		<f:selectItems value="#{InscricaoMB.campeonatos}" var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}"/>
+	  		<p:ajax listener="#{InscricaoMB.updateCategorias}" event="change" update="formInscTime" process="camp"/>
+        </p:selectOneMenu>
+        
+        <p:outputLabel for="categ" value="#{msg['paginas.modelos.cadCategoria.categoria']}" />
+        
+        <p:selectOneMenu id="categ" style="width:125px" value="#{InscricaoMB.catAtual}" converter="catConverter">
+            <f:selectItem itemLabel="#{msg['paginas.inscreverTime.submenu']}" itemValue="" />
+            <f:selectItems value="#{InscricaoMB.categorias}" var="cat" itemValue="#{cat}" itemLabel="#{cat.nome}"/>
+        </p:selectOneMenu>
+        
+        <p:outputLabel for="time" value="#{msg['paginas.inscreverTime.time']}" />
+        
+        <p:selectOneMenu id="time" style="width:125px" value="#{InscricaoMB.equipeAtual}" converter="timeConverter">
+            <f:selectItem itemLabel="#{msg['paginas.inscreverTime.submenu']}" itemValue="" />
+            <f:selectItems value="#{InscricaoMB.equipesUsuarioAtual}" var="time" itemValue="#{time}" itemLabel="#{time.nome}"/>
+        </p:selectOneMenu>
+        
+        <h:outputLabel for="users" value="#{msg['paginas.inscreverTime.players']}:" />
+        
+        <p:selectCheckboxMenu id="users" style="width:150px" value="#{InscricaoMB.usuariosList}" label="Select One" converter="userConverter" multiple="true">
+            <f:selectItems value="#{InscricaoMB.todosMenosDiretor}" var="user" itemValue="#{user}" itemLabel="#{user.nome}"/>
+        </p:selectCheckboxMenu>
+	  </p:panelGrid>
+	  <p:commandButton value="#{msg['paginas.inscreverTime.btnSalvar']}"
+	                 update=":formInscTime"
+	                 action="#{InscricaoMB.salvar}"
+	                 />
+       </h:form>
+       </p:panel>
+	
+ 		   
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

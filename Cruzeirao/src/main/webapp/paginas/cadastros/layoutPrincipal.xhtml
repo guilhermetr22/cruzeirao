@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+		<h:head>		        	
+ 		<title>
+		   <ui:insert name="title">
+				<h:outputLabel value="#{msg['paginas.estiloMenu.menuPrincipal']}" />
+			</ui:insert>
+	    </title>
+        	
+        	<h:outputStylesheet name="css/estilos.css"/>
+        	
+   		</h:head>
+   
+		
+		<h:body>
+			<div id="global">
+				<p:layout id="layoutGlobal" style="background:#42426F" fullPage="true">
+										
+						<!-- Menu superior -->
+						<p:layoutUnit position="north" style="background:#42426F; border: solid 2px black"
+							header="#{msg['paginas.comuns.menuLateral.opcoes']}"
+							size="96">
+							<ui:include src="/paginas/comuns/menuSuperior.xhtml" />
+						</p:layoutUnit>
+			
+						<!-- Informações na parte direita -->
+						<p:layoutUnit position="east" size="300" style="border: none; position:absolute;">
+							<ui:include src="/paginas/comuns/infoDireita.xhtml" />
+						</p:layoutUnit>
+						
+						<!-- Página que será trocada no template -->
+						<p:layoutUnit position="center" style="border: none; position: absolute">
+							<ui:insert name="principal" />
+						</p:layoutUnit>	
+				</p:layout>
+			</div>
+		</h:body>
+</h:html>
+

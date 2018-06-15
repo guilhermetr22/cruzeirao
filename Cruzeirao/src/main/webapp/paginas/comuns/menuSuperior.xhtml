@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<h:head>
+		<h:outputStylesheet name="css/estilos.css"/>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<div id="menu" style="background:#7093DB">
+					<p:menubar>
+				          	<p:menuitem value="#{msg['paginas.inicio.menu']}" url="inicio.xhtml"/>
+				        	
+				       		<p:submenu label="#{msg['paginas.comuns.menuLateral.cadastros']}">
+				            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuNome']}" url="cadCampeonato.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.modelos.cadCategoria.menuNome']}" url="cadCategoria.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuNome']}" url="cadLocal.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuNome']}" url="cadEquipe.xhtml" />
+				            	<p:menuitem value="#{msg['paginas.inscricoes.inscreverTime.menu']}" url="/paginas/inscricoes/inscreverTime.xhtml" />
+				        	</p:submenu>
+						    
+						    <p:submenu label="#{msg['paginas.comuns.menuLateral.listagem']}">
+				            	<p:menuitem value="#{msg['paginas.modelos.cadUser.menuTodos']}" url="/paginas/todos/mostraUsers.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadCampeonato.menuTodos']}" url="/paginas/todos/mostraCamp.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadLocal.menuTodos']}" url="/paginas/todos/mostraLocais.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.modelos.cadEquipe.menuTodos']}" url="/paginas/todos/mostraEquipes.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.inscricoes.menuTodos']}" url="/paginas/todos/mostraInscritos.xhtml"/>
+				            	<p:menuitem value="#{msg['paginas.convites.menuTodos']}" url="/paginas/todos/mostraConvites.xhtml"/>
+				        	</p:submenu>
+				        	
+				        	<p:submenu label="#{msg['paginas.todos.tabelaC']}">
+				        		<p:menuitem value="#{msg['paginas.resultados.menu']}" url="/paginas/todos/resultados.xhtml" />
+				        		<p:menuitem value="#{msg['paginas.chave.menu']}" url="/paginas/todos/chave.xhtml"/>
+				        	</p:submenu>
+
+					        <p:submenu label="#{msg['paginas.comuns.menuLateral.organizador']}" >
+					            <p:menuitem value="#{msg['paginas.inscricoes.menu']}" url="autorizacaoInscricao.xhtml" />
+					        </p:submenu>
+				        	
+				        	<p:submenu label="#{msg['paginas.comuns.menuLateral.idioma']}">
+				        		<p:menuitem value="#{msg['paginas.linguagem.menu']}" url="linguagem.xhtml" />
+				        	</p:submenu>
+				        	 	
+				        	<p:menuitem value="#{msg['paginas.sobre.menu']}" url="Sobre.xhtml"/>
+						    
+			    	</p:menubar>
+			    	
+			    </div>
+			</h:form>	
+	
+	</h:body>
+
+    
+</ui:composition>
